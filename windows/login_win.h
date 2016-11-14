@@ -7,5 +7,7 @@ Purpose: header file for login window--first window in the gui design*/
 #include "GUI.h"
 
 class login_window{
-	//...
+	Button exit;
+	Button login;
+	Button new_player;
 }

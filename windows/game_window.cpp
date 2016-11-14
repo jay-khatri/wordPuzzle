@@ -18,13 +18,32 @@ class Game_window : Graph_lib::window{
 		const string& title);
 
 private:
-	Out_box high_scores;
+	//both pages buttons
+	Button logout;
+
+	//Home page text
+	Out_box high_scores_3;
+	Out_box high_scores_4;
+	Out_box high_scores_5;
 	Out_box player_scores;
+	Out_box user_name;
+	//Home page buttons
+	Button play_3;
+	Button play_4;
+	Button play_5;
+
+	//game page text
 	Out_box words_accepetd;
 	Out_box current_score;
 	Out_box Instructions;
-	
 
+	//Game page buttons
+	Button clear_word;
+	Button finish_game;
+	Button enter_word;
+
+	static void cd_logout(Address, Address);
+	static void cd_
 
 
 public:
@@ -32,7 +51,3 @@ public:
 
 }
 
-
-int main(){
-	
-}

@@ -42,7 +42,15 @@ private:
 	Button finish_game;
 	Button enter_word;
 
-	void logout();
+	void quit();
+
+	void three_game();
+	void four_game();
+	void five_game();
+
+	void clear();
+	void finish();
+	void enter();
 
 	static void cd_logout_button(Address, Address);
 
@@ -133,5 +141,36 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 }
 
 // All the callbacks
+
+void Game_window::cd_logout_button(Address, Address pw){
+	reference_to<Game_window>(pw).quit();
+}
+void Game_window::quit(){
+	hide();
+}
+
+void Game_window::cd_play_3(Address, Address pw){
+	reference_to<Game_window>(pw).three_game();
+}
+
+void Game_window::cd_play_4(Address, Address pw){
+	reference_to<Game_window>(pw).four_game();
+}
+
+void Game_window::cd_play_5(Address, Address pw){
+	reference_to<Game_window>(pw).five_game();
+}
+
+void Game_window::cd_clear_word(Address, Address pw){
+	reference_to<Game_window>(pw).clear();
+}
+
+void Game_window::cd_finish_game(Address, Address pw){
+	reference_to<Game_window>(pw).finish();
+}
+
+void Game_window::cd_enter_word(Address, Address pw){
+	reference_to<Game_window>(pw).enter();
+}
 
 

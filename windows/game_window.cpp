@@ -36,6 +36,7 @@ private:
 	Out_box words_accepted;
 	Out_box current_score;
 	Out_box instructions;
+	Out_box current_word;
 
 	//Game page buttons
 	Button clear_word;
@@ -44,13 +45,64 @@ private:
 
 	void quit();
 
-	void three_game();
-	void four_game();
-	void five_game();
+	void three_game(){
+		high_scores_3.hide();
+		high_scores_4.hide();
+		high_scores_5.hide();
+		player_scores.hide();
+		user_name.hide();
 
-	void clear();
-	void finish();
-	void enter();
+		words_accepted.show();
+		current_score.show();
+		instructions.show();
+		current_word.show();
+
+		clear_word.show();
+		finish_game.show();
+		enter_word.show();
+	}
+	void four_game(){
+		high_scores_3.hide();
+		high_scores_4.hide();
+		high_scores_5.hide();
+		player_scores.hide();
+		user_name.hide();
+
+		words_accepted.show();
+		current_score.show();
+		instructions.show();
+		current_word.show();
+
+		clear_word.show();
+		finish_game.show();
+		enter_word.show();
+	}
+	void five_game(){
+		high_scores_3.hide();
+		high_scores_4.hide();
+		high_scores_5.hide();
+		player_scores.hide();
+		user_name.hide();
+
+		words_accepted.show();
+		current_score.show();
+		instructions.show();
+		current_word.show();
+
+		clear_word.show();
+		finish_game.show();
+		enter_word.show();
+	}
+
+	void clear(){
+		current_word.put(""); //clear the word, need to add the functionality of this probabily later
+	}
+	//void finish();
+	void enter(){
+		current_word.put("");
+		string word = current_word.get_string();
+		words_accepted.put(word); //will need to change for multiple words
+	}
 
 	static void cd_logout_button(Address, Address);
 
@@ -104,8 +156,10 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 		100, 30, "Current Word: ");
 	words_accepted(Point(x_max()-80, 70),
 		70, 150, "Words Entered: ");
-	instructions(Poitn(10, 10),
-		100, 30, "Instructions: ")
+	instructions(Point(10, 10),
+		100, 30, "Instructions: ");
+	current_word(Point(x_max-200,250),
+		80, 30, "Current Word: ")
 
 {
 	//should never need to hide
@@ -127,6 +181,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	attach(clear_word);
 	attach(enter_word);
 	attach(finish_game);
+	attach(current_word);
 	//game outboxes
 	attach(current_score);
 	attach(words_accepted);
@@ -138,6 +193,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	current_score.hide();
 	words_accepted.hide();
 	instructions.hide();
+	current_word.hide();
 }
 
 // All the callbacks
@@ -166,11 +222,24 @@ void Game_window::cd_clear_word(Address, Address pw){
 }
 
 void Game_window::cd_finish_game(Address, Address pw){
-	reference_to<Game_window>(pw).finish();
+	reference_to<Game_window>(pw).quit(); //will probably need to change to finish function
 }
 
 void Game_window::cd_enter_word(Address, Address pw){
 	reference_to<Game_window>(pw).enter();
 }
 
-
+int main() 
+  try {
+    // construct the GUI window
+    Game_window win(Point(100,100),600,400,"shapes");
+    return gui_main();  // inherited from Window; calls FLTK's run
+  }
+  catch(exception& e) {
+    cerr << "exception: " << e.what() << '\n';
+    return 1;
+  }
+  catch(...) {
+    cerr << "some exception\n";
+    return 2;
+  }

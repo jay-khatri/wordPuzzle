@@ -10,7 +10,7 @@
 using namespace Graph_lib;
 using namespace std;
 
-class Game_window : Graph_lib::window{
+struct Game_window : Graph_lib::Window{
 	//constructor
 	Game_window(Point xy,
 		int w,
@@ -18,6 +18,32 @@ class Game_window : Graph_lib::window{
 		const string& title);
 
 private:
+	Button but1; //the twenty five buttons
+	Button but2;
+	Button but3;
+	Button but4;
+	Button but5;
+	Button but6;
+	Button but7;
+	Button but8;
+	Button but9;
+	Button but10;
+	Button but11;
+	Button but12;
+	Button but13;
+	Button but14;
+	Button but15;
+	Button but16;
+	Button but17;
+	Button but18;
+	Button but19;
+	Button but20;
+	Button but21;
+	Button but22;
+	Button but23;
+	Button but24;
+	Button but25;
+
 	//both pages buttons
 	Button logout_button;
 
@@ -51,6 +77,9 @@ private:
 		high_scores_5.hide();
 		player_scores.hide();
 		user_name.hide();
+		play_3.hide();
+		play_4.hide();
+		play_5.hide();
 
 		words_accepted.show();
 		current_score.show();
@@ -67,6 +96,9 @@ private:
 		high_scores_5.hide();
 		player_scores.hide();
 		user_name.hide();
+		play_3.hide();
+		play_4.hide();
+		play_5.hide();
 
 		words_accepted.show();
 		current_score.show();
@@ -83,6 +115,9 @@ private:
 		high_scores_5.hide();
 		player_scores.hide();
 		user_name.hide();
+		play_3.hide();
+		play_4.hide();
+		play_5.hide();
 
 		words_accepted.show();
 		current_score.show();
@@ -99,8 +134,8 @@ private:
 	}
 	//void finish();
 	void enter(){
+		string word = current_word.value; //look here later
 		current_word.put("");
-		string word = current_word.get_string();
 		words_accepted.put(word); //will need to change for multiple words
 	}
 
@@ -114,52 +149,89 @@ private:
 	static void cd_finish_game(Address, Address);
 	static void cd_enter_word(Address, Address);
 
+	static void cd_but1(Address, Address);
+	static void cd_but2(Address, Address);
+	static void cd_but3(Address, Address);
+	static void cd_but4(Address, Address);
+	static void cd_but5(Address, Address);
+	static void cd_but6(Address, Address);
+	static void cd_but7(Address, Address);
+	static void cd_but8(Address, Address);
+	static void cd_but9(Address, Address);
+	static void cd_but10(Address, Address);
+	static void cd_but11(Address, Address);
+	static void cd_but12(Address, Address);
+	static void cd_but13(Address, Address);
+	static void cd_but14(Address, Address);
+	static void cd_but15(Address, Address);
+	static void cd_but16(Address, Address);
+	static void cd_but17(Address, Address);
+	static void cd_but18(Address, Address);
+	static void cd_but19(Address, Address);
+	static void cd_but20(Address, Address);
+	static void cd_but21(Address, Address);
+	static void cd_but22(Address, Address);
+	static void cd_but23(Address, Address);
+	static void cd_but24(Address, Address);
+	static void cd_but25(Address, Address);
+
 };
 
 //constructor
 Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	Window(xy, w, h, title),
 	//universal logout 
-	logout_button(Point(x_max(),0),
+	logout_button(Point(x_max()-80,20),
 		70, 20, "logout", cd_logout_button),
 
 	//play buttons
 	play_3(Point(30, 60),
 		80, 50, "3X3", cd_play_3),
 	play_4(Point(30, 120),
-		80, 50, "3X3", cd_play_3),
+		80, 50, "4X4", cd_play_4),
 	play_5(Point(30, 180),
-		80, 50, "3X3", cd_play_3),
+		80, 50, "5X5", cd_play_5),
 
 	//high scores for home page
-	high_scores_3(Point(150, 60),
+	high_scores_3(Point(200, 60),
 		80, 50, "High Scores"),
-	high_scores_4(Point(150, 120),
+	high_scores_4(Point(200, 120),
 		80, 50, "High Scores"),
-	high_scores_5(Point(150, 180),
+	high_scores_5(Point(200, 180),
 		80, 50, "High Scores"),
-	player_scores(Point(150, 240),
+	player_scores(Point(300, 240),
 		80, 50, "Player Scores"),
 	//displays on home page
-	user_name(Point(30, 240),
+	user_name(Point(100, 240),
 		70, 20, "User: "),
 
 	//Buttons for the game page
-	clear_word(Point(10,y_max()-10),
-		70, 20, "Clear Word", cd_clear_word),
-	enter_word(Point(10, y_max-40),
-		70, 20, "Enter Word", cd_enter_word),
-	finish_game(Point(x_max()-10,y_max()-10),
-		70, 20, "Finish", cd_finish_game),
+	clear_word(Point(10,y_max()-30),
+		80, 20, "Clear Word", cd_clear_word),
+	enter_word(Point(10, y_max()-60),
+		80, 20, "Enter Word", cd_enter_word),
+	finish_game(Point(x_max()-85,y_max()-25),
+		80, 20, "Finish", cd_finish_game),
 	//Output for the game page
-	current_score(Point(300, 300),
-		100, 30, "Current Word: ");
-	words_accepted(Point(x_max()-80, 70),
-		70, 150, "Words Entered: ");
-	instructions(Point(10, 10),
-		100, 30, "Instructions: ");
-	current_word(Point(x_max-200,250),
-		80, 30, "Current Word: ")
+	current_score(Point(100, 50),
+		100, 30, "Current Score: "),
+	words_accepted(Point(x_max()-70, 70),
+		60, 150, "Words Entered: "),
+	instructions(Point(100, 10),
+		100, 30, "Instructions: "),
+	current_word(Point(300,300),
+		80, 30, "Current Word: "),
+
+	but1(Point(200,200),
+		20,20,'1',cd_but1),
+	but2(Point(200,220),
+		20,20,'2',cd_but2),
+	but3(Point(200,240),
+		20,20,'3',cd_but3),
+	but4(Point(200,260),
+		20,20,'4',cd_but4),
+	but5(Point(200,280),
+		20,20,'5',cd_but5),
 
 {
 	//should never need to hide

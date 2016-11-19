@@ -20,8 +20,13 @@ struct Game_window : Graph_lib::Window{
 		const string& title);
 
 private:
+	//holds all the letters
 	vector<string> letters;
+	//the current word string the user is adding to
 	string the_word;
+	//the game_type the user chooses
+	int game_type;
+
 	Button but1; //the twenty five buttons
 	Button but2;
 	Button but3;
@@ -94,30 +99,57 @@ private:
 		finish_game.show();
 		enter_word.show();
 	}
-
+	void show_buttons(){
+		if((game_type == 3) || (game_type == 4) || (game_type == 5)){
+			but1.show();
+			but2.show();
+			but3.show();
+			but6.show();
+			but7.show();
+			but8.show();
+			but11.show();
+			but12.show();
+			but13.show();
+		}
+		if((game_type == 4) || (game_type==5)){
+			but4.show();
+			but9.show();
+			but14.show();
+			but16.show();
+			but17.show();
+			but18.show();
+			but19.show();
+		}
+		if(game_type == 5){
+			but5.show();
+			but10.show();
+			but15.show();
+			but20.show();
+			but21.show();
+			but22.show();
+			but23.show();
+			but24.show();
+			but25.show();
+		}
+	}
+	
 	void three_game(){
+		game_type = 3;
 		home_to_game();
 
 		but1.label = letters[rand()% 25];
-		but1.show();
 		but2.label = letters[rand()% 25];
-		but2.show();
 		but3.label = letters[rand()% 25];
-		but3.show();
 		but6.label = letters[rand()% 25];
-		but6.show();
 		but7.label = letters[rand()% 25];
-		but7.show();
 		but8.label = letters[rand()% 25];
-		but8.show();
 		but11.label = letters[rand()% 25];
-		but11.show();
 		but12.label = letters[rand()% 25];
-		but12.show();
 		but13.label = letters[rand()% 25];
-		but13.show();
+		show_buttons();
 	}
 	void four_game(){
+		game_type = 4;
 		home_to_game();
 
 		but1.label = letters[rand()% 25];
@@ -136,24 +168,10 @@ private:
 		but17.label = letters[rand()% 25];
 		but18.label = letters[rand()% 25];
 		but19.label = letters[rand()% 25];
-		but1.show();
-		but2.show();
-		but3.show();
-		but4.show();
-		but6.show();
-		but7.show();
-		but8.show();
-		but9.show();
-		but11.show();
-		but12.show();
-		but13.show();
-		but14.show();
-		but16.show();
-		but17.show();
-		but18.show();
-		but19.show();
+		show_buttons();
 	}
 	void five_game(){
+		game_type = 5;
 		home_to_game();
 
 		but1.label = letters[rand()% 25];
@@ -181,166 +199,147 @@ private:
 		but23.label = letters[rand()% 25];
 		but24.label = letters[rand()% 25];
 		but25.label = letters[rand()% 25];
-		but1.show();
-		but2.show();
-		but3.show();
-		but4.show();
-		but5.show();
-		but6.show();
-		but7.show();
-		but8.show();
-		but9.show();
-		but10.show();
-		but11.show();
-		but12.show();
-		but13.show();
-		but14.show();
-		but15.show();
-		but16.show();
-		but17.show();
-		but18.show();
-		but19.show();
-		but20.show();
-		but21.show();
-		but22.show();
-		but23.show();
-		but24.show();
-		but25.show();
+		show_buttons();
 	}
 
 	void clear(){
-		current_word.put(""); //clear the word, need to add the functionality of this probabily later
+		current_word.put("");
+		the_word = "";
+
+		show_buttons();
 	}
 	//void finish();
 	void enter(){
-		string word = current_word.label; //look here later
 		current_word.put("");
-		words_accepted.put(word); //will need to change for multiple words
+		words_accepted.put(the_word); //will need to change for multiple words
+		the_word = "";
+
+		show_buttons();
 	}
 
 	void button_push1(){
-		the_word = but1.label + the_word;
+		the_word = the_word + but1.label;
 		current_word.put(the_word);
 		but1.hide();
 	}
 	void button_push2(){
-		the_word = but1.label + the_word;
+		the_word = the_word + but2.label;
 		current_word.put(the_word);
 		but2.hide();
 	}
 	void button_push3(){
-		string letter = but3.label;
-		current_word.put(letter);
+		the_word = the_word + but3.label;
+		current_word.put(the_word);
 		but3.hide();
 	}
 	void button_push4(){
-		string letter = but4.label;
-		current_word.put(letter);
+		the_word = the_word + but4.label;
+		current_word.put(the_word);
 		but4.hide();
 	}
 	void button_push5(){
-		string letter = but5.label;
-		current_word.put(letter);
+		the_word = the_word + but5.label;
+		current_word.put(the_word);
 		but5.hide();
 	}
 	void button_push6(){
-		string letter = but6.label;
-		current_word.put(letter);
+		the_word = the_word + but6.label;
+		current_word.put(the_word);
 		but6.hide();
 	}
 	void button_push7(){
-		string letter = but7.label;
-		current_word.put(letter);
+		the_word = the_word + but7.label;
+		current_word.put(the_word);
 		but7.hide();
 	}
 	void button_push8(){
-		string letter = but8.label;
-		current_word.put(letter);
+		the_word = the_word + but8.label;
+		current_word.put(the_word);
 		but8.hide();
 	}
 	void button_push9(){
-		string letter = but9.label;
-		current_word.put(letter);
+		the_word = the_word + but9.label;
+		current_word.put(the_word);
 		but9.hide();
 	}
 	void button_push10(){
-		string letter = but10.label;
-		current_word.put(letter);
+		the_word = the_word + but10.label;
+		current_word.put(the_word);
 		but10.hide();
 	}
 	void button_push11(){
-		string letter = but11.label;
-		current_word.put(letter);
+		the_word = the_word + but11.label;
+		current_word.put(the_word);
 		but11.hide();
 	}
 	void button_push12(){
-		string letter = but12.label;
-		current_word.put(letter);
+		the_word = the_word + but12.label;
+		current_word.put(the_word);
 		but12.hide();
 	}
 	void button_push13(){
-		string letter = but13.label;
-		current_word.put(letter);
+		the_word = the_word + but13.label;
+		current_word.put(the_word);
 		but13.hide();
 	}
 	void button_push14(){
-		string letter = but14.label;
-		current_word.put(letter);
+		the_word = the_word + but14.label;
+		current_word.put(the_word);
 		but14.hide();
 	}
 	void button_push15(){
-		string letter = but15.label;
-		current_word.put(letter);
+		the_word = the_word + but15.label;
+		current_word.put(the_word);
 		but15.hide();
 	}
 	void button_push16(){
-		string letter = but16.label;
-		current_word.put(letter);
+		the_word = the_word + but16.label;
+		current_word.put(the_word);
 		but16.hide();
 	}
 	void button_push17(){
-		string letter = but17.label;
-		current_word.put(letter);
+		the_word = the_word + but17.label;
+		current_word.put(the_word);
 		but17.hide();
 	}
 	void button_push18(){
-		string letter = but18.label;
-		current_word.put(letter);
+		the_word = the_word + but18.label;
+		current_word.put(the_word);
 		but18.hide();
 	}
 	void button_push19(){
-		string letter = but19.label;
-		current_word.put(letter);
+		the_word = the_word + but19.label;
+		current_word.put(the_word);
 		but19.hide();
 	}
 	void button_push20(){
-		string letter = but20.label;
-		current_word.put(letter);
+		the_word = the_word + but20.label;
+		current_word.put(the_word);
 		but20.hide();
 	}
 	void button_push21(){
-		string letter = but21.label;
-		current_word.put(letter);
+		the_word = the_word + but21.label;
+		current_word.put(the_word);
 		but21.hide();
 	}
 	void button_push22(){
-		string letter = but22.label;
-		current_word.put(letter);
+		the_word = the_word + but22.label;
+		current_word.put(the_word);
 		but22.hide();
 	}
 	void button_push23(){
-		string letter = but23.label;
-		current_word.put(letter);
+		the_word = the_word + but23.label;
+		current_word.put(the_word);
 		but23.hide();
 	}
 	void button_push24(){
-		string letter = but24.label;
-		current_word.put(letter);
+		the_word = the_word + but24.label;
+		current_word.put(the_word);
 		but24.hide();
 	}
 	void button_push25(){
-		string letter = but25.label;
-		current_word.put(letter);
+		the_word = the_word + but25.label;
+		current_word.put(the_word);
 		but25.hide();
 	}
 

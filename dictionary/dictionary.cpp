@@ -34,10 +34,13 @@ bool isWord(vector<string> input, string check){
 int main(){
 	vector<string> words;
 	input_data(words);
-	for(auto i: words){
-		cout << i << endl;
+	//for(auto i: words){
+		//cout << i << endl;
+	//}
+	for(int i = 0;i<words.size();i++){
+		cout << words[10000] << endl;
 	}
-	cout << isWord(words, "zunis");
-	cout << words.size();
+	//cout << isWord(words, "zunis");
+	//cout << words.size();
 
 }

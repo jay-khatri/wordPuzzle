@@ -19,12 +19,13 @@ void input_data(vector<string>& input){
     }
 	string word;
     getline(ifs,word);  // use getline to deal with spaces 
+	word = word.substr(0, word.length()-1);
 	input.push_back(word);
   }
 }
 bool isWord(vector<string> input, string check){
-	for(auto i: input){
-		if(check == i){
+	for(int i = 0; i<input.size(); i++){
+		if(check == input[i]){
 			return true;
 		}
 	}
@@ -34,13 +35,7 @@ bool isWord(vector<string> input, string check){
 int main(){
 	vector<string> words;
 	input_data(words);
-	//for(auto i: words){
-		//cout << i << endl;
-	//}
-	for(int i = 0;i<words.size();i++){
-		cout << words[10000] << endl;
-	}
-	//cout << isWord(words, "zunis");
-	//cout << words.size();
+	string check = "kjsdhfkjdshf";
+	cout << isWord(words, check) << endl;
 
 }

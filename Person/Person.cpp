@@ -50,19 +50,21 @@ class Person{
 				sort(highThree.begin(), highThree.end());
 				//erase the first thing
 				highThree.erase(highThree.begin());
-				return;
+				for(auto i: highThree){
+					cout << i << endl;
+				}
 			}
 			if (gameType == 4){
 				highFour.push_back(val);
 				sort(highFour.begin(), highFour.end());
 				highFour.erase(highThree.begin());
-				return;
+			//cout << val << endl;
 			}
 			if (gameType == 5){
 				highFive.push_back(val);
 				sort(highFive.begin(), highFive.end());
 				highFive.erase(highThree.begin());
-				return;
+			//cout << val << endl;
 			}
 		}
 		//gets the three score vecotors
@@ -80,36 +82,48 @@ class Person{
 		}
 				
 };
-
+void input_data(vector<Person>& input){
+  ifstream ifs("personData.txt");
+  while (ifs) {
+	if (ifs.eof()) {
+      return;
+    }
+	Person n;	
+    string name;
+    string picture;
+	string check;
+	int t1;int t2;int t3;
+	int r1;int r2;int r3;
+	int f1;int f2;int f3;
+    getline(ifs,name);  // use getline to deal with spaces 
+    getline(ifs,picture); // use getline to deal with spaces
+	ifs >> t1 >> t2 >> t3;
+	ifs >> r1 >> r2 >> r3;
+	ifs >> f1 >> f2 >> f3;
+	ifs.ignore(100, '\n');
+    getline(ifs,check); // use getline to deal with spaces
+	n.setName(name);
+	n.setPic(picture);
+	n.addScore(3, t1);n.addScore(3, t2);n.addScore(3, t3);
+	n.addScore(4, r1);n.addScore(4, r2);n.addScore(4, r3);
+	n.addScore(5, f1);n.addScore(5, f2);n.addScore(5, f3);
+	input.push_back(n);
+	if(check == ""){
+		cout << endl << "breaking" << endl;
+		break;
+	}
+  }
+}
 
 
 int main(){
-	Person p;
-	p.addScore(3, 5);
-	p.addScore(3, 4);
-	p.addScore(3, 2);
-	p.addScore(3, 10);
-	p.addScore(3, 16);
-	cout << p.getScores(3)[0];
-	cout << p.getScores(3)[1];
-	cout << p.getScores(3)[2];
-	cout << endl;
-	p.addScore(4, 5);
-	p.addScore(4, 4);
-	p.addScore(4, 2);
-	p.addScore(4, 10);
-	p.addScore(4, 16);
-	cout << p.getScores(4)[0];
-	cout << p.getScores(4)[1];
-	cout << p.getScores(4)[2];
-	cout << endl;
-	p.addScore(5, 5);
-	p.addScore(5, 4);
-	p.addScore(5, 2);
-	p.addScore(5, 10);
-	p.addScore(5, 16);
-	cout << p.getScores(5)[0];
-	cout << p.getScores(5)[1];
-	cout << p.getScores(5)[2];
-	cout << endl;
+	vector<Person> peeps;
+	input_data(peeps);
+	//cout << peeps.size() << endl;
+	//cout << peeps[0].getName();
+	//cout << peeps[0].getPic();
+	//cout << peeps[0].etScores(3)[1] << endl;
+	vector<int> bobby = peeps[0].getScores(4);
+	cout << bobby[10];
+	//cout << peeps[0].getScores(3)[2] << endl;
 }	

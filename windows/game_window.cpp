@@ -18,6 +18,7 @@ struct Game_window : Graph_lib::Window{
 		const string& title);
 
 private:
+	vector<char> letters;
 	Button but1; //the twenty five buttons
 	Button but2;
 	Button but3;
@@ -89,6 +90,15 @@ private:
 		clear_word.show();
 		finish_game.show();
 		enter_word.show();
+		but1.show();
+		but2.show();
+		but3.show();
+		but6.show();
+		but7.show();
+		but8.show();
+		but11.show();
+		but12.show();
+		but13.show();
 	}
 	void four_game(){
 		high_scores_3.hide();
@@ -108,6 +118,23 @@ private:
 		clear_word.show();
 		finish_game.show();
 		enter_word.show();
+
+		but1.show();
+		but2.show();
+		but3.show();
+		but4.show();
+		but6.show();
+		but7.show();
+		but8.show();
+		but9.show();
+		but11.show();
+		but12.show();
+		but13.show();
+		but14.show();
+		but16.show();
+		but17.show();
+		but18.show();
+		but19.show();
 	}
 	void five_game(){
 		high_scores_3.hide();
@@ -127,6 +154,31 @@ private:
 		clear_word.show();
 		finish_game.show();
 		enter_word.show();
+		but1.show();
+		but2.show();
+		but3.show();
+		but4.show();
+		but5.show();
+		but6.show();
+		but7.show();
+		but8.show();
+		but9.show();
+		but10.show();
+		but11.show();
+		but12.show();
+		but13.show();
+		but14.show();
+		but15.show();
+		but16.show();
+		but17.show();
+		but18.show();
+		but19.show();
+		but20.show();
+		but21.show();
+		but22.show();
+		but23.show();
+		but24.show();
+		but25.show();
 	}
 
 	void clear(){
@@ -134,9 +186,14 @@ private:
 	}
 	//void finish();
 	void enter(){
-		string word = current_word.value; //look here later
+		string word = current_word.label; //look here later
 		current_word.put("");
 		words_accepted.put(word); //will need to change for multiple words
+	}
+
+	void button_push(){
+		string letter = but1.label;
+		current_word.put(letter);
 	}
 
 	static void cd_logout_button(Address, Address);
@@ -213,25 +270,69 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	finish_game(Point(x_max()-85,y_max()-25),
 		80, 20, "Finish", cd_finish_game),
 	//Output for the game page
-	current_score(Point(100, 50),
-		100, 30, "Current Score: "),
+	current_score(Point(85, 50),
+		100, 30, "Score: "),
 	words_accepted(Point(x_max()-70, 70),
 		60, 150, "Words Entered: "),
-	instructions(Point(100, 10),
+	instructions(Point(85, 10),
 		100, 30, "Instructions: "),
-	current_word(Point(300,300),
+	current_word(Point(300,320),
 		80, 30, "Current Word: "),
 
-	but1(Point(200,200),
-		20,20,'1',cd_but1),
-	but2(Point(200,220),
-		20,20,'2',cd_but2),
-	but3(Point(200,240),
-		20,20,'3',cd_but3),
-	but4(Point(200,260),
-		20,20,'4',cd_but4),
-	but5(Point(200,280),
-		20,20,'5',cd_but5),
+	but1(Point(200,100),
+		40,40,"1",cd_but1),
+	but2(Point(200,140),
+		40,40,"2",cd_but2),
+	but3(Point(200,180),
+		40,40,"3",cd_but3),
+	but4(Point(200,220),
+		40,40,"4",cd_but4),
+	but5(Point(200,260),
+		40,40,"5",cd_but5),
+
+	but6(Point(240,100),
+		40,40,"6",cd_but6),
+	but7(Point(240,140),
+		40,40,"7",cd_but7),
+	but8(Point(240,180),
+		40,40,"8",cd_but8),
+	but9(Point(240,220),
+		40,40,"9",cd_but9),
+	but10(Point(240,260),
+		40,40,"10",cd_but10),
+
+	but11(Point(280,100),
+		40,40,"11",cd_but11),
+	but12(Point(280,140),
+		40,40,"12",cd_but12),
+	but13(Point(280,180),
+		40,40,"13",cd_but13),
+	but14(Point(280,220),
+		40,40,"14",cd_but14),
+	but15(Point(280,260),
+		40,40,"15",cd_but15),
+
+	but16(Point(320,100),
+		40,40,"16",cd_but16),
+	but17(Point(320,140),
+		40,40,"17",cd_but17),
+	but18(Point(320,180),
+		40,40,"18",cd_but18),
+	but19(Point(320,220),
+		40,40,"19",cd_but19),
+	but20(Point(320,260),
+		40,40,"20",cd_but20),
+
+	but21(Point(360,100),
+		40,40,"21",cd_but21),
+	but22(Point(360,140),
+		40,40,"22",cd_but22),
+	but23(Point(360,180),
+		40,40,"23",cd_but23),
+	but24(Point(360,220),
+		40,40,"24",cd_but24),
+	but25(Point(360,260),
+		40,40,"25",cd_but25)
 
 {
 	//should never need to hide
@@ -266,6 +367,85 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	words_accepted.hide();
 	instructions.hide();
 	current_word.hide();
+
+	attach(but1);
+	attach(but2);
+	attach(but3);
+	attach(but4);
+	attach(but5);
+	attach(but6);
+	attach(but7);
+	attach(but8);
+	attach(but9);
+	attach(but10);
+	attach(but11);
+	attach(but12);
+	attach(but13);
+	attach(but14);
+	attach(but15);
+	attach(but16);
+	attach(but17);
+	attach(but18);
+	attach(but19);
+	attach(but20);
+	attach(but21);
+	attach(but22);
+	attach(but23);
+	attach(but24);
+	attach(but25);
+	but1.hide();
+	but2.hide();
+	but3.hide();
+	but4.hide();
+	but5.hide();
+	but6.hide();
+	but7.hide();
+	but8.hide();
+	but9.hide();
+	but10.hide();
+	but11.hide();
+	but12.hide();
+	but13.hide();
+	but14.hide();
+	but15.hide();
+	but16.hide();
+	but17.hide();
+	but18.hide();
+	but19.hide();
+	but20.hide();
+	but21.hide();
+	but22.hide();
+	but23.hide();
+	but24.hide();
+	but25.hide();
+
+	letters.push_back('a');
+	letters.push_back('b');
+	letters.push_back('c');
+	letters.push_back('d');
+	letters.push_back('e');
+	letters.push_back('f');
+	letters.push_back('g');
+	letters.push_back('h');
+	letters.push_back('i');
+	letters.push_back('j');
+	letters.push_back('k');
+	letters.push_back('l');
+	letters.push_back('m');
+	letters.push_back('n');
+	letters.push_back('o');
+	letters.push_back('p');
+	letters.push_back('q');
+	letters.push_back('r');
+	letters.push_back('s');
+	letters.push_back('t');
+	letters.push_back('u');
+	letters.push_back('v');
+	letters.push_back('w');
+	letters.push_back('x');
+	letters.push_back('y');
+	letters.push_back('z');
+
 }
 
 // All the callbacks
@@ -301,10 +481,86 @@ void Game_window::cd_enter_word(Address, Address pw){
 	reference_to<Game_window>(pw).enter();
 }
 
+void Game_window::cd_but1(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but2(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but3(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but4(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but5(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but6(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but7(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but8(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but9(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but10(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but11(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but12(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but13(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but14(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but15(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but16(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but17(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but18(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but19(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but20(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but21(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but22(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but23(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but24(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+void Game_window::cd_but25(Address, Address pw){
+	reference_to<Game_window>(pw).button_push();
+}
+
 int main() 
   try {
     // construct the GUI window
-    Game_window win(Point(100,100),600,400,"shapes");
+    Game_window win(Point(100,100),600,400,"Game Window");
     return gui_main();  // inherited from Window; calls FLTK's run
   }
   catch(exception& e) {

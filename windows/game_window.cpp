@@ -24,6 +24,8 @@ private:
 	vector<string> letters;
 	//the current word string the user is adding to
 	string the_word;
+	//all the entered words;
+	string all_words;
 	//the game_type the user chooses
 	int game_type;
 
@@ -132,73 +134,59 @@ private:
 			but25.show();
 		}
 	}
-	
+	void randomize_buttons(){
+		if((game_type == 3) || (game_type == 4) || (game_type == 5)){
+			but1.label = letters[rand()% 25];
+			but2.label = letters[rand()% 25];
+			but3.label = letters[rand()% 25];
+			but6.label = letters[rand()% 25];
+			but7.label = letters[rand()% 25];
+			but8.label = letters[rand()% 25];
+			but11.label = letters[rand()% 25];
+			but12.label = letters[rand()% 25];
+			but13.label = letters[rand()% 25];
+		}
+		if((game_type == 4) || (game_type==5)){
+			but4.label = letters[rand()% 25];
+			but9.label = letters[rand()% 25];
+			but14.label = letters[rand()% 25];
+			but16.label = letters[rand()% 25];
+			but17.label = letters[rand()% 25];
+			but18.label = letters[rand()% 25];
+			but19.label = letters[rand()% 25]; 
+		}
+		if(game_type == 5){
+			but5.label = letters[rand()% 25];
+			but10.label = letters[rand()% 25];
+			but15.label = letters[rand()% 25];
+			but20.label = letters[rand()% 25];
+			but21.label = letters[rand()% 25];
+			but22.label = letters[rand()% 25];
+			but23.label = letters[rand()% 25];
+			but24.label = letters[rand()% 25];
+			but25.label = letters[rand()% 25];
+		}
+	}
+
 	void three_game(){
 		game_type = 3;
 		home_to_game();
 
-		but1.label = letters[rand()% 25];
-		but2.label = letters[rand()% 25];
-		but3.label = letters[rand()% 25];
-		but6.label = letters[rand()% 25];
-		but7.label = letters[rand()% 25];
-		but8.label = letters[rand()% 25];
-		but11.label = letters[rand()% 25];
-		but12.label = letters[rand()% 25];
-		but13.label = letters[rand()% 25];
+		randomize_buttons();
 		show_buttons();
 	}
 	void four_game(){
 		game_type = 4;
 		home_to_game();
 
-		but1.label = letters[rand()% 25];
-		but2.label = letters[rand()% 25];
-		but3.label = letters[rand()% 25];
-		but4.label = letters[rand()% 25];
-		but6.label = letters[rand()% 25];
-		but7.label = letters[rand()% 25];
-		but8.label = letters[rand()% 25];
-		but9.label = letters[rand()% 25];
-		but11.label = letters[rand()% 25];
-		but12.label = letters[rand()% 25];
-		but13.label = letters[rand()% 25];
-		but14.label = letters[rand()% 25];
-		but16.label = letters[rand()% 25];
-		but17.label = letters[rand()% 25];
-		but18.label = letters[rand()% 25];
-		but19.label = letters[rand()% 25];
+		randomize_buttons();
 		show_buttons();
 	}
 	void five_game(){
 		game_type = 5;
 		home_to_game();
 
-		but1.label = letters[rand()% 25];
-		but2.label = letters[rand()% 25];
-		but3.label = letters[rand()% 25];
-		but4.label = letters[rand()% 25];
-		but5.label = letters[rand()% 25];
-		but6.label = letters[rand()% 25];
-		but7.label = letters[rand()% 25];
-		but8.label = letters[rand()% 25];
-		but9.label = letters[rand()% 25];
-		but10.label = letters[rand()% 25];
-		but11.label = letters[rand()% 25];
-		but12.label = letters[rand()% 25];
-		but13.label = letters[rand()% 25];
-		but14.label = letters[rand()% 25];
-		but15.label = letters[rand()% 25];
-		but16.label = letters[rand()% 25];
-		but17.label = letters[rand()% 25];
-		but18.label = letters[rand()% 25];
-		but19.label = letters[rand()% 25];
-		but20.label = letters[rand()% 25];
-		but21.label = letters[rand()% 25];
-		but22.label = letters[rand()% 25];
-		but23.label = letters[rand()% 25];
-		but24.label = letters[rand()% 25];
-		but25.label = letters[rand()% 25];
+		randomize_buttons();
 		show_buttons();
 	}
 
@@ -211,7 +199,8 @@ private:
 	//void finish();
 	void enter(){
 		current_word.put("");
-		words_accepted.put(the_word); //will need to change for multiple words
+		all_words = all_words + "\n" + the_word;
+		words_accepted.put(all_words); //will need to change for multiple words
 		the_word = "";
 
 		show_buttons();

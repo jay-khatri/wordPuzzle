@@ -6,6 +6,8 @@
 #include "Graph.h"     
 #include "GUI.h"
 #include "Window.h"
+#include <cstdlib>
+#include <ctime>
 
 using namespace Graph_lib;
 using namespace std;
@@ -18,7 +20,8 @@ struct Game_window : Graph_lib::Window{
 		const string& title);
 
 private:
-	vector<char> letters;
+	vector<string> letters;
+	string the_word;
 	Button but1; //the twenty five buttons
 	Button but2;
 	Button but3;
@@ -72,7 +75,7 @@ private:
 
 	void quit();
 
-	void three_game(){
+	void home_to_game(){
 		high_scores_3.hide();
 		high_scores_4.hide();
 		high_scores_5.hide();
@@ -90,35 +93,49 @@ private:
 		clear_word.show();
 		finish_game.show();
 		enter_word.show();
+	}
+
+	void three_game(){
+		home_to_game();
+
+		but1.label = letters[rand()% 25];
 		but1.show();
+		but2.label = letters[rand()% 25];
 		but2.show();
+		but3.label = letters[rand()% 25];
 		but3.show();
+		but6.label = letters[rand()% 25];
 		but6.show();
+		but7.label = letters[rand()% 25];
 		but7.show();
+		but8.label = letters[rand()% 25];
 		but8.show();
+		but11.label = letters[rand()% 25];
 		but11.show();
+		but12.label = letters[rand()% 25];
 		but12.show();
+		but13.label = letters[rand()% 25];
 		but13.show();
 	}
 	void four_game(){
-		high_scores_3.hide();
-		high_scores_4.hide();
-		high_scores_5.hide();
-		player_scores.hide();
-		user_name.hide();
-		play_3.hide();
-		play_4.hide();
-		play_5.hide();
+		home_to_game();
 
-		words_accepted.show();
-		current_score.show();
-		instructions.show();
-		current_word.show();
-
-		clear_word.show();
-		finish_game.show();
-		enter_word.show();
-
+		but1.label = letters[rand()% 25];
+		but2.label = letters[rand()% 25];
+		but3.label = letters[rand()% 25];
+		but4.label = letters[rand()% 25];
+		but6.label = letters[rand()% 25];
+		but7.label = letters[rand()% 25];
+		but8.label = letters[rand()% 25];
+		but9.label = letters[rand()% 25];
+		but11.label = letters[rand()% 25];
+		but12.label = letters[rand()% 25];
+		but13.label = letters[rand()% 25];
+		but14.label = letters[rand()% 25];
+		but16.label = letters[rand()% 25];
+		but17.label = letters[rand()% 25];
+		but18.label = letters[rand()% 25];
+		but19.label = letters[rand()% 25];
 		but1.show();
 		but2.show();
 		but3.show();
@@ -137,23 +154,33 @@ private:
 		but19.show();
 	}
 	void five_game(){
-		high_scores_3.hide();
-		high_scores_4.hide();
-		high_scores_5.hide();
-		player_scores.hide();
-		user_name.hide();
-		play_3.hide();
-		play_4.hide();
-		play_5.hide();
+		home_to_game();
 
-		words_accepted.show();
-		current_score.show();
-		instructions.show();
-		current_word.show();
-
-		clear_word.show();
-		finish_game.show();
-		enter_word.show();
+		but1.label = letters[rand()% 25];
+		but2.label = letters[rand()% 25];
+		but3.label = letters[rand()% 25];
+		but4.label = letters[rand()% 25];
+		but5.label = letters[rand()% 25];
+		but6.label = letters[rand()% 25];
+		but7.label = letters[rand()% 25];
+		but8.label = letters[rand()% 25];
+		but9.label = letters[rand()% 25];
+		but10.label = letters[rand()% 25];
+		but11.label = letters[rand()% 25];
+		but12.label = letters[rand()% 25];
+		but13.label = letters[rand()% 25];
+		but14.label = letters[rand()% 25];
+		but15.label = letters[rand()% 25];
+		but16.label = letters[rand()% 25];
+		but17.label = letters[rand()% 25];
+		but18.label = letters[rand()% 25];
+		but19.label = letters[rand()% 25];
+		but20.label = letters[rand()% 25];
+		but21.label = letters[rand()% 25];
+		but22.label = letters[rand()% 25];
+		but23.label = letters[rand()% 25];
+		but24.label = letters[rand()% 25];
+		but25.label = letters[rand()% 25];
 		but1.show();
 		but2.show();
 		but3.show();
@@ -191,9 +218,130 @@ private:
 		words_accepted.put(word); //will need to change for multiple words
 	}
 
-	void button_push(){
-		string letter = but1.label;
+	void button_push1(){
+		the_word = but1.label + the_word;
+		current_word.put(the_word);
+		but1.hide();
+	}
+	void button_push2(){
+		the_word = but1.label + the_word;
+		current_word.put(the_word);
+		but2.hide();
+	}
+	void button_push3(){
+		string letter = but3.label;
 		current_word.put(letter);
+		but3.hide();
+	}
+	void button_push4(){
+		string letter = but4.label;
+		current_word.put(letter);
+		but4.hide();
+	}
+	void button_push5(){
+		string letter = but5.label;
+		current_word.put(letter);
+		but5.hide();
+	}
+	void button_push6(){
+		string letter = but6.label;
+		current_word.put(letter);
+		but6.hide();
+	}
+	void button_push7(){
+		string letter = but7.label;
+		current_word.put(letter);
+		but7.hide();
+	}
+	void button_push8(){
+		string letter = but8.label;
+		current_word.put(letter);
+		but8.hide();
+	}
+	void button_push9(){
+		string letter = but9.label;
+		current_word.put(letter);
+		but9.hide();
+	}
+	void button_push10(){
+		string letter = but10.label;
+		current_word.put(letter);
+		but10.hide();
+	}
+	void button_push11(){
+		string letter = but11.label;
+		current_word.put(letter);
+		but11.hide();
+	}
+	void button_push12(){
+		string letter = but12.label;
+		current_word.put(letter);
+		but12.hide();
+	}
+	void button_push13(){
+		string letter = but13.label;
+		current_word.put(letter);
+		but13.hide();
+	}
+	void button_push14(){
+		string letter = but14.label;
+		current_word.put(letter);
+		but14.hide();
+	}
+	void button_push15(){
+		string letter = but15.label;
+		current_word.put(letter);
+		but15.hide();
+	}
+	void button_push16(){
+		string letter = but16.label;
+		current_word.put(letter);
+		but16.hide();
+	}
+	void button_push17(){
+		string letter = but17.label;
+		current_word.put(letter);
+		but17.hide();
+	}
+	void button_push18(){
+		string letter = but18.label;
+		current_word.put(letter);
+		but18.hide();
+	}
+	void button_push19(){
+		string letter = but19.label;
+		current_word.put(letter);
+		but19.hide();
+	}
+	void button_push20(){
+		string letter = but20.label;
+		current_word.put(letter);
+		but20.hide();
+	}
+	void button_push21(){
+		string letter = but21.label;
+		current_word.put(letter);
+		but21.hide();
+	}
+	void button_push22(){
+		string letter = but22.label;
+		current_word.put(letter);
+		but22.hide();
+	}
+	void button_push23(){
+		string letter = but23.label;
+		current_word.put(letter);
+		but23.hide();
+	}
+	void button_push24(){
+		string letter = but24.label;
+		current_word.put(letter);
+		but24.hide();
+	}
+	void button_push25(){
+		string letter = but25.label;
+		current_word.put(letter);
+		but25.hide();
 	}
 
 	static void cd_logout_button(Address, Address);
@@ -419,33 +567,32 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	but24.hide();
 	but25.hide();
 
-	letters.push_back('a');
-	letters.push_back('b');
-	letters.push_back('c');
-	letters.push_back('d');
-	letters.push_back('e');
-	letters.push_back('f');
-	letters.push_back('g');
-	letters.push_back('h');
-	letters.push_back('i');
-	letters.push_back('j');
-	letters.push_back('k');
-	letters.push_back('l');
-	letters.push_back('m');
-	letters.push_back('n');
-	letters.push_back('o');
-	letters.push_back('p');
-	letters.push_back('q');
-	letters.push_back('r');
-	letters.push_back('s');
-	letters.push_back('t');
-	letters.push_back('u');
-	letters.push_back('v');
-	letters.push_back('w');
-	letters.push_back('x');
-	letters.push_back('y');
-	letters.push_back('z');
-
+	letters.push_back("a");
+	letters.push_back("b");
+	letters.push_back("c");
+	letters.push_back("d");
+	letters.push_back("e");
+	letters.push_back("f");
+	letters.push_back("g");
+	letters.push_back("h");
+	letters.push_back("i");
+	letters.push_back("j");
+	letters.push_back("k");
+	letters.push_back("l");
+	letters.push_back("m");
+	letters.push_back("n");
+	letters.push_back("o");
+	letters.push_back("p");
+	letters.push_back("q");
+	letters.push_back("r");
+	letters.push_back("s");
+	letters.push_back("t");
+	letters.push_back("u");
+	letters.push_back("v");
+	letters.push_back("w");
+	letters.push_back("x");
+	letters.push_back("y");
+	letters.push_back("z");
 }
 
 // All the callbacks
@@ -482,79 +629,79 @@ void Game_window::cd_enter_word(Address, Address pw){
 }
 
 void Game_window::cd_but1(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push1();
 }
 void Game_window::cd_but2(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push2();
 }
 void Game_window::cd_but3(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push3();
 }
 void Game_window::cd_but4(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push4();
 }
 void Game_window::cd_but5(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push5();
 }
 void Game_window::cd_but6(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push6();
 }
 void Game_window::cd_but7(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push7();
 }
 void Game_window::cd_but8(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push8();
 }
 void Game_window::cd_but9(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push9();
 }
 void Game_window::cd_but10(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push10();
 }
 void Game_window::cd_but11(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push11();
 }
 void Game_window::cd_but12(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push12();
 }
 void Game_window::cd_but13(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push13();
 }
 void Game_window::cd_but14(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push14();
 }
 void Game_window::cd_but15(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push15();
 }
 void Game_window::cd_but16(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push16();
 }
 void Game_window::cd_but17(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push17();
 }
 void Game_window::cd_but18(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push18();
 }
 void Game_window::cd_but19(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push19();
 }
 void Game_window::cd_but20(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push20();
 }
 void Game_window::cd_but21(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push21();
 }
 void Game_window::cd_but22(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push22();
 }
 void Game_window::cd_but23(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push23();
 }
 void Game_window::cd_but24(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push24();
 }
 void Game_window::cd_but25(Address, Address pw){
-	reference_to<Game_window>(pw).button_push();
+	reference_to<Game_window>(pw).button_push25();
 }
 
 int main() 

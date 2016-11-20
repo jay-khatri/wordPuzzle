@@ -62,10 +62,22 @@ private:
 	Button logout_button;
 
 	//Home page text
-	Out_box high_scores_3;
-	Out_box high_scores_4;
-	Out_box high_scores_5;
-	Out_box player_scores;
+	Out_box home_choice;
+	Out_box text_3_high;
+	Out_box text_4_high;
+	Out_box text_5_high;
+	Out_box high_scores_3_1;
+	Out_box high_scores_3_2;
+	Out_box high_scores_3_3;
+	Out_box high_scores_4_1;
+	Out_box high_scores_4_2;
+	Out_box high_scores_4_3;
+	Out_box high_scores_5_1;
+	Out_box high_scores_5_2;
+	Out_box high_scores_5_3;
+	Out_box player_scores_3;
+	Out_box player_scores_4;
+	Out_box player_scores_5;
 	Out_box user_name;
 	//Home page buttons
 	Button play_3;
@@ -86,10 +98,22 @@ private:
 	void quit();
 
 	void home_to_game(){
-		high_scores_3.hide();
-		high_scores_4.hide();
-		high_scores_5.hide();
-		player_scores.hide();
+		home_choice.hide();
+		high_scores_3_1.hide();
+		high_scores_3_2.hide();
+		high_scores_3_3.hide();
+		high_scores_4_1.hide();
+		high_scores_4_2.hide();
+		high_scores_4_3.hide();
+		high_scores_5_1.hide();
+		high_scores_5_2.hide();
+		high_scores_5_3.hide();
+		player_scores_3.hide();
+		player_scores_4.hide();
+		player_scores_5.hide();
+		text_3_high.hide();
+		text_4_high.hide();
+		text_5_high.hide();
 		user_name.hide();
 		play_3.hide();
 		play_4.hide();
@@ -388,24 +412,48 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 
 	//play buttons
 	play_3(Point(30, 60),
-		80, 50, "3X3", cd_play_3),
-	play_4(Point(30, 120),
-		80, 50, "4X4", cd_play_4),
-	play_5(Point(30, 180),
-		80, 50, "5X5", cd_play_5),
+		90, 60, "3X3", cd_play_3),
+	play_4(Point(30, 140),
+		90, 60, "4X4", cd_play_4),
+	play_5(Point(30, 220),
+		90, 60, "5X5", cd_play_5),
 
-	//high scores for home page
-	high_scores_3(Point(200, 60),
-		80, 50, "High Scores"),
-	high_scores_4(Point(200, 120),
-		80, 50, "High Scores"),
-	high_scores_5(Point(200, 180),
-		80, 50, "High Scores"),
-	player_scores(Point(300, 240),
-		80, 50, "Player Scores"),
+	//high scores for home page, and text boxes
+	home_choice(Point(30, 20),
+		350, 20, ""),
+	text_3_high(Point(135,80),
+		115, 20, ""),
+	text_4_high(Point(135,160),
+		115, 20, ""),
+	text_5_high(Point(135,240),
+		115, 20, ""),
+	high_scores_3_1(Point(300, 60),
+		80, 20, "1st:"),
+	high_scores_3_2(Point(300, 80),
+		80, 20, "2nd:"),
+	high_scores_3_3(Point(300, 100),
+		80, 20, "3rd:"),
+	high_scores_4_1(Point(300, 140),
+		80, 20, "1st:"),
+	high_scores_4_2(Point(300, 160),
+		80, 20, "2nd:"),
+	high_scores_4_3(Point(300, 180),
+		80, 20, "3rd:"),
+	high_scores_5_1(Point(300, 220),
+		80, 20, "1st:"),
+	high_scores_5_2(Point(300, 240),
+		80, 20, "2nd:"),
+	high_scores_5_3(Point(300, 260),
+		80, 20, "3rd:"),
+	player_scores_3(Point(300, 300),
+		80, 20, "1st:"),
+	player_scores_4(Point(300, 320),
+		80, 20, "2nd:"),
+	player_scores_5(Point(300, 340),
+		80, 20, "3rd:"),
 	//displays on home page
-	user_name(Point(100, 240),
-		70, 20, "User: "),
+	user_name(Point(72, 300),
+		115, 30, "User: "),
 
 	//Buttons for the game page
 	clear_word(Point(10,y_max()-30),
@@ -417,10 +465,10 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	//Output for the game page
 	current_score(Point(85, 50),
 		100, 30, "Score: "),
-	words_accepted(Point(200, y_max()-30),
-		300, 20, "Words Entered: "),
+	words_accepted(Point(200, y_max()-40),
+		300, 30, "Words Entered: "),
 	instructions(Point(85, 10),
-		100, 30, "Instructions: "),
+		350, 30, "Instructions: "),
 	current_word(Point(300,320),
 		80, 30, "Current Word: "),
 
@@ -486,11 +534,28 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	attach(play_3);
 	attach(play_4);
 	attach(play_5);
+	//test outboxes
+	attach(home_choice);
+	home_choice.put("Choose the size word search you would like to play.");
+	attach(text_3_high);
+	text_3_high.put("3X3 High Scores");
+	attach(text_4_high);
+	text_4_high.put("4X4 High Scores");
+	attach(text_5_high);
+	text_5_high.put("5X5 High Scores");
 	//score outboxs
-	attach(high_scores_3);
-	attach(high_scores_4);
-	attach(high_scores_5);
-	attach(player_scores);
+	attach(high_scores_3_1);
+	attach(high_scores_3_2);
+	attach(high_scores_3_3);
+	attach(high_scores_4_1);
+	attach(high_scores_4_2);
+	attach(high_scores_4_3);
+	attach(high_scores_5_1);
+	attach(high_scores_5_2);
+	attach(high_scores_5_3);
+	attach(player_scores_3);
+	attach(player_scores_4);
+	attach(player_scores_5);
 	attach(user_name);
 	//user_name.put(   ) //need to get their username and put it here
 	//will also need to put all the scores here as well
@@ -510,6 +575,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	finish_game.hide();
 	current_score.hide();
 	words_accepted.hide();
+	instructions.put("Spell words by clicking on the buttons to make a word. Click enter when a word is spelled, and finish when you are done with your game.");
 	instructions.hide();
 	current_word.hide();
 

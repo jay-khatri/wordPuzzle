@@ -1,4 +1,7 @@
+//Brookway, Khatri, Tiner
+//CSCE 121 Final Project
 //game window for project
+//this is the cpp file
 
 #include "std_lib_facilities_4.h"
 #include <iostream>
@@ -32,7 +35,9 @@ private:
 	//the score of the game
 	int game_score = 0;
 
-	Button but1; //the twenty five buttons
+	//-----------------------------------------------------------------
+	//the twenty five buttons
+	Button but1;
 	Button but2;
 	Button but3;
 	Button but4;
@@ -57,6 +62,7 @@ private:
 	Button but23;
 	Button but24;
 	Button but25;
+	//------------------------------------------------------------------
 
 	//both pages buttons
 	Button logout_button;
@@ -97,6 +103,7 @@ private:
 
 	void quit();
 
+	//when the transition from the home page to the window page
 	void home_to_game(){
 		home_choice.hide();
 		high_scores_3_1.hide();
@@ -129,6 +136,7 @@ private:
 		finish_game.show();
 		enter_word.show();
 	}
+	//whos the buttons depending on the game type
 	void show_buttons(){
 		if((game_type == 3) || (game_type == 4) || (game_type == 5)){
 			but1.show();
@@ -162,6 +170,7 @@ private:
 			but25.show();
 		}
 	}
+	//used to randomize the game buttons letter
 	void randomize_buttons(){
 		if((game_type == 3) || (game_type == 4) || (game_type == 5)){
 			but1.label = letters[rand()% 25];
@@ -196,6 +205,7 @@ private:
 		}
 	}
 
+	//the three game type buttons
 	void three_game(){
 		game_type = 3;
 		home_to_game();
@@ -218,6 +228,7 @@ private:
 		show_buttons();
 	}
 
+	//if they spell something wrong
 	void clear(){
 		current_word.put("");
 		the_word = "";
@@ -225,6 +236,7 @@ private:
 		show_buttons();
 	}
 	//void finish();
+	//when a word is entered, the score, total words, and current word will change
 	void enter(){
 		current_word.put("");
 		all_words = the_word + " " + all_words;
@@ -239,6 +251,8 @@ private:
 		show_buttons();
 	}
 
+	//------------------------------------------------------------------
+	//all the push buttons functions
 	void button_push1(){
 		the_word = the_word + but1.label;
 		current_word.put(the_word);
@@ -365,6 +379,8 @@ private:
 		but25.hide();
 	}
 
+	//-------------------------------------------------------------------------
+	//All the call back functions
 	static void cd_logout_button(Address, Address);
 
 	static void cd_play_3(Address, Address);
@@ -472,6 +488,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	current_word(Point(300,320),
 		80, 30, "Current Word: "),
 
+//--------Defining the game buttons------------------------------------------------------------
 	but1(Point(200,100),
 		40,40,"1",cd_but1),
 	but2(Point(200,140),
@@ -527,6 +544,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	but25(Point(360,260),
 		40,40,"25",cd_but25)
 
+//------Constructor------------------------------------------------------------
 {
 	//should never need to hide
 	attach(logout_button);
@@ -544,9 +562,9 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	attach(text_5_high);
 	text_5_high.put("5X5 High Scores");
 	//score outboxs
-	attach(high_scores_3_1);
-	attach(high_scores_3_2);
-	attach(high_scores_3_3);
+	attach(high_scores_3_1); //---------------------------------------
+	attach(high_scores_3_2); //need to put stuff from person call here
+	attach(high_scores_3_3); //---------------------------------------
 	attach(high_scores_4_1);
 	attach(high_scores_4_2);
 	attach(high_scores_4_3);
@@ -579,6 +597,8 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	instructions.hide();
 	current_word.hide();
 
+	//-------------------------------------------------------------------
+	//attaching hiding the game buttons
 	attach(but1);
 	attach(but2);
 	attach(but3);
@@ -630,6 +650,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	but24.hide();
 	but25.hide();
 
+	//-----Letter Vector---------------------------------------------------------
 	letters.push_back("a");
 	letters.push_back("b");
 	letters.push_back("c");
@@ -658,6 +679,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	letters.push_back("z");
 }
 
+//------------------------------------------------------------------------
 // All the callbacks
 
 void Game_window::cd_logout_button(Address, Address pw){
@@ -670,15 +692,12 @@ void Game_window::quit(){
 void Game_window::cd_play_3(Address, Address pw){
 	reference_to<Game_window>(pw).three_game();
 }
-
 void Game_window::cd_play_4(Address, Address pw){
 	reference_to<Game_window>(pw).four_game();
 }
-
 void Game_window::cd_play_5(Address, Address pw){
 	reference_to<Game_window>(pw).five_game();
 }
-
 void Game_window::cd_clear_word(Address, Address pw){
 	reference_to<Game_window>(pw).clear();
 }
@@ -690,6 +709,9 @@ void Game_window::cd_finish_game(Address, Address pw){
 void Game_window::cd_enter_word(Address, Address pw){
 	reference_to<Game_window>(pw).enter();
 }
+
+//----------------------------------------------------------------------
+//the game buttons callbacks
 
 void Game_window::cd_but1(Address, Address pw){
 	reference_to<Game_window>(pw).button_push1();
@@ -766,6 +788,7 @@ void Game_window::cd_but24(Address, Address pw){
 void Game_window::cd_but25(Address, Address pw){
 	reference_to<Game_window>(pw).button_push25();
 }
+//---------------------------------------------------------------------------
 
 int main() 
   try {

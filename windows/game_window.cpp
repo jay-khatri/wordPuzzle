@@ -16,408 +16,282 @@
 using namespace Graph_lib;
 using namespace std;
 
-struct Game_window : Graph_lib::Window{
-	//constructor
-	Game_window(Point xy,
-		int w,
-		int h,
-		const string& title);
+//when the transition from the home page to the window page
+void Game_window::home_to_game(){
+	home_choice.hide();
+	high_scores_3_1.hide();
+	high_scores_3_2.hide();
+	high_scores_3_3.hide();
+	high_scores_4_1.hide();
+	high_scores_4_2.hide();
+	high_scores_4_3.hide();
+	high_scores_5_1.hide();
+	high_scores_5_2.hide();
+	high_scores_5_3.hide();
+	player_scores_3.hide();
+	player_scores_4.hide();
+	player_scores_5.hide();
+	text_3_high.hide();
+	text_4_high.hide();
+	text_5_high.hide();
+	user_name.hide();
+	play_3.hide();
+	play_4.hide();
+	play_5.hide();
 
-private:
-	//holds all the letters
-	vector<string> letters;
-	//the current word string the user is adding to
-	string the_word;
-	//all the entered words;
-	string all_words;
-	//the game_type the user chooses
-	int game_type;
-	//the score of the game
-	int game_score = 0;
+	words_accepted.show();
+	current_score.show();
+	current_score.put("0");
+	instructions.show();
+	current_word.show();
 
-	//-----------------------------------------------------------------
-	//the twenty five buttons
-	Button but1;
-	Button but2;
-	Button but3;
-	Button but4;
-	Button but5;
-	Button but6;
-	Button but7;
-	Button but8;
-	Button but9;
-	Button but10;
-	Button but11;
-	Button but12;
-	Button but13;
-	Button but14;
-	Button but15;
-	Button but16;
-	Button but17;
-	Button but18;
-	Button but19;
-	Button but20;
-	Button but21;
-	Button but22;
-	Button but23;
-	Button but24;
-	Button but25;
-	//------------------------------------------------------------------
+	clear_word.show();
+	finish_game.show();
+	enter_word.show();
+}
+//whos the buttons depending on the game type
+void Game_window::show_buttons(){
+	if((game_type == 3) || (game_type == 4) || (game_type == 5)){
+		but1.show();
+		but2.show();
+		but3.show();
+		but6.show();
+		but7.show();
+		but8.show();
+		but11.show();
+		but12.show();
+		but13.show();
+	}
+	if((game_type == 4) || (game_type==5)){
+		but4.show();
+		but9.show();
+		but14.show();
+		but16.show();
+		but17.show();
+		but18.show();
+		but19.show();
+	}
+	if(game_type == 5){
+		but5.show();
+		but10.show();
+		but15.show();
+		but20.show();
+		but21.show();
+		but22.show();
+		but23.show();
+		but24.show();
+		but25.show();
+	}
+}
+//used to randomize the game buttons letter
+void Game_window::randomize_buttons(){
+	if((game_type == 3) || (game_type == 4) || (game_type == 5)){
+		but1.label = letters[rand()% 25];
+		but2.label = letters[rand()% 25];
+		but3.label = letters[rand()% 25];
+		but6.label = letters[rand()% 25];
+		but7.label = letters[rand()% 25];
+		but8.label = letters[rand()% 25];
+		but11.label = letters[rand()% 25];
+		but12.label = letters[rand()% 25];
+		but13.label = letters[rand()% 25];
+	}
+	if((game_type == 4) || (game_type==5)){
+		but4.label = letters[rand()% 25];
+		but9.label = letters[rand()% 25];
+		but14.label = letters[rand()% 25];
+		but16.label = letters[rand()% 25];
+		but17.label = letters[rand()% 25];
+		but18.label = letters[rand()% 25];
+		but19.label = letters[rand()% 25]; 
+	}
+	if(game_type == 5){
+		but5.label = letters[rand()% 25];
+		but10.label = letters[rand()% 25];
+		but15.label = letters[rand()% 25];
+		but20.label = letters[rand()% 25];
+		but21.label = letters[rand()% 25];
+		but22.label = letters[rand()% 25];
+		but23.label = letters[rand()% 25];
+		but24.label = letters[rand()% 25];
+		but25.label = letters[rand()% 25];
+	}
+}
 
-	//both pages buttons
-	Button logout_button;
+//the three game type buttons
+void Game_window::three_game(){
+	game_type = 3;
+	home_to_game();
 
-	//Home page text
-	Out_box home_choice;
-	Out_box text_3_high;
-	Out_box text_4_high;
-	Out_box text_5_high;
-	Out_box high_scores_3_1;
-	Out_box high_scores_3_2;
-	Out_box high_scores_3_3;
-	Out_box high_scores_4_1;
-	Out_box high_scores_4_2;
-	Out_box high_scores_4_3;
-	Out_box high_scores_5_1;
-	Out_box high_scores_5_2;
-	Out_box high_scores_5_3;
-	Out_box player_scores_3;
-	Out_box player_scores_4;
-	Out_box player_scores_5;
-	Out_box user_name;
-	//Home page buttons
-	Button play_3;
-	Button play_4;
-	Button play_5;
+	randomize_buttons();
+	show_buttons();
+}
+void Game_window::four_game(){
+	game_type = 4;
+	home_to_game();
 
-	//game page text
-	Out_box words_accepted;
-	Out_box current_score;
-	Out_box instructions;
-	Out_box current_word;
+	randomize_buttons();
+	show_buttons();
+}
+void Game_window::five_game(){
+	game_type = 5;
+	home_to_game();
 
-	//Game page buttons
-	Button clear_word;
-	Button finish_game;
-	Button enter_word;
+	randomize_buttons();
+	show_buttons();
+}
 
-	void quit();
+//if they spell something wrong
+void Game_window::clear(){
+	current_word.put("");
+	the_word = "";
 
-	//when the transition from the home page to the window page
-	void home_to_game(){
-		home_choice.hide();
-		high_scores_3_1.hide();
-		high_scores_3_2.hide();
-		high_scores_3_3.hide();
-		high_scores_4_1.hide();
-		high_scores_4_2.hide();
-		high_scores_4_3.hide();
-		high_scores_5_1.hide();
-		high_scores_5_2.hide();
-		high_scores_5_3.hide();
-		player_scores_3.hide();
-		player_scores_4.hide();
-		player_scores_5.hide();
-		text_3_high.hide();
-		text_4_high.hide();
-		text_5_high.hide();
-		user_name.hide();
-		play_3.hide();
-		play_4.hide();
-		play_5.hide();
+	show_buttons();
+}
+//void finish();
+//when a word is entered, the score, total words, and current word will change
+void Game_window::enter(){
+	current_word.put("");
+	all_words = the_word + " " + all_words;
+	words_accepted.put(all_words);
 
-		words_accepted.show();
-		current_score.show();
-		current_score.put("0");
-		instructions.show();
-		current_word.show();
+	game_score = game_score + the_word.length();
+	stringstream ss;
+	ss << game_score;
+	current_score.put(ss.str());
+	
+	the_word = "";
+	show_buttons();
+}
 
-		clear_word.show();
-		finish_game.show();
-		enter_word.show();
-	}
-	//whos the buttons depending on the game type
-	void show_buttons(){
-		if((game_type == 3) || (game_type == 4) || (game_type == 5)){
-			but1.show();
-			but2.show();
-			but3.show();
-			but6.show();
-			but7.show();
-			but8.show();
-			but11.show();
-			but12.show();
-			but13.show();
-		}
-		if((game_type == 4) || (game_type==5)){
-			but4.show();
-			but9.show();
-			but14.show();
-			but16.show();
-			but17.show();
-			but18.show();
-			but19.show();
-		}
-		if(game_type == 5){
-			but5.show();
-			but10.show();
-			but15.show();
-			but20.show();
-			but21.show();
-			but22.show();
-			but23.show();
-			but24.show();
-			but25.show();
-		}
-	}
-	//used to randomize the game buttons letter
-	void randomize_buttons(){
-		if((game_type == 3) || (game_type == 4) || (game_type == 5)){
-			but1.label = letters[rand()% 25];
-			but2.label = letters[rand()% 25];
-			but3.label = letters[rand()% 25];
-			but6.label = letters[rand()% 25];
-			but7.label = letters[rand()% 25];
-			but8.label = letters[rand()% 25];
-			but11.label = letters[rand()% 25];
-			but12.label = letters[rand()% 25];
-			but13.label = letters[rand()% 25];
-		}
-		if((game_type == 4) || (game_type==5)){
-			but4.label = letters[rand()% 25];
-			but9.label = letters[rand()% 25];
-			but14.label = letters[rand()% 25];
-			but16.label = letters[rand()% 25];
-			but17.label = letters[rand()% 25];
-			but18.label = letters[rand()% 25];
-			but19.label = letters[rand()% 25]; 
-		}
-		if(game_type == 5){
-			but5.label = letters[rand()% 25];
-			but10.label = letters[rand()% 25];
-			but15.label = letters[rand()% 25];
-			but20.label = letters[rand()% 25];
-			but21.label = letters[rand()% 25];
-			but22.label = letters[rand()% 25];
-			but23.label = letters[rand()% 25];
-			but24.label = letters[rand()% 25];
-			but25.label = letters[rand()% 25];
-		}
-	}
-
-	//the three game type buttons
-	void three_game(){
-		game_type = 3;
-		home_to_game();
-
-		randomize_buttons();
-		show_buttons();
-	}
-	void four_game(){
-		game_type = 4;
-		home_to_game();
-
-		randomize_buttons();
-		show_buttons();
-	}
-	void five_game(){
-		game_type = 5;
-		home_to_game();
-
-		randomize_buttons();
-		show_buttons();
-	}
-
-	//if they spell something wrong
-	void clear(){
-		current_word.put("");
-		the_word = "";
-
-		show_buttons();
-	}
-	//void finish();
-	//when a word is entered, the score, total words, and current word will change
-	void enter(){
-		current_word.put("");
-		all_words = the_word + " " + all_words;
-		words_accepted.put(all_words);
-
-		game_score = game_score + the_word.length();
-		stringstream ss;
-		ss << game_score;
-		current_score.put(ss.str());
-		
-		the_word = "";
-		show_buttons();
-	}
-
-	//------------------------------------------------------------------
-	//all the push buttons functions
-	void button_push1(){
-		the_word = the_word + but1.label;
-		current_word.put(the_word);
-		but1.hide();
-	}
-	void button_push2(){
-		the_word = the_word + but2.label;
-		current_word.put(the_word);
-		but2.hide();
-	}
-	void button_push3(){
-		the_word = the_word + but3.label;
-		current_word.put(the_word);
-		but3.hide();
-	}
-	void button_push4(){
-		the_word = the_word + but4.label;
-		current_word.put(the_word);
-		but4.hide();
-	}
-	void button_push5(){
-		the_word = the_word + but5.label;
-		current_word.put(the_word);
-		but5.hide();
-	}
-	void button_push6(){
-		the_word = the_word + but6.label;
-		current_word.put(the_word);
-		but6.hide();
-	}
-	void button_push7(){
-		the_word = the_word + but7.label;
-		current_word.put(the_word);
-		but7.hide();
-	}
-	void button_push8(){
-		the_word = the_word + but8.label;
-		current_word.put(the_word);
-		but8.hide();
-	}
-	void button_push9(){
-		the_word = the_word + but9.label;
-		current_word.put(the_word);
-		but9.hide();
-	}
-	void button_push10(){
-		the_word = the_word + but10.label;
-		current_word.put(the_word);
-		but10.hide();
-	}
-	void button_push11(){
-		the_word = the_word + but11.label;
-		current_word.put(the_word);
-		but11.hide();
-	}
-	void button_push12(){
-		the_word = the_word + but12.label;
-		current_word.put(the_word);
-		but12.hide();
-	}
-	void button_push13(){
-		the_word = the_word + but13.label;
-		current_word.put(the_word);
-		but13.hide();
-	}
-	void button_push14(){
-		the_word = the_word + but14.label;
-		current_word.put(the_word);
-		but14.hide();
-	}
-	void button_push15(){
-		the_word = the_word + but15.label;
-		current_word.put(the_word);
-		but15.hide();
-	}
-	void button_push16(){
-		the_word = the_word + but16.label;
-		current_word.put(the_word);
-		but16.hide();
-	}
-	void button_push17(){
-		the_word = the_word + but17.label;
-		current_word.put(the_word);
-		but17.hide();
-	}
-	void button_push18(){
-		the_word = the_word + but18.label;
-		current_word.put(the_word);
-		but18.hide();
-	}
-	void button_push19(){
-		the_word = the_word + but19.label;
-		current_word.put(the_word);
-		but19.hide();
-	}
-	void button_push20(){
-		the_word = the_word + but20.label;
-		current_word.put(the_word);
-		but20.hide();
-	}
-	void button_push21(){
-		the_word = the_word + but21.label;
-		current_word.put(the_word);
-		but21.hide();
-	}
-	void button_push22(){
-		the_word = the_word + but22.label;
-		current_word.put(the_word);
-		but22.hide();
-	}
-	void button_push23(){
-		the_word = the_word + but23.label;
-		current_word.put(the_word);
-		but23.hide();
-	}
-	void button_push24(){
-		the_word = the_word + but24.label;
-		current_word.put(the_word);
-		but24.hide();
-	}
-	void button_push25(){
-		the_word = the_word + but25.label;
-		current_word.put(the_word);
-		but25.hide();
-	}
-
-	//-------------------------------------------------------------------------
-	//All the call back functions
-	static void cd_logout_button(Address, Address);
-
-	static void cd_play_3(Address, Address);
-	static void cd_play_4(Address, Address);
-	static void cd_play_5(Address, Address);
-
-	static void cd_clear_word(Address, Address);
-	static void cd_finish_game(Address, Address);
-	static void cd_enter_word(Address, Address);
-
-	static void cd_but1(Address, Address);
-	static void cd_but2(Address, Address);
-	static void cd_but3(Address, Address);
-	static void cd_but4(Address, Address);
-	static void cd_but5(Address, Address);
-	static void cd_but6(Address, Address);
-	static void cd_but7(Address, Address);
-	static void cd_but8(Address, Address);
-	static void cd_but9(Address, Address);
-	static void cd_but10(Address, Address);
-	static void cd_but11(Address, Address);
-	static void cd_but12(Address, Address);
-	static void cd_but13(Address, Address);
-	static void cd_but14(Address, Address);
-	static void cd_but15(Address, Address);
-	static void cd_but16(Address, Address);
-	static void cd_but17(Address, Address);
-	static void cd_but18(Address, Address);
-	static void cd_but19(Address, Address);
-	static void cd_but20(Address, Address);
-	static void cd_but21(Address, Address);
-	static void cd_but22(Address, Address);
-	static void cd_but23(Address, Address);
-	static void cd_but24(Address, Address);
-	static void cd_but25(Address, Address);
-
-};
+//------------------------------------------------------------------
+//all the push buttons functions
+void Game_window::button_push1(){
+	the_word = the_word + but1.label;
+	current_word.put(the_word);
+	but1.hide();
+}
+void Game_window::button_push2(){
+	the_word = the_word + but2.label;
+	current_word.put(the_word);
+	but2.hide();
+}
+void Game_window::button_push3(){
+	the_word = the_word + but3.label;
+	current_word.put(the_word);
+	but3.hide();
+}
+void Game_window::button_push4(){
+	the_word = the_word + but4.label;
+	current_word.put(the_word);
+	but4.hide();
+}
+void Game_window::button_push5(){
+	the_word = the_word + but5.label;
+	current_word.put(the_word);
+	but5.hide();
+}
+void Game_window::button_push6(){
+	the_word = the_word + but6.label;
+	current_word.put(the_word);
+	but6.hide();
+}
+void Game_window::button_push7(){
+	the_word = the_word + but7.label;
+	current_word.put(the_word);
+	but7.hide();
+}
+void Game_window::button_push8(){
+	the_word = the_word + but8.label;
+	current_word.put(the_word);
+	but8.hide();
+}
+void Game_window::button_push9(){
+	the_word = the_word + but9.label;
+	current_word.put(the_word);
+	but9.hide();
+}
+void Game_window::button_push10(){
+	the_word = the_word + but10.label;
+	current_word.put(the_word);
+	but10.hide();
+}
+void Game_window::button_push11(){
+	the_word = the_word + but11.label;
+	current_word.put(the_word);
+	but11.hide();
+}
+void Game_window::button_push12(){
+	the_word = the_word + but12.label;
+	current_word.put(the_word);
+	but12.hide();
+}
+void Game_window::button_push13(){
+	the_word = the_word + but13.label;
+	current_word.put(the_word);
+	but13.hide();
+}
+void Game_window::button_push14(){
+	the_word = the_word + but14.label;
+	current_word.put(the_word);
+	but14.hide();
+}
+void Game_window::button_push15(){
+	the_word = the_word + but15.label;
+	current_word.put(the_word);
+	but15.hide();
+}
+void Game_window::button_push16(){
+	the_word = the_word + but16.label;
+	current_word.put(the_word);
+	but16.hide();
+}
+void Game_window::button_push17(){
+	the_word = the_word + but17.label;
+	current_word.put(the_word);
+	but17.hide();
+}
+void Game_window::button_push18(){
+	the_word = the_word + but18.label;
+	current_word.put(the_word);
+	but18.hide();
+}
+void Game_window::button_push19(){
+	the_word = the_word + but19.label;
+	current_word.put(the_word);
+	but19.hide();
+}
+void Game_window::button_push20(){
+	the_word = the_word + but20.label;
+	current_word.put(the_word);
+	but20.hide();
+}
+void Game_window::button_push21(){
+	the_word = the_word + but21.label;
+	current_word.put(the_word);
+	but21.hide();
+}
+void Game_window::button_push22(){
+	the_word = the_word + but22.label;
+	current_word.put(the_word);
+	but22.hide();
+}
+void Game_window::button_push23(){
+	the_word = the_word + but23.label;
+	current_word.put(the_word);
+	but23.hide();
+}
+void Game_window::button_push24(){
+	the_word = the_word + but24.label;
+	current_word.put(the_word);
+	but24.hide();
+}
+void Game_window::button_push25(){
+	the_word = the_word + but25.label;
+	current_word.put(the_word);
+	but25.hide();
+}
+//-----------------------------------------------------------------------
 
 //constructor
 Game_window::Game_window(Point xy,int w,int h,const string& title) :
@@ -544,7 +418,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	but25(Point(360,260),
 		40,40,"25",cd_but25)
 
-//------Constructor------------------------------------------------------------
+//------Constructor continued------------------------------------------------------------
 {
 	//should never need to hide
 	attach(logout_button);
@@ -789,18 +663,3 @@ void Game_window::cd_but25(Address, Address pw){
 	reference_to<Game_window>(pw).button_push25();
 }
 //---------------------------------------------------------------------------
-
-int main() 
-  try {
-    // construct the GUI window
-    Game_window win(Point(100,100),600,400,"Game Window");
-    return gui_main();  // inherited from Window; calls FLTK's run
-  }
-  catch(exception& e) {
-    cerr << "exception: " << e.what() << '\n';
-    return 1;
-  }
-  catch(...) {
-    cerr << "some exception\n";
-    return 2;
-  }

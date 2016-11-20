@@ -8,6 +8,7 @@
 #include "Window.h"
 #include <cstdlib>
 #include <ctime>
+#include <string>
 
 using namespace Graph_lib;
 using namespace std;
@@ -28,6 +29,8 @@ private:
 	string all_words;
 	//the game_type the user chooses
 	int game_type;
+	//the score of the game
+	int game_score = 0;
 
 	Button but1; //the twenty five buttons
 	Button but2;
@@ -94,6 +97,7 @@ private:
 
 		words_accepted.show();
 		current_score.show();
+		current_score.put("0");
 		instructions.show();
 		current_word.show();
 
@@ -199,10 +203,15 @@ private:
 	//void finish();
 	void enter(){
 		current_word.put("");
-		all_words = all_words + "\n" + the_word;
-		words_accepted.put(all_words); //will need to change for multiple words
-		the_word = "";
+		all_words = the_word + " " + all_words;
+		words_accepted.put(all_words);
 
+		game_score = game_score + the_word.length();
+		stringstream ss;
+		ss << game_score;
+		current_score.put(ss.str());
+		
+		the_word = "";
 		show_buttons();
 	}
 
@@ -408,8 +417,8 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	//Output for the game page
 	current_score(Point(85, 50),
 		100, 30, "Score: "),
-	words_accepted(Point(x_max()-70, 70),
-		60, 150, "Words Entered: "),
+	words_accepted(Point(200, y_max()-30),
+		300, 20, "Words Entered: "),
 	instructions(Point(85, 10),
 		100, 30, "Instructions: "),
 	current_word(Point(300,320),

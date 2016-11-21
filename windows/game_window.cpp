@@ -19,8 +19,8 @@ using namespace std;
 
 //function for is the word has already been entered
 bool is_entered(string s, vector<string> entered){
-	for(int i=0; i<entered.size(), ++i){
-		if(entered[i]==string){
+	for(int i=0; i<entered.size(); ++i){
+		if(entered[i]==s){
 			return 0; //if the word has already been entered
 		}
 	}
@@ -167,7 +167,7 @@ void Game_window::clear(){
 
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	// if (isword(words, the_word) && is_ented(the_word, entered_words)){
+	if (is_entered(the_word, entered_words)){ //isword(words, the_word) && 
 		detach(none_word_message);
 		entered_words.push_back(the_word);
 		all_words = the_word + " " + all_words;
@@ -177,10 +177,10 @@ void Game_window::enter(){
 		stringstream ss;
 		ss << game_score;
 		current_score.put(ss.str());
-	// }
-	// else{
-	// 	attach(none_word_message);
-	// }
+	}
+	else{
+		attach(none_word_message);
+	}
 
 	current_word.put(""); //will be done whether that is a word or not
 	the_word = ""; 
@@ -369,7 +369,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 		115, 30, "User: "),
 
 	//test for the game page
-	none_word_message(Point(300,350),
+	none_word_message(Point(380,335),
 		"Word doesn't exist!"),
 	//Buttons for the game page
 	clear_word(Point(10,y_max()-30),

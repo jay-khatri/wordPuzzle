@@ -3,7 +3,7 @@
 #include "login_window.h"
 #include "game_window.h"
 
-void run_login(){
+int run_login(){
 	try{
 		login_window win(Point(100,100), 400, 200, "login");
 		return gui_main();
@@ -14,7 +14,7 @@ void run_login(){
 	}
 }
 
-void run_game(){
+int run_game(){
 	try{
 		Game_window win2(Point(100,100), 600, 400, "gameplay");
 		return gui_main();

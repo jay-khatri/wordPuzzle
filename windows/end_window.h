@@ -1,8 +1,7 @@
 /*Brockway, Khatiri, Tiner
 Final Project
 Last update: 11-21-16
-Purpose: function and class desrciptions for 
-login window--third window in a gui sequence*/
+Purpose: header file for end window--third window in a gui sequence*/
 
 #include "login_window.h"
 #include "game_window.h"
@@ -21,7 +20,7 @@ struct end_window{
 	
 	//highscores
 	
-	Image top_player;
+	//Image top_player;
 	
 	In_box pic_in;
 	

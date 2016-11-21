@@ -20,6 +20,8 @@ using namespace std;
 #ifndef GAME_GUARD
 #define GAME_GUARD 1
 
+bool is_entered(string s, vector<string> entered);
+
 struct Game_window : Graph_lib::Window{
 	//constructor
 	Game_window(Point xy,
@@ -32,8 +34,10 @@ private:
 	vector<string> letters;
 	//the current word string the user is adding to
 	string the_word;
-	//all the entered words;
+	//all the entered words in a string
 	string all_words;
+	//all the words in a vector
+	vector<string> entered_words;
 	//the game_type the user chooses
 	int game_type;
 	//the score of the game

@@ -17,6 +17,16 @@
 using namespace Graph_lib;
 using namespace std;
 
+//function for is the word has already been entered
+bool is_entered(string s, vector<string> entered){
+	for(int i=0; i<entered.size(), ++i){
+		if(entered[i]==string){
+			return 0; //if the word has already been entered
+		}
+	}
+	return 1; //if the word is not in the list
+}
+
 //when the transition from the home page to the window page
 void Game_window::home_to_game(){
 	home_choice.hide();
@@ -152,11 +162,14 @@ void Game_window::clear(){
 
 	show_buttons();
 }
+
 //void finish();
+
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	// if (isword(words, the_word)){
+	// if (isword(words, the_word) && is_ented(the_word, entered_words)){
 		detach(none_word_message);
+		entered_words.push_back(the_word);
 		all_words = the_word + " " + all_words;
 		words_accepted.put(all_words);
 

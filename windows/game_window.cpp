@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include "game_window.h"
 
 using namespace Graph_lib;
 using namespace std;

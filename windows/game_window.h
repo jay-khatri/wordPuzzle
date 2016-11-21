@@ -3,7 +3,7 @@
 //game window for project
 //this is the h file
 
-#include "std_lib_facilities_4.h"
+//#include "std_lib_facilities_4.h"
 #include <iostream>
 #include <sstream>     
 #include "Graph.h"     
@@ -12,12 +12,15 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+//#include "../dictionary/dictionary.h"
 
 using namespace Graph_lib;
 using namespace std;
 
 #ifndef GAME_GUARD
 #define GAME_GUARD 1
+
+bool is_entered(string s, vector<string> entered);
 
 struct Game_window : Graph_lib::Window{
 	//constructor
@@ -31,13 +34,16 @@ private:
 	vector<string> letters;
 	//the current word string the user is adding to
 	string the_word;
-	//all the entered words;
+	//all the entered words in a string
 	string all_words;
+	//all the words in a vector
+	vector<string> entered_words;
 	//the game_type the user chooses
 	int game_type;
 	//the score of the game
 	int game_score = 0;
-
+	//text for if the word doesn't exist
+	Text none_word_message;
 	//-----------------------------------------------------------------
 	//the twenty five buttons
 	Button but1;

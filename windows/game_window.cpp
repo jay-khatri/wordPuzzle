@@ -3,15 +3,6 @@
 //game window for project
 //this is the cpp file
 
-//#include "std_lib_facilities_4.h"
-// #include <iostream>
-// #include <sstream>     
-// #include "Graph.h"     
-// #include "GUI.h"
-// #include "Window.h"
-// #include <cstdlib>
-// #include <ctime>
-// #include <string>
 #include "game_window.h"
 
 using namespace Graph_lib;
@@ -180,7 +171,7 @@ void Game_window::enter(){
 		current_score.put(ss.str());
 	}
 	else{
-		none_word_message.put("That words been entered1");
+		none_word_message.put("Not valid word");
 	}
 
 	current_word.put(""); //will be done whether that is a word or not
@@ -369,9 +360,9 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	user_name(Point(72, 300),
 		115, 30, "User: "),
 
-	//test for the game page
-	none_word_message(Point(380,335),
-		80, 20, ""),
+	//text output for the game page
+	none_word_message(Point(390,320),
+		110, 30, ""),
 	//Buttons for the game page
 	clear_word(Point(10,y_max()-30),
 		80, 20, "Clear Word", cd_clear_word),

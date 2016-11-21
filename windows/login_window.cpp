@@ -5,6 +5,7 @@ Purpose: function and class desrciptions for
 login window--first window in the gui design*/
 
 #include "login_window.h"
+#include "game_window.h"
 
 void login_window::quit_pressed(){
 	hide();
@@ -28,7 +29,7 @@ void login_window::new_user_pressed(){
 	attach(new_message);
 }
 
-void login_window::enter_pressed(int i){
+int login_window::enter_pressed(int i){
 	string n = name_in.get_string();
 	//check/make a player here:
 	/*if (login_message.fill_color().visibility()){
@@ -46,7 +47,15 @@ void login_window::enter_pressed(int i){
 	}
 	else{
 		cout << name_in.get_string() << '\n';//in actual program push back player here.
-		back_pressed();//in actual program call game_window here
+		quit_pressed();
+		try{
+			Game_window win2(Point(100,100), 600, 400, "gameplay");
+			return gui_main();
+		}
+		catch(...){
+			cout << "Something went wrong\n";
+			return 1;
+		}//in actual program call game_window here
 	}
 
 }

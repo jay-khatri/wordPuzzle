@@ -3,15 +3,15 @@
 //game window for project
 //this is the cpp file
 
-#include "std_lib_facilities_4.h"
-#include <iostream>
-#include <sstream>     
-#include "Graph.h"     
-#include "GUI.h"
-#include "Window.h"
-#include <cstdlib>
-#include <ctime>
-#include <string>
+//#include "std_lib_facilities_4.h"
+// #include <iostream>
+// #include <sstream>     
+// #include "Graph.h"     
+// #include "GUI.h"
+// #include "Window.h"
+// #include <cstdlib>
+// #include <ctime>
+// #include <string>
 #include "game_window.h"
 
 using namespace Graph_lib;
@@ -85,37 +85,40 @@ void Game_window::show_buttons(){
 	}
 }
 //used to randomize the game buttons letter
+//it is 35, instead of 25 because there are 3 of each
+//vowel in the letters vector so that vowels are more likely
+//to appear since vowels are usually 36% of an average english word
 void Game_window::randomize_buttons(){
 	if((game_type == 3) || (game_type == 4) || (game_type == 5)){
-		but1.label = letters[rand()% 25];
-		but2.label = letters[rand()% 25];
-		but3.label = letters[rand()% 25];
-		but6.label = letters[rand()% 25];
-		but7.label = letters[rand()% 25];
-		but8.label = letters[rand()% 25];
-		but11.label = letters[rand()% 25];
-		but12.label = letters[rand()% 25];
-		but13.label = letters[rand()% 25];
+		but1.label = letters[rand()% 35];
+		but2.label = letters[rand()% 35];
+		but3.label = letters[rand()% 35];
+		but6.label = letters[rand()% 35];
+		but7.label = letters[rand()% 35];
+		but8.label = letters[rand()% 35];
+		but11.label = letters[rand()% 35];
+		but12.label = letters[rand()% 35];
+		but13.label = letters[rand()% 35];
 	}
 	if((game_type == 4) || (game_type==5)){
-		but4.label = letters[rand()% 25];
-		but9.label = letters[rand()% 25];
-		but14.label = letters[rand()% 25];
-		but16.label = letters[rand()% 25];
-		but17.label = letters[rand()% 25];
-		but18.label = letters[rand()% 25];
-		but19.label = letters[rand()% 25]; 
+		but4.label = letters[rand()% 35];
+		but9.label = letters[rand()% 35];
+		but14.label = letters[rand()% 35];
+		but16.label = letters[rand()% 35];
+		but17.label = letters[rand()% 35];
+		but18.label = letters[rand()% 35];
+		but19.label = letters[rand()% 35]; 
 	}
 	if(game_type == 5){
-		but5.label = letters[rand()% 25];
-		but10.label = letters[rand()% 25];
-		but15.label = letters[rand()% 25];
-		but20.label = letters[rand()% 25];
-		but21.label = letters[rand()% 25];
-		but22.label = letters[rand()% 25];
-		but23.label = letters[rand()% 25];
-		but24.label = letters[rand()% 25];
-		but25.label = letters[rand()% 25];
+		but5.label = letters[rand()% 35];
+		but10.label = letters[rand()% 35];
+		but15.label = letters[rand()% 35];
+		but20.label = letters[rand()% 35];
+		but21.label = letters[rand()% 35];
+		but22.label = letters[rand()% 35];
+		but23.label = letters[rand()% 35];
+		but24.label = letters[rand()% 35];
+		but25.label = letters[rand()% 35];
 	}
 }
 
@@ -152,16 +155,22 @@ void Game_window::clear(){
 //void finish();
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	current_word.put("");
-	all_words = the_word + " " + all_words;
-	words_accepted.put(all_words);
+	// if (isword(words, the_word)){
+		detach(none_word_message);
+		all_words = the_word + " " + all_words;
+		words_accepted.put(all_words);
 
-	game_score = game_score + the_word.length();
-	stringstream ss;
-	ss << game_score;
-	current_score.put(ss.str());
-	
-	the_word = "";
+		game_score = game_score + the_word.length(); //adds the score
+		stringstream ss;
+		ss << game_score;
+		current_score.put(ss.str());
+	// }
+	// else{
+	// 	attach(none_word_message);
+	// }
+
+	current_word.put(""); //will be done whether that is a word or not
+	the_word = ""; 
 	show_buttons();
 }
 
@@ -346,6 +355,9 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	user_name(Point(72, 300),
 		115, 30, "User: "),
 
+	//test for the game page
+	none_word_message(Point(300,350),
+		"Word doesn't exist!"),
 	//Buttons for the game page
 	clear_word(Point(10,y_max()-30),
 		80, 20, "Clear Word", cd_clear_word),
@@ -552,6 +564,16 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	letters.push_back("x");
 	letters.push_back("y");
 	letters.push_back("z");
+	letters.push_back("a"); //increases the likelyhood of a vowel to about 36%
+	letters.push_back("a");
+	letters.push_back("e");
+	letters.push_back("e");
+	letters.push_back("i");
+	letters.push_back("i");
+	letters.push_back("o");
+	letters.push_back("o");
+	letters.push_back("u");
+	letters.push_back("u");
 }
 
 //------------------------------------------------------------------------

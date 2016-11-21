@@ -3,7 +3,7 @@
 //game window for project
 //this is the h file
 
-#include "std_lib_facilities_4.h"
+//#include "std_lib_facilities_4.h"
 #include <iostream>
 #include <sstream>     
 #include "Graph.h"     
@@ -12,6 +12,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+//#include "../dictionary/dictionary.h"
 
 using namespace Graph_lib;
 using namespace std;
@@ -37,7 +38,8 @@ private:
 	int game_type;
 	//the score of the game
 	int game_score = 0;
-
+	//text for if the word doesn't exist
+	Text none_word_message;
 	//-----------------------------------------------------------------
 	//the twenty five buttons
 	Button but1;

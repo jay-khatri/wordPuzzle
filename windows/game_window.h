@@ -125,7 +125,9 @@ private:
 
 	//if they spell something wrong
 	void clear();
-	//void finish();
+
+	int finish();
+
 	//when a word is entered, the score, total words, and current word will change
 	void enter();
 

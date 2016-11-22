@@ -156,7 +156,17 @@ void Game_window::clear(){
 	show_buttons();
 }
 
-//void finish();
+int Game_window::finish(){
+	hide();
+	try{
+		end_window win3(Point(100,100), 400, 400, "End");
+		return gui_main();
+	}
+	catch(...){
+		cout << "Something went wrong\n";
+		return 1;
+	}
+}
 
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
@@ -608,7 +618,7 @@ void Game_window::cd_clear_word(Address, Address pw){
 }
 
 void Game_window::cd_finish_game(Address, Address pw){
-	reference_to<Game_window>(pw).quit(); //will probably need to change to finish function
+	reference_to<Game_window>(pw).finish();
 }
 
 void Game_window::cd_enter_word(Address, Address pw){

@@ -11,8 +11,8 @@ using namespace std;
 
 //function for is the word has already been entered
 bool is_entered(string s, vector<string> entered){
-	for(int i=0; i<entered.size(), ++i){
-		if(entered[i]==string){
+	for(int i=0; i<entered.size(); ++i){
+		if(entered[i]==s){
 			return 0; //if the word has already been entered
 		}
 	}
@@ -47,6 +47,7 @@ void Game_window::home_to_game(){
 	current_score.put("0");
 	instructions.show();
 	current_word.show();
+	none_word_message.show();
 
 	clear_word.show();
 	finish_game.show();
@@ -159,8 +160,8 @@ void Game_window::clear(){
 
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	// if (isword(words, the_word) && is_ented(the_word, entered_words)){
-		detach(none_word_message);
+	if (is_entered(the_word, entered_words)){ //isword(words, the_word) && 
+		none_word_message.put("");
 		entered_words.push_back(the_word);
 		all_words = the_word + " " + all_words;
 		words_accepted.put(all_words);
@@ -169,13 +170,13 @@ void Game_window::enter(){
 		stringstream ss;
 		ss << game_score;
 		current_score.put(ss.str());
-	// }
-	// else{
-	// 	attach(none_word_message);
-	// }
+	}
+	else{
+		none_word_message.put("Not valid word");
+	}
 
 	current_word.put(""); //will be done whether that is a word or not
-	the_word = ""; 
+	the_word = "";
 	show_buttons();
 }
 
@@ -360,9 +361,9 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	user_name(Point(72, 300),
 		115, 30, "User: "),
 
-	//test for the game page
-	none_word_message(Point(300,350),
-		"Word doesn't exist!"),
+	//text output for the game page
+	none_word_message(Point(390,320),
+		110, 30, ""),
 	//Buttons for the game page
 	clear_word(Point(10,y_max()-30),
 		80, 20, "Clear Word", cd_clear_word),
@@ -479,6 +480,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	attach(current_score);
 	attach(words_accepted);
 	attach(instructions);
+	attach(none_word_message);
 	//hie the game page
 	clear_word.hide();
 	enter_word.hide();
@@ -488,6 +490,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 	instructions.put("Spell words by clicking on the buttons to make a word. Click enter when a word is spelled, and finish when you are done with your game.");
 	instructions.hide();
 	current_word.hide();
+	none_word_message.hide();
 
 	//-------------------------------------------------------------------
 	//attaching hiding the game buttons

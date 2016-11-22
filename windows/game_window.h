@@ -109,7 +109,7 @@ private:
 	Button finish_game;
 	Button enter_word;
 
-	void quit();
+	int quit();
 
 	//when the transition from the home page to the window page
 	void home_to_game();

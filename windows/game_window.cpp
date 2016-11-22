@@ -3,6 +3,7 @@
 //game window for project
 //this is the cpp file
 
+#include "login_window.h"
 #include "end_window.h"
 #include "game_window.h"
 
@@ -156,6 +157,7 @@ void Game_window::clear(){
 	show_buttons();
 }
 
+//when the user is done playing, goes to end window
 int Game_window::finish(){
 	hide();
 	try{
@@ -600,8 +602,17 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 void Game_window::cd_logout_button(Address, Address pw){
 	reference_to<Game_window>(pw).quit();
 }
-void Game_window::quit(){
+int Game_window::quit(){ //when the user wants to logout
 	hide();
+
+	try{
+	login_window win(Point(100,100), 400, 200, "Login");
+		return gui_main();
+	}
+	catch(...){
+		cout << "Something went wrong\n";
+		return 1;
+	}
 }
 
 void Game_window::cd_play_3(Address, Address pw){

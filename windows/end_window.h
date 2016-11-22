@@ -10,6 +10,9 @@ Purpose: header file for end window--third window in a gui sequence*/
 #include "GUI.h"
 #include "Window.h"
 
+using namespace Graph_lib; //i added this nathan otherwise it wouldn't compile
+using namespace std;
+
 struct end_window: Graph_lib::Window {
 	
 	end_window(Point xy, int w, int h, const string& title);//will need to pass in player vector and unique player

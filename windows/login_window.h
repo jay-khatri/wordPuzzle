@@ -36,7 +36,7 @@ struct login_window: Graph_lib::Window
 	
 	void new_user_pressed();
 	
-	void enter_pressed(int i);
+	int enter_pressed(int i); //changed to int, so matched cpp file
 	
 	void back_pressed();
 	

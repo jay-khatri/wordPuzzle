@@ -11,7 +11,7 @@ int main(){
 	}
 	catch(...){
 		cout << "Something went wrong\n";
-		return;
-	}();
+		return 1;
+	};
 
 }

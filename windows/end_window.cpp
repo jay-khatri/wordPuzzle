@@ -7,6 +7,9 @@ Purpose: function and class definitons for end window--third window in a gui seq
 #include "game_window.h"
 #include "end_window.h"
 
+using namespace Graph_lib; //i added this nathan otherwise it wouldn't compile
+using namespace std;
+
 end_window::end_window(Point xy, int w, int h, const string& title): 
 Window(xy, w, h, title),
 

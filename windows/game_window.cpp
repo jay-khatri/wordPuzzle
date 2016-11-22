@@ -3,15 +3,7 @@
 //game window for project
 //this is the cpp file
 
-//#include "std_lib_facilities_4.h"
-// #include <iostream>
-// #include <sstream>     
-// #include "Graph.h"     
-// #include "GUI.h"
-// #include "Window.h"
-// #include <cstdlib>
-// #include <ctime>
-// #include <string>
+#include "end_window.h"
 #include "game_window.h"
 
 using namespace Graph_lib;

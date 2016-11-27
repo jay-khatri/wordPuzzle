@@ -9,6 +9,7 @@
 #include <numeric>
 #include <string>
 #include <sstream>
+#include <map>
 
 using namespace std;
 
@@ -76,6 +77,7 @@ class Person{
 		}
 				
 };
+
 void input_data(vector<Person>& input){
   ifstream ifs("personData.txt");
   while (ifs) {
@@ -137,8 +139,9 @@ void output_data(vector<Person> input) {
 
 void output_term(vector<Person>& input) {
 	cout << "Vector Size: " << input.size() << endl;
+	int count = 0;
 	for (auto s : input) {
-		cout << s.getName() << endl << s.getPic() << endl;
+		cout << s.getName() << ":   " << count << endl << s.getPic() << endl;
 		for(auto i: s.getScores(3)){
 			cout << i << " ";
 		}
@@ -151,12 +154,84 @@ void output_term(vector<Person>& input) {
 			cout << i << " ";
 		}
 		cout << endl  << endl;
+		count++;
 	}
 }
+//returns a string given game type and place
+//string GUI_out(int gametype, int place, vector<Person> people){
+	//place = place -1;
+	//vector<int> intcompare;
+	//vector<string> strcompare;
+	//for(int i = 0; i<people.size();i++){
+		//intcompare.push_back(people[i].getScores(gametype)[2]);
+	//}
+	//for(int i = 0; i<people.size();i++){
+		//strcompare.push_back(people[i].getName());
+	//}
+	//string name = strcompare[place];
+	//string inter = ": ";
+	//int intwant = intcompare[place];
+	//string num = to_string(intwant);
+	//string final =  name + inter + num;
+	//return final;
+//}
+//function that return that index of the top scorer in a vecotr
+
+int topIndex(vector<Person> peeps, int gametype){
+	int top_index = 0;
+	int top_score = 0;
+	for(int i = 0; i<peeps.size(); i++){
+		int curr = peeps[i].getScores(gametype)[2];
+		if (curr  >= top_score){
+			top_index = i;
+			top_score = curr;
+		}
+	}
+	return top_index;
+}
+//peeps is passed by value so that we dont have to worry about actually messing up the vector of people
+string getPlace(vector<Person> peeps, int gametype, int place){
+	vector<Person> topvec;
+	vector<string> places;
+	//gets the index of the person with the highest score
+	for(int i = 0; i<3 & peeps.size() > 0; i++){
+		topvec.push_back(peeps[topIndex(peeps, gametype)]);
+		peeps.erase(peeps.begin() + topIndex(peeps, gametype));
+	}
+	for(int i = 0; i<topvec.size(); i++){
+		string str_place = to_string(i+1);
+		string str_score = to_string(topvec[i].getScores(gametype)[2]);
+		string str_name = topvec[i].getName();
+		string fin_string = str_place + ": " + str_name + ",  " + str_score;
+		places.push_back(fin_string);
+	}
+	if (place > 0 && place < 4 && gametype > 2 && gametype < 6){
+		return places[place-1];
+	}else{
+		return "You doing something wrong";
+	}
+}
+
+bool isPerson(string name, vector<Person> peeps){
+	for(auto s: peeps){
+		if (s.getName().find(name) != string::npos) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+
 int main(){
 	vector<Person> peeps;
 	input_data(peeps);
+	Person n("hello", "byebye");
+	peeps.push_back(n);
 	output_term(peeps);
-	output_data(peeps);
+	cout << getPlace(peeps, 3, 3) << endl;
+	cout << isPerson("jay", peeps);
+
 }	
 

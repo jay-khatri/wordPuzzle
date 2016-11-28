@@ -32,9 +32,6 @@ void login_window::new_user_pressed(){
 int login_window::enter_pressed(int i){
 	string n = name_in.get_string();
 	//check/make a player here:
-	/*if (login_message.fill_color().visibility()){
-		cout << "login:\n" << login_message.fill_color().visibility() ;
-	}*/
 	if (n=="nate" && i==0){//bool function for checking name
 		attach(dne_message);
 		cout << "found name: " << n << ".\n";//test messages
@@ -73,8 +70,8 @@ void login_window::back_pressed(){
 	new_user.show();
 }
 
-login_window::login_window(Point xy, int w, int h, const string& title):// pass in vector of players too?
-Window(xy, w, h, title),
+login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>pp):
+Window(xy, w, h, title), peeps(pp),
 
 //button initializations
 

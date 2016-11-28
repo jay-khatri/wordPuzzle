@@ -17,7 +17,9 @@ using namespace std;
 
 struct login_window: Graph_lib::Window
 {
-	login_window(Point xy, int w, int h, const string& title);// pass in vector of players too?
+	login_window(Point xy, int w, int h, const string& title, vector<Person>pp);
+	vector<Person>peeps;
+	
 	Button exit; //quit
 	Button login;
 	Button new_user;

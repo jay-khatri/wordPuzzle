@@ -1,7 +1,7 @@
 /*This will be the actual main we use for the program*/
 
 #include "login_window.h"
-#include "game_window.h"
+// #include "game_window.h"
 
 using namespace std;
 

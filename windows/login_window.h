@@ -3,6 +3,9 @@ Final Project
 Last update: 11-14-16
 Purpose: header file for login window--first window in the gui design*/
 
+#ifndef LOGIN_GUARD
+#define LOGIN_GUARD
+
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -53,3 +56,5 @@ struct login_window: Graph_lib::Window
 	static void cb_back(Address, Address);
 	
 };
+
+#endif

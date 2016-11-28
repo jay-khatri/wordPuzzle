@@ -82,7 +82,7 @@ void end_window::exit_button_pressed(){
 int end_window::logout_pressed(){
 	exit_button_pressed();
 	try{
-	login_window win(Point(100,100), 400, 200, "Login");
+	login_window win(Point(100,100), 400, 200, "Login", peeps);
 		return gui_main();
 	}
 	catch(...){

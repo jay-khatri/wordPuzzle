@@ -3,6 +3,8 @@ Final Project
 Last update: 11-14-16
 Purpose: header file for login window--first window in the gui design*/
 
+#include "game_window.h"
+
 #ifndef LOGIN_GUARD
 #define LOGIN_GUARD
 #pragma once 
@@ -15,7 +17,7 @@ Purpose: header file for login window--first window in the gui design*/
 #include "Window.h"
 #include "h_Person.h"
 #include "h_dictionary.h"
-#include "game_window.h"
+
 
 using namespace Graph_lib;
 using namespace std;

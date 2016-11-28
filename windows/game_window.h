@@ -6,6 +6,8 @@
 #ifndef GAME_GUARD
 #define GAME_GUARD 
 
+#include "login_window.h"
+#include "end_window.h"
 #include <iostream>
 #include <sstream>     
 #include "Graph.h"     

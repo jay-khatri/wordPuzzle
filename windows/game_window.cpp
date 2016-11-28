@@ -3,8 +3,6 @@
 //game window for project
 //this is the cpp file
 
-#include "login_window.h"
-#include "end_window.h"
 #include "game_window.h"
 
 using namespace Graph_lib;

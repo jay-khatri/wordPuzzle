@@ -12,6 +12,8 @@ Purpose: header file for end window--third window in a gui sequence*/
 #include "Graph.h"
 #include "GUI.h"
 #include "Window.h"
+#include "../Person/h_Person.h"
+#include "../dictionary/h_dictionary.h"
 
 using namespace Graph_lib;
 using namespace std;

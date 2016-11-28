@@ -32,21 +32,63 @@ void login_window::new_user_pressed(){
 int login_window::enter_pressed(int i){
 	string n = name_in.get_string();
 	//check/make a player here:
-	/*if (login_message.fill_color().visibility()){
-		cout << "login:\n" << login_message.fill_color().visibility() ;
-	}*/
-	if (n=="nate" && i==0){//bool function for checking name
-		attach(dne_message);
+	switch (i){
+		case 0:{
+			if (!isPerson(n, peeps)){//bool function for checking name
+				attach(dne_message); // didn't find player (bad)
+				cout << "found name: " << n << ".\n";//test messages
+				redraw();
+			}
+			else{
+				cout << name_in.get_string() << "(reference)\n";//get reference in vector
+		
+				quit_pressed();
+				try{
+					Game_window win2(Point(100,100), 600, 400, "gameplay");
+					return gui_main();
+				}
+				catch(...){
+					cout << "Something went wrong\n";
+					return 1;
+				}
+			}
+			break;
+		}
+		case 1:{
+			if (isPerson(n, peeps)){
+				attach(exist_message); // found player (bad)
+				cout << "found name: " << n << ".\n";//test messages
+				redraw();
+			}
+			else{
+				cout << name_in.get_string() << "(creating)\n";//in actual program push back player here.
+		
+				quit_pressed();
+				try{
+					Game_window win2(Point(100,100), 600, 400, "gameplay");
+					return gui_main();
+				}
+				catch(...){
+					cout << "Something went wrong\n";
+					return 1;
+				}
+			}
+			break;
+		}
+	}
+	if (!isPerson(n, peeps) && i==0){//bool function for checking name
+		attach(dne_message); // didn't find player (bad)
 		cout << "found name: " << n << ".\n";//test messages
 		redraw();
 	}
-	else if (n=="nick" && i==1){
-		attach(exist_message);
+	else if (isPerson(n, peeps) && i==1){
+		attach(exist_message); // found player (bad)
 		cout << "found name: " << n << ".\n";//test messages
 		redraw();
 	}
 	else{
 		cout << name_in.get_string() << '\n';//in actual program push back player here.
+		
 		quit_pressed();
 		try{
 			Game_window win2(Point(100,100), 600, 400, "gameplay");
@@ -55,7 +97,7 @@ int login_window::enter_pressed(int i){
 		catch(...){
 			cout << "Something went wrong\n";
 			return 1;
-		}//in actual program call game_window here
+		}
 	}
 
 }
@@ -73,8 +115,8 @@ void login_window::back_pressed(){
 	new_user.show();
 }
 
-login_window::login_window(Point xy, int w, int h, const string& title):// pass in vector of players too?
-Window(xy, w, h, title),
+login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>&pp):
+Window(xy, w, h, title), peeps(pp),
 
 //button initializations
 

@@ -14,7 +14,7 @@ int main(){
 	input_people(people);
 
 	try{
-		login_window win(Point(100,100), 400, 200, "login");
+		login_window win(Point(100,100), 400, 200, "login", people);
 		return gui_main();
 	}
 	catch(...){

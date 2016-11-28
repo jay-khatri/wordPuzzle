@@ -31,11 +31,11 @@ class Person{
 		Person(string m_name = "", string m_pic = ""):
 			name(m_name), 
 			pic(m_name),
-			//initializing every vector to three instnace of 0
+			//initializing every vector to three instances of 0
 			highThree(3,0),
 			highFour(3,0),
 			highFive(3,0){}
-		//manipulating member functionsjj
+		//manipulating member functions
 		void setName(string i_name){name = i_name;}
 		string getName(){return name;}
 		void setPic(string i_pic){pic = i_pic;}
@@ -65,7 +65,7 @@ class Person{
 			//cout << val << endl;
 			}
 		}
-		//gets the three score vecotors
+		//gets the three score vectors
 		vector<int> getScores(int gameType){
 			if (gameType == 3){
 				return highThree;
@@ -224,4 +224,13 @@ bool isPerson(string name, vector<Person> peeps){
 	}
 	return false;
 }
+
+Person &getPerson(string name, vector<Person> &peeps){
+	for(int i = 0; i<peeps.size(); i++){
+		if (peeps[i].getName().find(name) != string::npos) {
+			return peeps[i];
+		}
+	}
+}
+
 #endif

@@ -9,14 +9,7 @@
 
 #include "login_window.h"
 #include "end_window.h"
-#include <iostream>
-#include <sstream>     
-#include "Graph.h"     
-#include "GUI.h"
-#include "Window.h"
-#include <cstdlib>
-#include <ctime>
-#include <string>
+
 
 using namespace Graph_lib;
 using namespace std;

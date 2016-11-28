@@ -9,12 +9,7 @@ Purpose: header file for end window--third window in a gui sequence*/
 
 #include "game_window.h"
 
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include "Graph.h"
-#include "GUI.h"
-#include "Window.h"
+
 
 using namespace Graph_lib;
 using namespace std;

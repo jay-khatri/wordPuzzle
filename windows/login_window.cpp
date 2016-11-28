@@ -32,6 +32,7 @@ void login_window::new_user_pressed(){
 int login_window::enter_pressed(int i){
 	string n = name_in.get_string();
 	//check/make a player here:
+	//Person p;
 	switch (i){
 		case 0:{
 			if (!isPerson(n, peeps)){//bool function for checking name
@@ -44,7 +45,7 @@ int login_window::enter_pressed(int i){
 		
 				quit_pressed();
 				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay");
+					Game_window win2(Point(100,100), 600, 400, "gameplay"); //peeps, p
 					return gui_main();
 				}
 				catch(...){
@@ -65,7 +66,7 @@ int login_window::enter_pressed(int i){
 		
 				quit_pressed();
 				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay");
+					Game_window win2(Point(100,100), 600, 400, "gameplay"); //, peeps,
 					return gui_main();
 				}
 				catch(...){
@@ -115,8 +116,8 @@ void login_window::back_pressed(){
 	new_user.show();
 }
 
-login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>&pp):
-Window(xy, w, h, title), peeps(pp),
+login_window::login_window(Point xy, int w, int h, const string& title): //, vector<Person>&pp
+Window(xy, w, h, title), //peeps(pp),
 
 //button initializations
 

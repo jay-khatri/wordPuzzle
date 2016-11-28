@@ -25,11 +25,15 @@ struct Game_window : Graph_lib::Window{
 	Game_window(Point xy,
 		int w,
 		int h,
-		const string& title);
+		const string& title
+		); //vector<Person>& people, Person& current_person
+		
 
 private:
 	//vector of all the words
-	vector<string> words;
+	//vector<string> words;
+	//vector of all the people
+	//vector<Person> peeps;
 	//holds all the letters
 	vector<string> letters;
 	//the current word string the user is adding to

@@ -322,7 +322,7 @@ void Game_window::button_push25(){
 //-----------------------------------------------------------------------
 
 //constructor
-Game_window::Game_window(Point xy,int w,int h,const string& title) :
+Game_window::Game_window(Point xy,int w,int h,const string& title) : //, vector<Person>& people, Person current_person
 	Window(xy, w, h, title),
 	//universal logout 
 	logout_button(Point(x_max()-80,20),
@@ -452,7 +452,9 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) :
 //------Constructor continued------------------------------------------------------------
 {
 	//inputs the words
-	input_data(words);
+	//input_data(words);
+	//assigning the peeps string to people
+	//peeps = people;   //may need to be a refernce 
 
 	//should never need to hide
 	attach(logout_button);

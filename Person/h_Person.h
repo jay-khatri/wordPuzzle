@@ -225,9 +225,9 @@ bool isPerson(string name, vector<Person> peeps){
 	return false;
 }
 
-bool getPerson(string name, vector<Person> peeps){
+Person &getPerson(string name, vector<Person> &peeps){
 	for(int i = 0; i<peeps.size(); i++){
-		if (s.getName().find(name) != string::npos) {
+		if (peeps[i].getName().find(name) != string::npos) {
 			return peeps[i];
 		}
 	}

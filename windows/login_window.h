@@ -21,7 +21,7 @@ using namespace std;
 struct login_window: Graph_lib::Window
 {
 	login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
-	vector<Person>&peeps;
+	vector<Person>& peeps;
 	
 	Button exit; //quit
 	Button login;

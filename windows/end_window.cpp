@@ -7,7 +7,7 @@ Purpose: function and class definitons for end window--third window in a gui seq
 #include "game_window.h"
 #include "end_window.h"
 
-using namespace Graph_lib; //i added this nathan otherwise it wouldn't compile
+using namespace Graph_lib;
 using namespace std;
 
 end_window::end_window(Point xy, int w, int h, const string& title): 
@@ -25,14 +25,22 @@ exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 win_message(Point(x_max()/2, 50), "Congratulations! You beat a highscore!"),
 loss_message(Point(x_max()/2, 50), "Well, better luck next time. Play again?"),
 pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, "")
+
+//other initializations
+pic_file(""),
+top_pic(Point(0,0),"default.jpg")
 {
+	//if statement getting the already top player's pic and reassigning the Image.
 	attach(play_again);
 	attach(logout);
 	attach(enter_pic);
+	top_pic.set_mask(Point(0,0),100,100);
+	attach(top_pic);
 	attach(exit_button);
 	attach(pic_in);
 	
 	//depending on score attach win or loss message
+	//also will need different logic for how the player's score is getting passed in for beating highscores...
 }
 
 void end_window::enter_pic_pressed(){

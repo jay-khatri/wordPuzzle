@@ -10,7 +10,7 @@ Purpose: header file for end window--third window in a gui sequence*/
 #include "GUI.h"
 #include "Window.h"
 
-using namespace Graph_lib; //i added this nathan otherwise it wouldn't compile
+using namespace Graph_lib;
 using namespace std;
 
 struct end_window: Graph_lib::Window {
@@ -28,7 +28,8 @@ struct end_window: Graph_lib::Window {
 	//highscores
 	//player score
 	
-	//Image top_player;
+	Image top_pic; //only accepts .jpg or .gif
+	string pic_file;
 	
 	In_box pic_in;
 	

@@ -14,8 +14,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include "../dictionary/h_dictionary.h"
-#include "../Person/h_Person.h"
 
 using namespace Graph_lib;
 using namespace std;

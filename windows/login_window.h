@@ -5,6 +5,7 @@ Purpose: header file for login window--first window in the gui design*/
 
 #ifndef LOGIN_GUARD
 #define LOGIN_GUARD
+#pragma once 
 
 #include <iostream>
 #include <sstream>

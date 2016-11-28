@@ -5,6 +5,7 @@ Purpose: header file for end window--third window in a gui sequence*/
 
 #ifndef END_GUARD
 #define END_GUARD
+#pragma once 
 
 #include "login_window.h"
 #include "game_window.h"

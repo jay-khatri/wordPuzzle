@@ -5,6 +5,7 @@
 
 #ifndef GAME_GUARD
 #define GAME_GUARD 
+#pragma once 
 
 #include "login_window.h"
 #include "end_window.h"

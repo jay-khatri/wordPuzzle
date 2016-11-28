@@ -116,8 +116,8 @@ void login_window::back_pressed(){
 	new_user.show();
 }
 
-login_window::login_window(Point xy, int w, int h, const string& title): //, vector<Person>&pp
-Window(xy, w, h, title), //peeps(pp),
+login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>&pp):
+Window(xy, w, h, title), peeps(pp),
 
 //button initializations
 

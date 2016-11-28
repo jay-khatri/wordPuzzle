@@ -1,17 +1,11 @@
 bob 
-bobpic 
+default.jpg 
 1 2 3 
 1 2 3 
 1 2 3 
 
 jay 
-jaypic 
+default2.jpg 
 4 5 6 
 4 5 6 
 4 4 5 
-
-hello
-hello
-0 0 0 
-0 0 0 
-0 0 0 

@@ -26,9 +26,12 @@ struct end_window: Graph_lib::Window {
 	Text loss_message;
 	
 	//highscores
+	Text highscore1_proxy;
+	Text highscore2_proxy;
+	Text highscore3_proxy;
 	//player score
 	
-	Image top_pic; //only accepts .jpg or .gif
+	Image* top_pic; //only accepts .jpg or .gif
 	string pic_file;
 	
 	In_box pic_in;

@@ -24,18 +24,27 @@ exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 //need player score
 win_message(Point(x_max()/2, 50), "Congratulations! You beat a highscore!"),
 loss_message(Point(x_max()/2, 50), "Well, better luck next time. Play again?"),
-pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, "")
+pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, ""),
+highscore1_proxy(Point(100,215), "***highescore 1***"),
+highscore2_proxy(Point(100,230), "***highescore 2***"),
+highscore3_proxy(Point(100,245), "***highescore 3***"),
 
 //other initializations
-pic_file(""),
-top_pic(Point(0,0),"default.jpg")
+pic_file("default.jpg")
 {
 	//if statement getting the already top player's pic and reassigning the Image.
+	
+	Image* proxy = new Image(Point(100,100), pic_file);
+	top_pic = proxy;//ugh...^
+	
 	attach(play_again);
 	attach(logout);
 	attach(enter_pic);
-	top_pic.set_mask(Point(0,0),100,100);
-	attach(top_pic);
+	top_pic->set_mask(Point(0,0),100,100);
+	attach(*top_pic);
+	attach(highscore1_proxy);
+	attach(highscore2_proxy);
+	attach(highscore3_proxy);
 	attach(exit_button);
 	attach(pic_in);
 	
@@ -45,6 +54,11 @@ top_pic(Point(0,0),"default.jpg")
 
 void end_window::enter_pic_pressed(){
 	cout << pic_in.get_string() << '\n';//test for pic entry and add it to the current person object
+	pic_file = pic_in.get_string();
+	Image* new_pic = new Image(Point(100,100), pic_file);
+	top_pic = new_pic;
+	attach(*top_pic);
+	redraw();
 	
 	enter_pic.hide();
 	pic_in.hide();

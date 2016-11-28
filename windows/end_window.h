@@ -3,6 +3,9 @@ Final Project
 Last update: 11-21-16
 Purpose: header file for end window--third window in a gui sequence*/
 
+#ifndef END_GUARD
+#define END_GUARD
+
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -50,3 +53,5 @@ struct end_window: Graph_lib::Window {
 	static void cb_enter_pic(Address, Address);
 	
 };
+
+#endif

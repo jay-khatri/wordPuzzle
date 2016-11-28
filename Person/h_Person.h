@@ -82,7 +82,7 @@ class Person{
 				
 };
 
-void input_data(vector<Person>& input){
+void input_people(vector<Person>& input){
   ifstream ifs("personData.txt");
   while (ifs) {
 	if (ifs.eof()) {

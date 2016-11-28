@@ -5,7 +5,7 @@ Purpose: function and class desrciptions for
 login window--first window in the gui design*/
 
 #include "login_window.h"
-#include "game_window.h"
+
 
 void login_window::quit_pressed(){
 	hide();

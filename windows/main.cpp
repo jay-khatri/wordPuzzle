@@ -1,8 +1,6 @@
 /*This will be the actual main we use for the program*/
 
 #include "login_window.h"
-#include "../Person/h_Person.h"
-#include "../dictionary/h_dictionary.h"
 // #include "game_window.h"
 
 using namespace std;

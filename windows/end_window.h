@@ -8,7 +8,6 @@ Purpose: header file for end window--third window in a gui sequence*/
 
 #include "login_window.h"
 #include "game_window.h"
-#include "end_window.h"
 
 #include <iostream>
 #include <sstream>

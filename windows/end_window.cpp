@@ -3,6 +3,8 @@ Final Project
 Last update: 11-21-16
 Purpose: function and class definitons for end window--third window in a gui sequence*/
 
+#include "end_window.h"
+
 using namespace Graph_lib;
 using namespace std;
 

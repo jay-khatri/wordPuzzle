@@ -1,6 +1,7 @@
 
 #ifndef PERSON_G
 #define PERSON_G
+#pragma once 
 
 #include <iostream>
 #include <stdexcept>

@@ -1,5 +1,6 @@
 #ifndef DI_G
 #define DI_G
+#pragma once
 
 #include <iostream>
 #include <stdexcept>

@@ -28,7 +28,7 @@ class Person{
 		vector<int> highFive;
 	public:
 		//constructor just makes eveything zero
-		Person(string m_name, string m_pic);
+		Person(string m_name="", string m_pic="");
 		
 		//manipulating member functions
 		void setName(string i_name);

@@ -170,7 +170,7 @@ int Game_window::finish(){
 
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	if (is_entered(the_word, entered_words)){ // && isWord(words, the_word)
+	if (is_entered(the_word, entered_words) && isWord(words, the_word)){
 		none_word_message.put("");
 		entered_words.push_back(the_word);
 		all_words = the_word + " " + all_words;
@@ -182,7 +182,12 @@ void Game_window::enter(){
 		current_score.put(ss.str());
 	}
 	else{
-		none_word_message.put("Not valid word");
+		if(isWord(words, the_word)){
+			none_word_message.put("Alreay Entered");
+		}
+		else{
+			none_word_message.put("Not valid word");
+		}
 	}
 
 	current_word.put(""); //will be done whether that is a word or not
@@ -320,7 +325,7 @@ void Game_window::button_push25(){
 //-----------------------------------------------------------------------
 
 //constructor
-Game_window::Game_window(Point xy,int w,int h,const string& title) : //, vector<Person>& people, Person current_person
+Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person>& people, Person& current_person) :
 	Window(xy, w, h, title),
 	//universal logout 
 	logout_button(Point(x_max()-80,20),
@@ -450,9 +455,11 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) : //, vector<
 //------Constructor continued------------------------------------------------------------
 {
 	//inputs the words
-	//input_data(words);
+	input_data(words);
 	//assigning the peeps string to people
-	//peeps = people;   //may need to be a refernce 
+	peeps = people;   //may need to be a refernce
+	
+	the_player = current_person;
 
 	//should never need to hide
 	attach(logout_button);
@@ -470,21 +477,33 @@ Game_window::Game_window(Point xy,int w,int h,const string& title) : //, vector<
 	attach(text_5_high);
 	text_5_high.put("5X5 High Scores");
 	//score outboxs
-	attach(high_scores_3_1); //---------------------------------------
-	attach(high_scores_3_2); //need to put stuff from person call here
-	attach(high_scores_3_3); //---------------------------------------
+	attach(high_scores_3_1);
+	high_scores_3_1.put(getPlace(peeps,3,1));
+	attach(high_scores_3_2);
+	high_scores_3_2.put(getPlace(peeps,3,2));
+	attach(high_scores_3_3);
+	high_scores_3_3.put(getPlace(peeps,3,3));
 	attach(high_scores_4_1);
+	high_scores_4_1.put(getPlace(peeps,4,1));
 	attach(high_scores_4_2);
+	high_scores_4_2.put(getPlace(peeps,4,2));
 	attach(high_scores_4_3);
+	high_scores_4_3.put(getPlace(peeps,4,3));
 	attach(high_scores_5_1);
+	high_scores_5_1.put(getPlace(peeps,5,1));
 	attach(high_scores_5_2);
+	high_scores_5_2.put(getPlace(peeps,5,2));
 	attach(high_scores_5_3);
+	high_scores_5_3.put(getPlace(peeps,5,3));
+
 	attach(player_scores_3);
+	player_scores_3(the_player.getScores(3));
 	attach(player_scores_4);
+	player_scores_4(the_player.getScores(4));
 	attach(player_scores_5);
+	player_scores_5(the_player.getScores(5));
 	attach(user_name);
-	//user_name.put(   ) //need to get their username and put it here
-	//will also need to put all the scores here as well
+	user_name.put(the_player.getName());
 
 	//game buttons
 	attach(clear_word);

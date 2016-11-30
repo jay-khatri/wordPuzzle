@@ -22,13 +22,17 @@ struct Game_window : Graph_lib::Window{
 	Game_window(Point xy,
 		int w,
 		int h,
-		const string& title
-		); //vector<Person>& people, Person& current_person
+		const string& title,
+		vector<Person>& people, 
+		Person& current_person
+		); 
 		
 
 private:
+	//the player
+	Person the_player;
 	//vector of all the words
-	//vector<string> words;
+	vector<string> words;
 	
 	//vector of all the people
 	vector<Person> peeps;

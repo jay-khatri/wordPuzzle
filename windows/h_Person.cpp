@@ -5,7 +5,7 @@ Purpose: function and class defintions for the person class*/
 
 #include "h_Person.h"
 
-Person::Person(string m_name = "", string m_pic = ""):
+Person::Person(string m_name, string m_pic):
 	name(m_name), 
 	pic(m_name),
 	//initializing every vector to three instances of 0

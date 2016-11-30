@@ -2,12 +2,9 @@
 Final Project
 Last update: 11-14-16
 Purpose: header file for login window--first window in the gui design*/
+#pragma once
 
 #include "game_window.h"
-
-#ifndef LOGIN_GUARD
-#define LOGIN_GUARD
-#pragma once 
 
 #include <iostream>
 #include <sstream>
@@ -24,8 +21,10 @@ using namespace std;
 
 struct login_window: Graph_lib::Window
 {
-	login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
-	vector<Person>& peeps;
+	/*login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
+	vector<Person>& peeps;*/
+	
+	login_window(Point xy, int w, int h, const string& title);
 	
 	Button exit; //quit
 	Button login;
@@ -61,4 +60,3 @@ struct login_window: Graph_lib::Window
 	
 };
 
-#endif

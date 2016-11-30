@@ -609,7 +609,7 @@ int Game_window::quit(){ //when the user wants to logout
 	hide();
 
 	try{
-	login_window win(Point(100,100), 400, 200, "Login", peeps);
+	login_window win(Point(100,100), 400, 200, "Login");
 		return gui_main();
 	}
 	catch(...){

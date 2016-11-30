@@ -3,13 +3,16 @@ Final Project
 Last update: 11-21-16
 Purpose: header file for end window--third window in a gui sequence*/
 
-#ifndef END_GUARD
-#define END_GUARD
 #pragma once 
 
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include "Graph.h"
+#include "GUI.h"
+#include "Window.h"	
 #include "game_window.h"
-
-
+#include "login_window.h"
 
 using namespace Graph_lib;
 using namespace std;
@@ -17,7 +20,7 @@ using namespace std;
 struct end_window: Graph_lib::Window {
 	
 	end_window(Point xy, int w, int h, const string& title);//will need to pass in player vector and unique player
-	vector<Person> peeps;
+	//vector<Person> peeps;
 	
 	Button play_again;
 	Button exit_button;
@@ -53,4 +56,3 @@ struct end_window: Graph_lib::Window {
 	
 };
 
-#endif

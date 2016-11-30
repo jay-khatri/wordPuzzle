@@ -2,9 +2,7 @@
 //CSCE 121 Final Project
 //game window for project
 //this is the h file
-
-#ifndef GAME_GUARD
-#define GAME_GUARD 
+ 
 #pragma once 
 
 #include "login_window.h"
@@ -29,7 +27,7 @@ private:
 	//vector of all the words
 	//vector<string> words;
 	//vector of all the people
-	vector<Person> peeps;
+	//vector<Person> peeps;
 	//holds all the letters
 	vector<string> letters;
 	//the current word string the user is adding to
@@ -199,4 +197,3 @@ private:
 	static void cd_but25(Address, Address);
 };
 
-#endif

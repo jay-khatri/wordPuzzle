@@ -6,7 +6,6 @@ login window--first window in the gui design*/
 
 #include "login_window.h"
 
-
 void login_window::quit_pressed(){
 	hide();
 }
@@ -35,7 +34,7 @@ int login_window::enter_pressed(int i){
 	//Person p;
 	switch (i){
 		case 0:{
-			if (!isPerson(n, peeps)){//bool function for checking name
+			if (!(n=="jay")){//bool function for checking name
 				attach(dne_message); // didn't find player (bad)
 				cout << "found name: " << n << ".\n";//test messages
 				redraw();
@@ -56,7 +55,7 @@ int login_window::enter_pressed(int i){
 			break;
 		}
 		case 1:{
-			if (isPerson(n, peeps)){
+			if (n=="jay"){
 				attach(exist_message); // found player (bad)
 				cout << "found name: " << n << ".\n";//test messages
 				redraw();
@@ -77,12 +76,12 @@ int login_window::enter_pressed(int i){
 			break;
 		}
 	}
-	if (!isPerson(n, peeps) && i==0){//bool function for checking name
+	if (!(n=="jay") && i==0){//bool function for checking name
 		attach(dne_message); // didn't find player (bad)
 		cout << "found name: " << n << ".\n";//test messages
 		redraw();
 	}
-	else if (isPerson(n, peeps) && i==1){
+	else if (n=="jay" && i==1){ //isPerson(n, peeps)
 		attach(exist_message); // found player (bad)
 		cout << "found name: " << n << ".\n";//test messages
 		redraw();
@@ -116,8 +115,10 @@ void login_window::back_pressed(){
 	new_user.show();
 }
 
-login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>&pp):
-Window(xy, w, h, title), peeps(pp),
+/*login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>&pp):
+Window(xy, w, h, title), peeps(pp),*/
+login_window::login_window(Point xy, int w, int h, const string& title):
+Window(xy, w, h, title), 
 
 //button initializations
 

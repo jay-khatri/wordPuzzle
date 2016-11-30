@@ -500,19 +500,19 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	vector<int> top_three = the_player.getScores(3);
 	stringstream ss_3;
 	ss_3 << top_three[0] << " " << top_three[1] << " " << top_three[2];
-	player_scores_3.put(ss_3);
+	player_scores_3.put(ss_3.str());
 
 	attach(player_scores_4);
 	vector<int> top_four = the_player.getScores(4);
 	stringstream ss_4;
 	ss_4 << top_four[0] << " " << top_four[1] << " " << top_four[2];
-	player_scores_4.put(ss_4);
+	player_scores_4.put(ss_4.str());
 
 	attach(player_scores_5);
 	vector<int> top_five = the_player.getScores(5);
 	stringstream ss_5;
 	ss_5 << top_five[0] << " " << top_five[1] << " " << top_five[2];
-	player_scores_5.put(ss_5);
+	player_scores_5.put(ss_5.str());
 
 	attach(user_name);
 	user_name.put(the_player.getName());

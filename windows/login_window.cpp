@@ -17,6 +17,7 @@ void login_window::login_pressed(){
 	enter_login.show();
 	name_in.show();
 	attach(login_message);
+	output_term(peeps);
 }
 
 void login_window::new_user_pressed(){
@@ -32,11 +33,13 @@ int login_window::enter_pressed(int i){
 	string n = name_in.get_string();
 	//check/make a player here:
 	//Person p;
+	
 	switch (i){
 		case 0:{
 			if (!isPerson(n,peeps)){//bool function for checking name
 				attach(dne_message); // didn't find player (bad)
 				cout << "found name: " << n << ".\n";//test messages
+				
 				redraw();
 			}
 			else{

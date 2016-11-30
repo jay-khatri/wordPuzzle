@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PERSON_GUARD
+#define PERSON_GUARD
 
 #include <iostream>
 #include <stdexcept>
@@ -26,7 +27,7 @@ class Person{
 		vector<int> highFive;
 	public:
 		//constructor just makes eveything zero
-		Person(string m_name = "", string m_pic = "");
+		Person(string m_name, string m_pic);
 		
 		//manipulating member functions
 		void setName(string i_name);
@@ -75,3 +76,4 @@ bool isPerson(string name, vector<Person> peeps);
 
 Person &getPerson(string name, vector<Person> &peeps);
 
+#endif

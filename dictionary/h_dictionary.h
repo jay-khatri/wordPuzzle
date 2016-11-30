@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DICT_GUARD
+#define DICT_GUARD
 
 #include <iostream>
 #include <stdexcept>
@@ -17,3 +18,4 @@ void input_data(vector<string>& input);
 
 bool isWord(vector<string> input, string check);
 
+#endif

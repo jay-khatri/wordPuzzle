@@ -2,7 +2,8 @@
 Final Project
 Last update: 11-14-16
 Purpose: header file for login window--first window in the gui design*/
-#pragma once
+#ifndef LOGIN_GUARD
+#define LOGIN_GUARD
 
 #include "game_window.h"
 
@@ -21,10 +22,10 @@ using namespace std;
 
 struct login_window: Graph_lib::Window
 {
-	/*login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
-	vector<Person>& peeps;*/
+	login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
+	vector<Person>& peeps;
 	
-	login_window(Point xy, int w, int h, const string& title);
+	//login_window(Point xy, int w, int h, const string& title);
 	
 	Button exit; //quit
 	Button login;
@@ -35,7 +36,7 @@ struct login_window: Graph_lib::Window
 	
 	Text login_message;
 	Text new_message;
-	Text dne_message;//for telling the user that a name doesn't exist when trying to loging
+	Text dne_message;//for telling the user that a name doesn't exist when trying to log in
 	Text exist_message;//for telling the user that a name already exists when creating a username
 	
 	In_box name_in;
@@ -46,7 +47,7 @@ struct login_window: Graph_lib::Window
 	
 	void new_user_pressed();
 	
-	int enter_pressed(int i); //changed to int, so matched cpp file
+	int enter_pressed(int i);
 	
 	void back_pressed();
 	
@@ -60,3 +61,4 @@ struct login_window: Graph_lib::Window
 	
 };
 
+#endif

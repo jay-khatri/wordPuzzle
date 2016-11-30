@@ -3,10 +3,13 @@
 //game window for project
 //this is the h file
  
-#pragma once 
+#ifndef GAME_GUARD
+#define GAME_GUARD
 
 #include "login_window.h"
 #include "end_window.h"
+#include "h_Person.h"
+#include "h_dictionary.h"
 
 
 using namespace Graph_lib;
@@ -26,8 +29,10 @@ struct Game_window : Graph_lib::Window{
 private:
 	//vector of all the words
 	//vector<string> words;
+	
 	//vector of all the people
-	//vector<Person> peeps;
+	vector<Person> peeps;
+	
 	//holds all the letters
 	vector<string> letters;
 	//the current word string the user is adding to
@@ -197,3 +202,4 @@ private:
 	static void cd_but25(Address, Address);
 };
 
+#endif

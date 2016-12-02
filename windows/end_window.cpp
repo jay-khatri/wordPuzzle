@@ -22,26 +22,23 @@ exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 win_message(Point(90, 50), "Congratulations! You beat a highscore!"),
 loss_message(Point(90, 50), "Well, better luck next time. Play again?"),
 score_msg(Point(x_max()-150, 100), "Final Score: " + to_string(final_score)),
+high1_str(getPlace(peeps,game_type,1)),
+highscore1_proxy(Point(100,230), high1_str),
+high2_str(getPlace(peeps,game_type,2)),
+highscore2_proxy(Point(100,245), high2_str),
+high3_str(getPlace(peeps,game_type,3)),
+highscore3_proxy(Point(100,260), high3_str),
 pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, ""),
-<<<<<<< HEAD
-highscore1_proxy(Point(100,230), getPlace(peeps,game_type,1)),
-highscore2_proxy(Point(100,245), getPlace(peeps,game_type,2)),
-highscore3_proxy(Point(100,260), getPlace(peeps,game_type,3)),
 top_msg(Point(110,90),"Top Player: "),
-enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
-enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)"),
 high_scores_msg(Point(90,215), game_string(game_type) + "High Scores"),
-top_msg(Point(105,85),"Top Player: "),
+
 enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
 enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)"),
-high_scores_msg(Point(95,215), game_string(game_type) + "High Scores"),
+
 //other initializations
 pic_file("default.jpg")
 {
-	the_player.addScore(gt, score);
-	highscore1_proxy{Point(100,230), getPlace(peeps,game_type,1)};
-	highscore2_proxy{Point(100,245), getPlace(peeps,game_type,2)};
-	highscore3_proxy{Point(100,260), getPlace(peeps,game_type,3)};
+	//the_player.addScore(gt, score);
 	//if statement getting the already top player's pic and reassigning the Image.
 	
 	Image* proxy = new Image(Point(100,100), pic_file);

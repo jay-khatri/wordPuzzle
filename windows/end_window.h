@@ -44,8 +44,11 @@ struct end_window: Graph_lib::Window {
 	
 	//highscores
 	Text highscore1_proxy;
+	string high1_str;
 	Text highscore2_proxy;
+	string high2_str;
 	Text highscore3_proxy;
+	string high3_str;
 	//player score
 	
 	Image* top_pic; //only accepts .jpg or .gif

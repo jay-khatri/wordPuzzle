@@ -9,7 +9,7 @@ Purpose: header file for end window--third window in a gui sequence*/
 #include "game_window.h"
 #include "login_window.h"
 #include "h_Person.h"
-#include "h_dictionary.h"
+//#include "h_dictionary.h"
 
 #include <iostream>
 #include <sstream>

@@ -8,10 +8,8 @@
 using namespace std;
 
 int main(){
-	vector<std::__cxx11::basic_string<char> > words;
+	//vector<std::__cxx11::basic_string<char> > words;
 	vector<Person> people;
-
-	input_data(words);
 
 	input_people(people);
 

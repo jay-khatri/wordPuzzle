@@ -14,7 +14,7 @@ Purpose: header file for login window--first window in the gui design*/
 #include "GUI.h"
 #include "Window.h"
 #include "h_Person.h"
-#include "h_dictionary.h"
+//#include "h_dictionary.h"
 
 
 using namespace Graph_lib;

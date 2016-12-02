@@ -4,8 +4,6 @@
 //this is the cpp file
 
 #include "game_window.h"
-#include "h_Person.h"
-#include "h_dictionary.h"
 
 using namespace Graph_lib;
 using namespace std;
@@ -452,7 +450,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 //------Constructor continued------------------------------------------------------------
 {
 	//inputs the words
-	//input_data(words);
+	input_data(words);
 	//assigning the peeps string to people
 	peeps = people;   //may need to be a reference 
 

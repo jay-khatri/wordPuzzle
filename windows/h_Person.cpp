@@ -107,9 +107,10 @@ void input_people(vector<Person>& input){
 		return;
 	}
   }
+cout << "This is the input" << input.size();
 }
 
-void output_data(vector<Person> input) {
+void output_people(vector<Person> input) {
 	ofstream ofs("personData.txt");
 	for (int s = 0; s<input.size(); s++) {
 		ofs << input[s].getName() << endl << input[s].getPic() << endl;

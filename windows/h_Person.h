@@ -45,29 +45,9 @@ class Person{
 
 void input_people(vector<Person>& input);
 
-void output_data(vector<Person> input);
+void output_people(vector<Person> input);
 
 void output_term(vector<Person>& input);
-
-//returns a string given game type and place
-//string GUI_out(int gametype, int place, vector<Person> people){
-	//place = place -1;
-	//vector<int> intcompare;
-	//vector<string> strcompare;
-	//for(int i = 0; i<people.size();i++){
-		//intcompare.push_back(people[i].getScores(gametype)[2]);
-	//}
-	//for(int i = 0; i<people.size();i++){
-		//strcompare.push_back(people[i].getName());
-	//}
-	//string name = strcompare[place];
-	//string inter = ": ";
-	//int intwant = intcompare[place];
-	//string num = to_string(intwant);
-	//string final =  name + inter + num;
-	//return final;
-//}
-//function that return that index of the top scorer in a vecotr
 
 int topIndex(vector<Person> peeps, int gametype);
 

@@ -30,9 +30,9 @@ high_scores_msg(Point(95,215), game_string(game_type) + "High Scores"),
 pic_file("default.jpg")
 {
 	the_player.addScore(gt, score);
-	highscore1_proxy{Point(100,230), getPlace(peeps,game_type,1)};
-	highscore2_proxy{Point(100,245), getPlace(peeps,game_type,2)};
-	highscore3_proxy{Point(100,260), getPlace(peeps,game_type,3)};
+	highscore1_proxy = Text highscore1{Point(100,230), getPlace(peeps,game_type,1)};
+	highscore2_proxy = Text highscore2{Point(100,245), getPlace(peeps,game_type,2)};
+	highscore3_proxy =  Text highscore3{Point(100,260), getPlace(peeps,game_type,3)};
 	//if statement getting the already top player's pic and reassigning the Image.
 	
 	Image* proxy = new Image(Point(100,100), pic_file);

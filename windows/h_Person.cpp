@@ -87,7 +87,7 @@ void input_people(vector<Person>& input){
 	int r1;int r2;int r3;
 	int f1;int f2;int f3;
     getline(ifs,name);  // use getline to deal with spaces 
-	cout << name << endl;
+	cout << name << ": " << name.length() << endl;
     getline(ifs,picture); // use getline to deal with spaces
 	cout << picture << endl;
 	ifs >> t1 >> t2 >> t3;

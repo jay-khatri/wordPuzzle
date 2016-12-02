@@ -38,7 +38,7 @@ int login_window::enter_pressed(int i){
 		case 0:{
 			if (!isPerson(n,peeps)){//bool function for checking name
 				attach(dne_message); // didn't find player (bad)
-				cout << "found name: " << n << ".\n";//test messages
+				cout << "not found name: " << n << ".\n";//test messages
 				
 				redraw();
 			}
@@ -58,9 +58,9 @@ int login_window::enter_pressed(int i){
 			break;
 		}
 		case 1:{
-			if (n=="jay"){
+			if (isPerson(n,peeps)){
 				attach(exist_message); // found player (bad)
-				cout << "found name: " << n << ".\n";//test messages
+				cout << "found name: " << n << "(bad).\n";//test messages
 				redraw();
 			}
 			else{

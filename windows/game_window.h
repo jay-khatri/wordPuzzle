@@ -31,6 +31,8 @@ struct Game_window : Graph_lib::Window{
 private:
 	//the player
 	Person the_player;
+	bool did_win;
+
 	//vector of all the words
 	vector<string> words;
 	

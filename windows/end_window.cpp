@@ -19,9 +19,18 @@ enter_pic(Point(x_max()-60, y_max()/2 - 25), 50, 25, "enter", cb_enter_pic),
 exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 
 //Text initializations
-win_message(Point(x_max()/2, 50), "Congratulations! You beat a highscore!"),
-loss_message(Point(x_max()/2, 50), "Well, better luck next time. Play again?"),
+win_message(Point(90, 50), "Congratulations! You beat a highscore!"),
+loss_message(Point(90, 50), "Well, better luck next time. Play again?"),
+score_msg(Point(x_max()-150, 100), "Final Score: " + to_string(final_score)),
 pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, ""),
+<<<<<<< HEAD
+highscore1_proxy(Point(100,230), getPlace(peeps,game_type,1)),
+highscore2_proxy(Point(100,245), getPlace(peeps,game_type,2)),
+highscore3_proxy(Point(100,260), getPlace(peeps,game_type,3)),
+top_msg(Point(110,90),"Top Player: "),
+enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
+enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)"),
+high_scores_msg(Point(90,215), game_string(game_type) + "High Scores"),
 top_msg(Point(105,85),"Top Player: "),
 enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
 enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)"),
@@ -44,6 +53,9 @@ pic_file("default.jpg")
 	top_pic->set_mask(Point(0,0),100,100);
 	attach(*top_pic);
 	attach(top_msg);
+	//attach(win_message);
+	//attach(loss_message);
+	attach(score_msg);
 	attach(highscore1_proxy);
 	attach(highscore2_proxy);
 	attach(highscore3_proxy);

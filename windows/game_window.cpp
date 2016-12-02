@@ -58,7 +58,7 @@ void Game_window::home_to_game(){
 	text_3_high.hide();
 	text_4_high.hide();
 	text_5_high.hide();
-	user_name.hide();
+	detach(user_name);
 	play_3.hide();
 	play_4.hide();
 	play_5.hide();
@@ -342,8 +342,8 @@ void Game_window::button_push25(){
 //-----------------------------------------------------------------------
 
 //constructor
-Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person>& people, Person& current_person) : //, vector<Person>& people, Person current_person
-	Window(xy, w, h, title),
+Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person>& people, Person& current_person) :
+	Window(xy, w, h, title), peeps(people), the_player(current_person),
 	//universal logout 
 	logout_button(Point(x_max()-80,20),
 		70, 20, "logout", cd_logout_button),
@@ -390,8 +390,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	player_scores_5(Point(300, 340),
 		80, 20, "3rd:"),
 	//displays on home page
-	user_name(Point(72, 300),
-		115, 30, "User: "),
+	user_name(Point(46, 350), "User: " + the_player.getName()),
 
 	//text output for the game page
 	none_word_message(Point(390,320),
@@ -466,8 +465,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 		40,40,"23",cd_but23),
 	but24(Point(360,220),
 		40,40,"24",cd_but24),
-	but25(Point(360,260),
-		40,40,"25",cd_but25)
+	but25(Point(360,260),40,40,"25", cd_but25)
 
 //------Constructor continued------------------------------------------------------------
 {
@@ -505,7 +503,6 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	attach(player_scores_4);
 	attach(player_scores_5);
 	attach(user_name);
-	//user_name.put(   ) //need to get their username and put it here
 	//will also need to put all the scores here as well
 
 	//game buttons
@@ -740,3 +737,5 @@ void Game_window::cd_but25(Address, Address pw){
 	reference_to<Game_window>(pw).button_push25();
 }
 //---------------------------------------------------------------------------
+// Person Functions:
+string Person::getName(){ return name;}

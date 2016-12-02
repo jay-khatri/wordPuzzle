@@ -38,6 +38,7 @@ struct login_window: Graph_lib::Window
 	Text new_message;
 	Text dne_message;//for telling the user that a name doesn't exist when trying to log in
 	Text exist_message;//for telling the user that a name already exists when creating a username
+	Text name_error;
 	
 	In_box name_in;
 	

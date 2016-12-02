@@ -100,7 +100,7 @@ private:
 	Out_box player_scores_3;
 	Out_box player_scores_4;
 	Out_box player_scores_5;
-	Out_box user_name;
+	Text user_name;
 	//Home page buttons
 	Button play_3;
 	Button play_4;

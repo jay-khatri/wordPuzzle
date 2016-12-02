@@ -36,6 +36,7 @@ int login_window::enter_pressed(int i){
 	switch (i){
 		case 0:{
 			if (!isPerson(n,peeps)){//bool function for checking name
+				detach(dne_message);
 				attach(dne_message); // didn't find player (bad)
 				cout << "not found name: " << n << ".\n";//test messages
 				
@@ -43,6 +44,8 @@ int login_window::enter_pressed(int i){
 			}
 			else{
 				cout << name_in.get_string() << "(reference)\n";//get reference in vector
+				
+				the_player = getPerson(n,peeps);
 		
 				quit_pressed();
 				try{
@@ -58,22 +61,35 @@ int login_window::enter_pressed(int i){
 		}
 		case 1:{
 			if (isPerson(n,peeps)){
+				detach(exist_message);
+				detach(name_error);
 				attach(exist_message); // found player (bad)
 				cout << "found name: " << n << "(bad).\n";//test messages
 				redraw();
 			}
 			else{
 				cout << name_in.get_string() << "(creating)\n";//in actual program push back player here.
+				if(n!="" && n!=" " && n.size()>2){
+					Person p(n,"");
+					the_player = p;
+					
+					quit_pressed();
+					try{
+						Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player); //, peeps,
+						return gui_main();
+					}
+					catch(...){
+						cout << "Something went wrong\n";
+						return 1;
+					}
+				}
+				else{
+					detach(exist_message);
+					detach(name_error);
+					attach(name_error);
+					redraw();
+				}
 		
-				quit_pressed();
-				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player); //, peeps,
-					return gui_main();
-				}
-				catch(...){
-					cout << "Something went wrong\n";
-					return 1;
-				}
 			}
 			break;
 		}
@@ -90,14 +106,13 @@ void login_window::back_pressed(){
 	detach(new_message);
 	detach(dne_message);
 	detach(exist_message);
+	detach(name_error);
 	login.show();
 	new_user.show();
 }
 
 login_window::login_window(Point xy, int w, int h, const string& title, vector<Person>&pp):
 Window(xy, w, h, title), peeps(pp),
-/*login_window::login_window(Point xy, int w, int h, const string& title):
-Window(xy, w, h, title), */
 
 //button initializations
 
@@ -122,6 +137,8 @@ new_message(Point(x_max()/2-50, y_max()/2 - 30), "Create username"),
 dne_message(Point(x_max()/2 - 65, y_max()/2+30), "Username not found"),
 
 exist_message(Point(x_max()/2 - 73, y_max()/2+30), "Username already exists"),
+
+name_error(Point(75, y_max()/2+30), "Invalid username (must be at least 3 chars)"),
 
 name_in(Point(x_max()/2-60, y_max()/2 - 20), 120, 30, "")
 

@@ -454,7 +454,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	//inputs the words
 	//input_data(words);
 	//assigning the peeps string to people
-	peeps = people;   //may need to be a refernce 
+	peeps = people;   //may need to be a reference 
 
 	//should never need to hide
 	attach(logout_button);

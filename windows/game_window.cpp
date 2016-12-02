@@ -495,22 +495,35 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	attach(high_scores_3_2); //need to put stuff from person call here
 	high_scores_3_2.put(getPlace(peeps,3,2));
 	attach(high_scores_3_3); //---------------------------------------
-	high_scores_3_3.put(getPlace(peeps,3,3));
+	//high_scores_3_3.put(getPlace(peeps,3,3));
 	attach(high_scores_4_1);
 	high_scores_4_1.put(getPlace(peeps,4,1));
 	attach(high_scores_4_2);
 	high_scores_4_2.put(getPlace(peeps,4,2));
 	attach(high_scores_4_3);
-	high_scores_4_3.put(getPlace(peeps,4,3));
+	//high_scores_4_3.put(getPlace(peeps,4,3));
 	attach(high_scores_5_1);
 	high_scores_5_1.put(getPlace(peeps,5,1));
 	attach(high_scores_5_2);
 	high_scores_5_2.put(getPlace(peeps,5,2));
 	attach(high_scores_5_3);
-	high_scores_5_3.put(getPlace(peeps,5,3));
+	//high_scores_5_3.put(getPlace(peeps,5,3));
+
 	attach(player_scores_3);
+	stringstream ss_3;
+	vector<int> three = the_player.getScores(3);
+	ss_3 << three[2];
+	player_scores_3.put(ss_3.str());
 	attach(player_scores_4);
+	stringstream ss_4;
+	vector<int> four = the_player.getScores(4);
+	ss_4 << four[2];
+	player_scores_3.put(ss_4.str());
 	attach(player_scores_5);
+	stringstream ss_5;
+	vector<int> five = the_player.getScores(5);
+	ss_5 << five[2];
+	player_scores_3.put(ss_5.str());
 	attach(user_name);
 	//will also need to put all the scores here as well
 

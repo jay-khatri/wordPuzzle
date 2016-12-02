@@ -22,10 +22,14 @@ exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 win_message(Point(x_max()/2, 50), "Congratulations! You beat a highscore!"),
 loss_message(Point(x_max()/2, 50), "Well, better luck next time. Play again?"),
 pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, ""),
-highscore1_proxy(Point(100,215), "***highescore 1***"),
-highscore2_proxy(Point(100,230), "***highescore 2***"),
-highscore3_proxy(Point(100,245), "***highescore 3***"),
-enter_pic_msg(Point(x_max()-170, y_max()/2 - 25), "Enter the picture file (*.jpg or *.gif)"),
+highscore1_proxy(Point(100,230), getPlace(peeps,game_type,1)),
+highscore2_proxy(Point(100,245), getPlace(peeps,game_type,2)),
+highscore3_proxy(Point(100,260), getPlace(peeps,game_type,3)),
+top_msg(Point(105,85),"Top Player: "),
+enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
+enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)"),
+high_scores_msg(Point(95,215), game_string(game_type) + "High Scores"),
+
 //other initializations
 pic_file("default.jpg")
 {
@@ -39,14 +43,38 @@ pic_file("default.jpg")
 	attach(enter_pic);
 	top_pic->set_mask(Point(0,0),100,100);
 	attach(*top_pic);
+	attach(top_msg);
 	attach(highscore1_proxy);
 	attach(highscore2_proxy);
 	attach(highscore3_proxy);
+	attach(enter_pic_msg1);
+	attach(enter_pic_msg2);
+	attach(high_scores_msg);
 	attach(exit_button);
 	attach(pic_in);
 	
 	//depending on score attach win or loss message
 	//also will need different logic for how the player's score is getting passed in for beating highscores...
+}
+
+string game_string(int i){
+	switch(i){
+		case 3:{
+			return "(3x3) ";
+			break;
+		}
+		case 4:{
+			return "(4x4) ";
+			break;
+		}
+		case 5:{
+			return "(5x5) ";
+			break;
+		}
+		default:{
+			return "ERROR: ";
+		}
+	}
 }
 
 void end_window::enter_pic_pressed(){

@@ -36,7 +36,10 @@ struct end_window: Graph_lib::Window {
 	
 	Text win_message;
 	Text loss_message;
-	Text enter_pic_msg;
+	Text high_scores_msg;
+	Text top_msg;
+	Text enter_pic_msg1;
+	Text enter_pic_msg2;
 	
 	//highscores
 	Text highscore1_proxy;
@@ -63,5 +66,7 @@ struct end_window: Graph_lib::Window {
 	static void cb_enter_pic(Address, Address);
 	
 };
+
+string game_string(int i);
 
 #endif

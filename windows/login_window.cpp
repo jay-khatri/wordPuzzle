@@ -17,7 +17,6 @@ void login_window::login_pressed(){
 	enter_login.show();
 	name_in.show();
 	attach(login_message);
-	output_term(peeps);
 }
 
 void login_window::new_user_pressed(){
@@ -163,3 +162,6 @@ void login_window::cb_enter_user(Address, Address pw) {
 void login_window::cb_enter_login(Address, Address pw) {
 	reference_to<login_window>(pw).enter_pressed(0);
 }
+
+//Person Functions:
+

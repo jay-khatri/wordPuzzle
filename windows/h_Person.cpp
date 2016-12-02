@@ -107,7 +107,7 @@ void input_people(vector<Person>& input){
 		return;
 	}
   }
-cout << "This is the input" << input.size();
+cout << "This is the input" << input.size() << "\n";
 }
 
 void output_people(vector<Person> input) {

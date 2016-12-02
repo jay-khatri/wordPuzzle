@@ -320,7 +320,7 @@ void Game_window::button_push25(){
 //-----------------------------------------------------------------------
 
 //constructor
-Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person>& people, Person current_person) : //, vector<Person>& people, Person current_person
+Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person>& people, Person& current_person) : //, vector<Person>& people, Person current_person
 	Window(xy, w, h, title),
 	//universal logout 
 	logout_button(Point(x_max()-80,20),

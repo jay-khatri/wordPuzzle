@@ -22,7 +22,9 @@ struct Game_window : Graph_lib::Window{
 	Game_window(Point xy,
 		int w,
 		int h,
-		const string& title
+		const string& title,
+		vector<Person>& people,
+		Person& current_person
 		); //vector<Person>& people, Person& current_person
 		
 

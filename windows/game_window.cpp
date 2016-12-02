@@ -384,11 +384,11 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	high_scores_5_3(Point(300, 260),
 		80, 20, "3rd:"),
 	player_scores_3(Point(300, 300),
-		80, 20, "1st:"),
+		80, 20, "3X3 User High Score:"),
 	player_scores_4(Point(300, 320),
-		80, 20, "2nd:"),
+		80, 20, "4X4 User High Score:"),
 	player_scores_5(Point(300, 340),
-		80, 20, "3rd:"),
+		80, 20, "5X5 User High Score:"),
 	//displays on home page
 	user_name(Point(46, 350), "User: " + the_player.getName()),
 
@@ -495,19 +495,19 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	attach(high_scores_3_2); //need to put stuff from person call here
 	high_scores_3_2.put(getPlace(peeps,3,2));
 	attach(high_scores_3_3); //---------------------------------------
-	//high_scores_3_3.put(getPlace(peeps,3,3));
+	high_scores_3_3.put(getPlace(peeps,3,3));
 	attach(high_scores_4_1);
 	high_scores_4_1.put(getPlace(peeps,4,1));
 	attach(high_scores_4_2);
 	high_scores_4_2.put(getPlace(peeps,4,2));
 	attach(high_scores_4_3);
-	//high_scores_4_3.put(getPlace(peeps,4,3));
+	high_scores_4_3.put(getPlace(peeps,4,3));
 	attach(high_scores_5_1);
 	high_scores_5_1.put(getPlace(peeps,5,1));
 	attach(high_scores_5_2);
 	high_scores_5_2.put(getPlace(peeps,5,2));
 	attach(high_scores_5_3);
-	//high_scores_5_3.put(getPlace(peeps,5,3));
+	high_scores_5_3.put(getPlace(peeps,5,3));
 
 	attach(player_scores_3);
 	stringstream ss_3;
@@ -518,12 +518,12 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	stringstream ss_4;
 	vector<int> four = the_player.getScores(4);
 	ss_4 << four[2];
-	player_scores_3.put(ss_4.str());
+	player_scores_4.put(ss_4.str());
 	attach(player_scores_5);
 	stringstream ss_5;
 	vector<int> five = the_player.getScores(5);
 	ss_5 << five[2];
-	player_scores_3.put(ss_5.str());
+	player_scores_5.put(ss_5.str());
 	attach(user_name);
 	//will also need to put all the scores here as well
 
@@ -774,11 +774,18 @@ string getPlace(vector<Person> peeps, int gametype, int place){
 		string str_place = to_string(i+1);
 		string str_score = to_string(topvec[i].getScores(gametype)[2]);
 		string str_name = topvec[i].getName();
-		string fin_string = str_place + ": " + str_name + ",  " + str_score;
+		string fin_string = str_name + " - " + str_score;//str_place + ": " + //was at the front
 		places.push_back(fin_string);
 	}
 	if (place > 0 && place < 4 && gametype > 2 && gametype < 6){
-		return places[place-1];
+		//size is 2, place is 1,2,3 (3 should fail)
+		cout << place << ": " << topvec.size() << "\n";
+		if(topvec.size()>=place){ 
+			return places[place-1];
+		}
+		else{
+			return "Score DNE";
+		}
 	}else{
 		return "You doing something wrong";
 	}

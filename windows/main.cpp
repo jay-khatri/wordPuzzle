@@ -4,15 +4,15 @@
 #include "h_Person.h"
 #include "h_dictionary.h"
 #include <vector>
-// #include "game_window.h"
+#include <string>
 
 using namespace std;
 
 int main(){
-	vector<string> words;
+	vector<std::__cxx11::basic_string<char> > words;
 	vector<Person> people;
 
-	//input_data(words);
+	input_data(words);
 
 	input_people(people);
 

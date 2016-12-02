@@ -491,14 +491,23 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	text_5_high.put("5X5 High Scores");
 	//score outboxs
 	attach(high_scores_3_1); //---------------------------------------
+	high_scores_3_1.put(getPlace(peeps,3,1));
 	attach(high_scores_3_2); //need to put stuff from person call here
+	high_scores_3_2.put(getPlace(peeps,3,2));
 	attach(high_scores_3_3); //---------------------------------------
+	high_scores_3_3.put(getPlace(peeps,3,3));
 	attach(high_scores_4_1);
+	high_scores_4_1.put(getPlace(peeps,4,1));
 	attach(high_scores_4_2);
+	high_scores_4_2.put(getPlace(peeps,4,2));
 	attach(high_scores_4_3);
+	high_scores_4_3.put(getPlace(peeps,4,3));
 	attach(high_scores_5_1);
+	high_scores_5_1.put(getPlace(peeps,5,1));
 	attach(high_scores_5_2);
+	high_scores_5_2.put(getPlace(peeps,5,2));
 	attach(high_scores_5_3);
+	high_scores_5_3.put(getPlace(peeps,5,3));
 	attach(player_scores_3);
 	attach(player_scores_4);
 	attach(player_scores_5);
@@ -739,3 +748,52 @@ void Game_window::cd_but25(Address, Address pw){
 //---------------------------------------------------------------------------
 // Person Functions:
 string Person::getName(){ return name;}
+
+string getPlace(vector<Person> peeps, int gametype, int place){
+	vector<Person> topvec;
+	vector<string> places;
+	//gets the index of the person with the highest score
+	for(int i = 0; i<3 & peeps.size() > 0; i++){
+		topvec.push_back(peeps[topIndex(peeps, gametype)]);
+		peeps.erase(peeps.begin() + topIndex(peeps, gametype));
+	}
+	for(int i = 0; i<topvec.size(); i++){
+		string str_place = to_string(i+1);
+		string str_score = to_string(topvec[i].getScores(gametype)[2]);
+		string str_name = topvec[i].getName();
+		string fin_string = str_place + ": " + str_name + ",  " + str_score;
+		places.push_back(fin_string);
+	}
+	if (place > 0 && place < 4 && gametype > 2 && gametype < 6){
+		return places[place-1];
+	}else{
+		return "You doing something wrong";
+	}
+}
+
+vector<int> Person::getScores(int gameType){
+	if (gameType == 3){
+		return highThree;
+	}else if(gameType == 4){
+		return highFour;
+	}else if(gameType == 5){
+		return highFive;
+	}else{
+		cout << "error in getScores input\n";
+		vector<int> bad;
+		return bad;
+	}
+}
+
+int topIndex(vector<Person> peeps, int gametype){
+	int top_index = 0;
+	int top_score = 0;
+	for(int i = 0; i<peeps.size(); i++){
+		int curr = peeps[i].getScores(gametype)[2];
+		if (curr  >= top_score){
+			top_index = i;
+			top_score = curr;
+		}
+	}
+	return top_index;
+}

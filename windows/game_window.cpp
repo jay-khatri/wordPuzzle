@@ -192,7 +192,7 @@ int Game_window::finish(){
 
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	if (is_entered(the_word, entered_words)){ // && isWord(words, the_word)
+	if (is_entered(the_word, entered_words) && isWord(words, the_word)){ // && isWord(words, the_word)
 		none_word_message.put("");
 		entered_words.push_back(the_word);
 		all_words = the_word + " " + all_words;
@@ -204,7 +204,12 @@ void Game_window::enter(){
 		current_score.put(ss.str());
 	}
 	else{
-		none_word_message.put("Not valid word");
+		if(isWord(words, the_word)){
+			none_word_message.put("Already Entered");
+		}
+		else{
+			none_word_message.put("Not A Word");
+		}
 	}
 
 	current_word.put(""); //will be done whether that is a word or not

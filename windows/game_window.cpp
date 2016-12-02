@@ -634,14 +634,10 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	letters.push_back("y");
 	letters.push_back("z");
 	letters.push_back("a"); //increases the likelyhood of a vowel to about 36%
-	letters.push_back("a");
 	letters.push_back("e");
 	letters.push_back("e");
 	letters.push_back("i");
-	letters.push_back("i");
 	letters.push_back("o");
-	letters.push_back("o");
-	letters.push_back("u");
 	letters.push_back("u");
 }
 

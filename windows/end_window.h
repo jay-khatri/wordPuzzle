@@ -24,8 +24,10 @@ using namespace std;
 struct end_window: Graph_lib::Window {
 	
 	end_window(Point xy, int w, int h, const string& title);//will need to pass in player vector and unique player
+	end_window(Point xy, int w, int h, const string& title, vector<Person>& people, Person& pp, int score);
 	vector<Person> peeps;
 	Person the_player;
+	int final_score;
 	
 	Button play_again;
 	Button exit_button;

@@ -181,7 +181,7 @@ void Game_window::clear(){
 int Game_window::finish(){
 	hide();
 	try{
-		end_window win3(Point(100,100), 400, 400, "End");
+		end_window win3(Point(100,100), 400, 400, "End", peeps, the_player, game_score);
 		return gui_main();
 	}
 	catch(...){

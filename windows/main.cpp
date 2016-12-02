@@ -4,7 +4,6 @@
 #include "h_Person.h"
 #include "h_dictionary.h"
 #include <vector>
-#include <string>
 
 using namespace std;
 

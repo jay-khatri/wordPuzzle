@@ -13,7 +13,7 @@ void input_data(vector<string>& input){
     }
 	string word;
     getline(ifs,word);  // use getline to deal with spaces 
-	word = word.substr(0, word.length()-1);
+	//word = word.substr(0, word.length()-1);
 	input.push_back(word);
   }
 }

@@ -114,35 +114,35 @@ void Game_window::show_buttons(){
 //to appear since vowels are usually 36% of an average english word
 void Game_window::randomize_buttons(){
 	if((game_type == 3) || (game_type == 4) || (game_type == 5)){
-		but1.label = letters[rand()% 35];
-		but2.label = letters[rand()% 35];
-		but3.label = letters[rand()% 35];
-		but6.label = letters[rand()% 35];
-		but7.label = letters[rand()% 35];
-		but8.label = letters[rand()% 35];
-		but11.label = letters[rand()% 35];
-		but12.label = letters[rand()% 35];
-		but13.label = letters[rand()% 35];
+		but1.label = letters[rand()% 31];
+		but2.label = letters[rand()% 31];
+		but3.label = letters[rand()% 31];
+		but6.label = letters[rand()% 31];
+		but7.label = letters[rand()% 31];
+		but8.label = letters[rand()% 31];
+		but11.label = letters[rand()% 31];
+		but12.label = letters[rand()% 31];
+		but13.label = letters[rand()% 31];
 	}
 	if((game_type == 4) || (game_type==5)){
-		but4.label = letters[rand()% 35];
-		but9.label = letters[rand()% 35];
-		but14.label = letters[rand()% 35];
-		but16.label = letters[rand()% 35];
-		but17.label = letters[rand()% 35];
-		but18.label = letters[rand()% 35];
-		but19.label = letters[rand()% 35]; 
+		but4.label = letters[rand()% 31];
+		but9.label = letters[rand()% 31];
+		but14.label = letters[rand()% 31];
+		but16.label = letters[rand()% 31];
+		but17.label = letters[rand()% 31];
+		but18.label = letters[rand()% 31];
+		but19.label = letters[rand()% 31]; 
 	}
 	if(game_type == 5){
-		but5.label = letters[rand()% 35];
-		but10.label = letters[rand()% 35];
-		but15.label = letters[rand()% 35];
-		but20.label = letters[rand()% 35];
-		but21.label = letters[rand()% 35];
-		but22.label = letters[rand()% 35];
-		but23.label = letters[rand()% 35];
-		but24.label = letters[rand()% 35];
-		but25.label = letters[rand()% 35];
+		but5.label = letters[rand()% 31];
+		but10.label = letters[rand()% 31];
+		but15.label = letters[rand()% 31];
+		but20.label = letters[rand()% 31];
+		but21.label = letters[rand()% 31];
+		but22.label = letters[rand()% 31];
+		but23.label = letters[rand()% 31];
+		but24.label = letters[rand()% 31];
+		but25.label = letters[rand()% 31];
 	}
 }
 
@@ -192,7 +192,7 @@ int Game_window::finish(){
 
 //when a word is entered, the score, total words, and current word will change
 void Game_window::enter(){
-	if (is_entered(the_word, entered_words) && isWord(words, the_word)){ // && isWord(words, the_word)
+	if (is_entered(the_word, entered_words) && isWord(words, the_word)){
 		none_word_message.put("");
 		entered_words.push_back(the_word);
 		all_words = the_word + " " + all_words;
@@ -494,12 +494,12 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	text_4_high.put("4X4 High Scores");
 	attach(text_5_high);
 	text_5_high.put("5X5 High Scores");
-	//score outboxs
-	attach(high_scores_3_1); //---------------------------------------
+	//score outboxes
+	attach(high_scores_3_1);
 	high_scores_3_1.put(getPlace(peeps,3,1));
-	attach(high_scores_3_2); //need to put stuff from person call here
+	attach(high_scores_3_2);
 	high_scores_3_2.put(getPlace(peeps,3,2));
-	attach(high_scores_3_3); //---------------------------------------
+	attach(high_scores_3_3);
 	high_scores_3_3.put(getPlace(peeps,3,3));
 	attach(high_scores_4_1);
 	high_scores_4_1.put(getPlace(peeps,4,1));
@@ -513,7 +513,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	high_scores_5_2.put(getPlace(peeps,5,2));
 	attach(high_scores_5_3);
 	high_scores_5_3.put(getPlace(peeps,5,3));
-
+	//person outboxes
 	attach(player_scores_3);
 	stringstream ss_3;
 	vector<int> three = the_player.getScores(3);
@@ -530,7 +530,6 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	ss_5 << five[2];
 	player_scores_5.put(ss_5.str());
 	attach(user_name);
-	//will also need to put all the scores here as well
 
 	//game buttons
 	attach(clear_word);
@@ -633,7 +632,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	letters.push_back("x");
 	letters.push_back("y");
 	letters.push_back("z");
-	letters.push_back("a"); //increases the likelyhood of a vowel to about 36%
+	letters.push_back("a"); //increases the likelyhood of a vowel
 	letters.push_back("e");
 	letters.push_back("e");
 	letters.push_back("i");

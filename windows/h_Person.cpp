@@ -57,19 +57,19 @@ void Person::addScore(int gameType, int val){
 	}
 }
 
-vector<int> Person::getScores(int gameType){
-	if (gameType == 3){
-		return highThree;
-	}else if(gameType == 4){
-		return highFour;
-	}else if(gameType == 5){
-		return highFive;
-	}else{
-		cout << "error in getScores input\n";
-		vector<int> bad;
-		return bad;
-	}
-}
+// vector<int> Person::getScores(int gameType){
+// 	if (gameType == 3){
+// 		return highThree;
+// 	}else if(gameType == 4){
+// 		return highFour;
+// 	}else if(gameType == 5){
+// 		return highFive;
+// 	}else{
+// 		cout << "error in getScores input\n";
+// 		vector<int> bad;
+// 		return bad;
+// 	}
+// }
 
 void input_people(vector<Person>& input){
   ifstream ifs("personData.txt");

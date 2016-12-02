@@ -66,7 +66,7 @@ void end_window::enter_pic_pressed(){
 int end_window::play_again_pressed(){
 	exit_button_pressed();
 	try{
-		Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player);
+		Game_window win2(Point(100,100), 600, 400, "gameplay");
 		return gui_main();
 	}
 	catch(...){

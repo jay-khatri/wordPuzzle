@@ -25,7 +25,6 @@ struct end_window: Graph_lib::Window {
 	
 	end_window(Point xy, int w, int h, const string& title);//will need to pass in player vector and unique player
 	vector<Person> peeps;
-	Person the_player;
 	
 	Button play_again;
 	Button exit_button;

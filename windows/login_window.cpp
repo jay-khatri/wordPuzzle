@@ -47,7 +47,7 @@ int login_window::enter_pressed(int i){
 		
 				quit_pressed();
 				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player);
+					Game_window win2(Point(100,100), 600, 400, "gameplay"); //peeps, p
 					return gui_main();
 				}
 				catch(...){
@@ -68,7 +68,7 @@ int login_window::enter_pressed(int i){
 		
 				quit_pressed();
 				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player);
+					Game_window win2(Point(100,100), 600, 400, "gameplay"); //, peeps,
 					return gui_main();
 				}
 				catch(...){

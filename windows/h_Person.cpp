@@ -13,6 +13,15 @@ Person::Person(string m_name, string m_pic):
 	highFour(3,0),
 	highFive(3,0){}
 
+Person::Person():
+	//initializing every vector to three instances of 0
+	highThree(3,0),
+	highFour(3,0),
+	highFive(3,0){
+	name = ""; 
+	pic = "";
+	}
+
 void Person::setName(string i_name){
 	name = i_name;
 }

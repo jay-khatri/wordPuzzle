@@ -1,4 +1,4 @@
-/*Brockway, Khatiri, Tiner
+/*Brockway, Khatri, Tiner
 Final Project
 Last update: 11-21-16
 Purpose: function and class definitons for end window--third window in a gui sequence*/
@@ -22,17 +22,17 @@ exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 win_message(Point(x_max()/2, 50), "Congratulations! You beat a highscore!"),
 loss_message(Point(x_max()/2, 50), "Well, better luck next time. Play again?"),
 pic_in(Point(x_max()-170, y_max()/2 - 25), 100, 25, ""),
-highscore1_proxy(Point(100,230), getPlace(peeps,game_type,1)),
-highscore2_proxy(Point(100,245), getPlace(peeps,game_type,2)),
-highscore3_proxy(Point(100,260), getPlace(peeps,game_type,3)),
 top_msg(Point(105,85),"Top Player: "),
 enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
 enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)"),
 high_scores_msg(Point(95,215), game_string(game_type) + "High Scores"),
-
 //other initializations
 pic_file("default.jpg")
 {
+	the_player.addScore(gt, score);
+	highscore1_proxy = {Point(100,230), getPlace(peeps,game_type,1)};
+	highscore2_proxy = {Point(100,245), getPlace(peeps,game_type,2)};
+	highscore3_proxy = {Point(100,260), getPlace(peeps,game_type,3)};
 	//if statement getting the already top player's pic and reassigning the Image.
 	
 	Image* proxy = new Image(Point(100,100), pic_file);
@@ -55,6 +55,7 @@ pic_file("default.jpg")
 	
 	//depending on score attach win or loss message
 	//also will need different logic for how the player's score is getting passed in for beating highscores...
+
 }
 
 string game_string(int i){

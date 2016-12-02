@@ -12,6 +12,8 @@
 #include <numeric>
 #include <string>
 #include <sstream>
+#include <map>
+#include <algorithm>
 using namespace std;
 
 void input_data(vector<string>& input);

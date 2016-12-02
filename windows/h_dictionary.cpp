@@ -17,6 +17,7 @@ void input_data(vector<string>& input){
 	input.push_back(word);
   }
 }
+
 bool isWord(vector<string> input, string check){
 	for(int i = 0; i<input.size(); i++){
 		if(check == input[i]){

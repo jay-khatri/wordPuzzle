@@ -3,12 +3,13 @@
 #include "login_window.h"
 #include "h_Person.h"
 #include "h_dictionary.h"
+#include <vector>
 // #include "game_window.h"
 
 using namespace std;
 
 int main(){
-	//vector<string> words;
+	vector<string> words;
 	vector<Person> people;
 
 	//input_data(words);

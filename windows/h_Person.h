@@ -29,7 +29,6 @@ class Person{
 	public:
 		//constructor just makes eveything zero
 		Person(string m_name, string m_pic);
-		Person();
 		
 		//manipulating member functions
 		void setName(string i_name);

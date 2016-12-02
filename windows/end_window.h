@@ -1,4 +1,4 @@
-/*Brockway, Khatiri, Tiner
+/*Brockway, Khatri, Tiner
 Final Project
 Last update: 11-21-16
 Purpose: header file for end window--third window in a gui sequence*/
@@ -36,6 +36,7 @@ struct end_window: Graph_lib::Window {
 	
 	Text win_message;
 	Text loss_message;
+	Text score_msg;
 	Text high_scores_msg;
 	Text top_msg;
 	Text enter_pic_msg1;

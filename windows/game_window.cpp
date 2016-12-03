@@ -776,11 +776,11 @@ int isWinner(vector<Person> peeps, int gametype, int check){
 	}
 	//now topvec has at most the top three people
 	if (gametype > 2 && gametype < 6){
-		if(check > topvec[0].getScores(gametype)[2] && topvec.size() > 0){
+		if(check > topvec[0].getScores(gametype)[2] || topvec.size() == 0){
 			//winner
 			return 1;
 		}
-		else if(topvec.size() > 1 && check > topvec[topvec.size()-1].getScores(gametype)[2]){
+		else if(check > topvec[topvec.size()-1].getScores(gametype)[2]){
 			//placer
 			return 2;
 		}else{

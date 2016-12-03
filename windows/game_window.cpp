@@ -767,6 +767,30 @@ void Game_window::cd_but25(Address, Address pw){
 // Person Functions:
 string Person::getName(){ return name;}
 
+int isWinner(vector<Person> peeps, int gametype, int check){
+	vector<Person> topvec;
+	//gets the index of the person with the highest score
+	for(int i = 0; i<3 && peeps.size() > 0; i++){
+		topvec.push_back(peeps[topIndex(peeps, gametype)]);
+		peeps.erase(peeps.begin() + topIndex(peeps, gametype));
+	}
+	//now topvec has at most the top three people
+	if (gametype > 2 && gametype < 6){
+		if(check > topvec[0].getScores(gametype)[2] && topvec.size() > 0){
+			//winner
+			return 1;
+		}
+		else if(topvec.size() > 1 && check > topvec[topvec.size()-1].getScores(gametype)[2]){
+			//placer
+			return 2;
+		}else{
+			//loser
+			return 3;
+		}
+	}
+}
+
+//returns a player name along with a place
 string getPlace(vector<Person> peeps, int gametype, int place){
 	vector<Person> topvec;
 	vector<string> places;

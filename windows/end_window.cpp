@@ -8,7 +8,7 @@ Purpose: function and class definitons for end window--third window in a gui seq
 using namespace Graph_lib;
 using namespace std;
 
-end_window::end_window(Point xy, int w, int h, const string& title, vector<Person>& people, Person& pp, int score, int gt): 
+end_window::end_window(Point xy, int w, int h, const string& title, vector<Person>& people, Person& pp, int score, int gt, int winner): 
 Window(xy, w, h, title), peeps(people), the_player(pp), 
 final_score(score), game_type(gt),
 
@@ -54,9 +54,15 @@ pic_file("default.jpg")
 	attach(*top_pic);
 	attach(top_msg);
 
-	//attach(win_message);
-	//attach(loss_message);
-	attach(placed_message);
+	if(winner==1){
+		attach(win_message);
+	}
+	if(winner==2){
+		attach(placed_message);
+	}
+	if(winner==3){
+		attach(loss_message);
+	}
 
 	attach(score_msg);
 	attach(highscore1_proxy);
@@ -95,7 +101,7 @@ string game_string(int i){
 
 void end_window::enter_pic_pressed(){
 	//cout << pic_in.get_string() << '\n';//test for pic entry and add it to the current person object
-	
+
 	pic_file = pic_in.get_string();
 	Image* new_pic = new Image(Point(100,100), pic_file);
 	top_pic = new_pic;

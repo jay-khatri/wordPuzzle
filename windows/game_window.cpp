@@ -182,12 +182,9 @@ int Game_window::finish(){
 	hide();
 	try{
 		
-		
 		did_win = isWinner(peeps, game_type, game_score);
-		cout << did_win << endl;
-	
 
-		end_window win3(Point(100,100), 400, 400, "End", peeps, the_player, game_score, game_type);
+		end_window win3(Point(100,100), 400, 400, "End", peeps, the_player, game_score, game_type, did_win);
 		return gui_main();
 	}
 	catch(...){

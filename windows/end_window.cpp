@@ -104,20 +104,46 @@ string game_string(int i){
 	}
 }
 
+bool is_pic(string pic){
+	if(pic.substr(pic.length()-4,4)==".jpg" || pic.substr(pic.length()-4,4)==".gif"){
+		return 1;
+	}
+	return 0;
+}
+
+bool is_open_pic(string pic){
+	ifstream is{pic};
+	if(!is){
+		return 0;
+	}
+	return 1;
+}
+
 void end_window::enter_pic_pressed(){
 	//cout << pic_in.get_string() << '\n';//test for pic entry and add it to the current person object
 
 	pic_file = pic_in.get_string();
-	Image* new_pic = new Image(Point(100,100), pic_file);
-	top_pic = new_pic;
-	attach(*top_pic);
-	redraw();
-	
-	enter_pic.hide();
-	pic_in.hide();
-	detach(enter_pic_msg1);
-	detach(enter_pic_msg2);
+	if(is_pic(pic_file)){
+		if(is_open_pic(pic_file)){
+		Image* new_pic = new Image(Point(100,100), pic_file);
+		top_pic = new_pic;
+		attach(*top_pic);
+		redraw();
+		
+		the_player.setPic(pic_file);
+		enter_pic.hide();
+		pic_in.hide();
+		detach(enter_pic_msg1);
+		detach(enter_pic_msg2);
 		//detach the image not found message
+		}
+		else{
+			//attach a bad image message
+		}
+	}
+	else{
+		//attach a bad image message
+	}
 }
 
 int end_window::play_again_pressed(){
@@ -189,3 +215,5 @@ void output_people(vector<Person> input) {
 }
 
 string Person::getPic(){ return pic;}
+
+void Person::setPic(string i_pic){ pic = i_pic;}

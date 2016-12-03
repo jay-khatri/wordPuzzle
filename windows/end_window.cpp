@@ -79,7 +79,10 @@ top_msg(Point(110,90),"Top Player: "),
 high_scores_msg(Point(90,215), game_string(game_type) + "High Scores"),
 
 enter_pic_msg1(Point(x_max()-170, y_max()/2 + 20), "Enter the picture file"),
-enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)")
+enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "(*.jpg or *.gif, 100x100pp)"),
+
+ext_error(Point(x_max()-170, y_max()/2 + 20), "Try *.jpg or *.gif"),
+file_error(Point(x_max()-170, y_max()/2 + 20), "File not found")
 
 {
 
@@ -98,7 +101,7 @@ enter_pic_msg2(Point(x_max()-170, y_max()/2 + 35), "   (*.jpg or *.gif)")
 	else{
 		pic_file = "default.jpg";
 	}
-	
+
 	Image* proxy = new Image(Point(100,100), pic_file);
 	top_pic = proxy;
 
@@ -171,21 +174,32 @@ void end_window::enter_pic_pressed(){
 		Image* new_pic = new Image(Point(100,100), pic_file);
 		top_pic = new_pic;
 		attach(*top_pic);
-		redraw();
 		
 		the_player.setPic(pic_file);
 		enter_pic.hide();
 		pic_in.hide();
 		detach(enter_pic_msg1);
 		detach(enter_pic_msg2);
-		//detach the image not found message
+		detach(file_error);
+		detach(ext_error);
+		redraw();
 		}
 		else{
-			//attach a bad image message
+			detach(enter_pic_msg1);
+			detach(enter_pic_msg2);
+			detach(file_error);
+			detach(ext_error);
+			attach(file_error);
+			redraw();
 		}
 	}
 	else{
-		//attach a bad image message
+		detach(enter_pic_msg1);
+		detach(enter_pic_msg2);
+		detach(file_error);
+		detach(ext_error);
+		attach(ext_error);
+		redraw();
 	}
 }
 

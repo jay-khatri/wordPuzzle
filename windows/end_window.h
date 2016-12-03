@@ -43,6 +43,8 @@ struct end_window: Graph_lib::Window {
 	Text top_msg;
 	Text enter_pic_msg1;
 	Text enter_pic_msg2;
+	Text ext_error;
+	Text file_error;
 	
 	//highscores
 	Text highscore1_proxy;

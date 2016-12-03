@@ -133,6 +133,7 @@ int end_window::play_again_pressed(){
 }
 
 void end_window::exit_button_pressed(){
+	output_people(peeps);
 	hide();
 } 
 
@@ -163,3 +164,28 @@ void end_window::cb_logout(Address, Address pw){
 void end_window::cb_enter_pic(Address, Address pw){
 	reference_to<end_window>(pw).enter_pic_pressed();
 }
+
+//person function defenitions ---------------------------------------------
+void output_people(vector<Person> input) {
+	ofstream ofs("personData.txt");
+	for (int s = 0; s<input.size(); s++) {
+		ofs << input[s].getName() << endl << input[s].getPic() << endl;
+		for(auto i: input[s].getScores(3)){
+			ofs << i << " ";
+		}
+		ofs << endl;
+		for(auto i: input[s].getScores(4)){
+			ofs << i << " ";
+		}
+		ofs << endl;
+		for(auto i: input[s].getScores(5)){
+			ofs << i << " ";
+		}
+		ofs << endl;
+		if(s != input.size()-1){
+			ofs << endl;
+		}
+	}
+}
+
+string Person::getPic(){ return pic;}

@@ -7,6 +7,7 @@ login window--first window in the gui design*/
 #include "login_window.h"
 
 void login_window::quit_pressed(){
+	output_people(peeps);
 	hide();
 }
 

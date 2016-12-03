@@ -15,6 +15,9 @@
 using namespace Graph_lib;
 using namespace std;
 
+
+int isWinner(vector<Person> peeps, int gametype, int check);
+
 bool is_entered(string s, vector<string> entered);
 
 struct Game_window : Graph_lib::Window{
@@ -31,7 +34,7 @@ struct Game_window : Graph_lib::Window{
 private:
 	//the player
 	Person the_player;
-	bool did_win;
+	int did_win;
 
 	//vector of all the words
 	vector<string> words;

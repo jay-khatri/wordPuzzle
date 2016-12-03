@@ -19,8 +19,9 @@ enter_pic(Point(x_max()-60, y_max()/2 - 25), 50, 25, "enter", cb_enter_pic),
 exit_button(Point(x_max()-35, 0), 35, 20, "exit", cb_exit_button),
 
 //Text initializations
-win_message(Point(90, 50), "Congratulations! You beat a highscore!"),
+win_message(Point(90, 50), "Congratulations! You got the highest score!"),
 loss_message(Point(90, 50), "Well, better luck next time. Play again?"),
+placed_message(Point(120, 50), "Nice. You got a high score."),
 score_msg(Point(x_max()-150, 100), "Final Score: "+ to_string(final_score)),
 
 // high1_str(getPlace(peeps,game_type,1)),
@@ -55,6 +56,8 @@ pic_file("default.jpg")
 
 	//attach(win_message);
 	//attach(loss_message);
+	attach(placed_message);
+
 	attach(score_msg);
 	attach(highscore1_proxy);
 	attach(highscore2_proxy);
@@ -91,7 +94,8 @@ string game_string(int i){
 }
 
 void end_window::enter_pic_pressed(){
-	cout << pic_in.get_string() << '\n';//test for pic entry and add it to the current person object
+	//cout << pic_in.get_string() << '\n';//test for pic entry and add it to the current person object
+	
 	pic_file = pic_in.get_string();
 	Image* new_pic = new Image(Point(100,100), pic_file);
 	top_pic = new_pic;
@@ -100,7 +104,9 @@ void end_window::enter_pic_pressed(){
 	
 	enter_pic.hide();
 	pic_in.hide();
-	//picture entry message?
+	detach(enter_pic_msg1);
+	detach(enter_pic_msg2);
+		//detach the image not found message
 }
 
 int end_window::play_again_pressed(){

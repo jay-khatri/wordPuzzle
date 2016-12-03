@@ -36,6 +36,8 @@ struct end_window: Graph_lib::Window {
 	
 	Text win_message;
 	Text loss_message;
+	Text placed_message;
+	
 	Text score_msg;
 	Text high_scores_msg;
 	Text top_msg;

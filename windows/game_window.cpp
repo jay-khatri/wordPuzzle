@@ -182,9 +182,10 @@ int Game_window::finish(){
 	hide();
 	try{
 		
-		// if(gamescore > ){
-		// 	did_win = true;
-		// }
+		
+		did_win = isWinner(peeps, game_type, game_score);
+		cout << did_win << endl;
+	
 
 		end_window win3(Point(100,100), 400, 400, "End", peeps, the_player, game_score, game_type);
 		return gui_main();
@@ -808,7 +809,6 @@ string getPlace(vector<Person> peeps, int gametype, int place){
 	}
 	if (place > 0 && place < 4 && gametype > 2 && gametype < 6){
 		//size is 2, place is 1,2,3 (3 should fail)
-		cout << place << ": " << topvec.size() << "\n";
 		if(topvec.size()>=place){ 
 			return places[place-1];
 		}

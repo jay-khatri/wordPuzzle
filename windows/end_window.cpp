@@ -43,19 +43,27 @@ pic_file("default.jpg")
 {
 	//the_player.addScore(gt, score);
 	//if statement getting the already top player's pic and reassigning the Image.
+	for(int i=0; i<the_player.getScores(game_type).size();++i){
+		cout << the_player.getScores(game_type)[i] << endl;
+	}
+	cout << peeps.size() << endl;
+	cout << getPlace(peeps, game_type, 1) << endl;
 
 	Image* proxy = new Image(Point(100,100), pic_file);
 	top_pic = proxy;//ugh...^
 	
 	attach(play_again);
 	attach(logout);
-	attach(enter_pic);
 	top_pic->set_mask(Point(0,0),100,100);
 	attach(*top_pic);
 	attach(top_msg);
 
 	if(winner==1){
+		attach(enter_pic);
 		attach(win_message);
+		attach(pic_in);
+		attach(enter_pic_msg1);
+		attach(enter_pic_msg2);
 	}
 	if(winner==2){
 		attach(placed_message);
@@ -68,11 +76,8 @@ pic_file("default.jpg")
 	attach(highscore1_proxy);
 	attach(highscore2_proxy);
 	attach(highscore3_proxy);
-	attach(enter_pic_msg1);
-	attach(enter_pic_msg2);
 	attach(high_scores_msg);
 	attach(exit_button);
-	attach(pic_in);
 	
 	//depending on score attach win or loss message
 	//also will need different logic for how the player's score is getting passed in for beating highscores...

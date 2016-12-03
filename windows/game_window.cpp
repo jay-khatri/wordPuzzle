@@ -183,7 +183,15 @@ int Game_window::finish(){
 	try{
 		
 		did_win = isWinner(peeps, game_type, game_score);
-
+		the_player.addScore(game_type, game_score);
+		for(int i=0; i<the_player.getScores(game_type).size();++i){
+			cout << the_player.getScores(game_type)[i] << endl;
+		}
+		cout << peeps.size() << endl;
+		for(int i=0; i<peeps[2].getScores(game_type).size();++i){
+			cout << peeps[2].getScores(game_type)[i] << endl;
+		}
+		cout << getPlace(peeps, game_type, 1) << endl;
 		end_window win3(Point(100,100), 400, 400, "End", peeps, the_player, game_score, game_type, did_win);
 		return gui_main();
 	}
@@ -481,7 +489,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	input_data(words);
 	//assigning the peeps string to people
 	//peeps = people;   //may need to be a reference 
-
+	//the_player.addScore(5,12);
 	//should never need to hide
 	attach(logout_button);
 	//play buttons

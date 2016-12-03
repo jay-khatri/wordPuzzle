@@ -53,8 +53,11 @@ void Person::addScore(int gameType, int val){
 		highFive.push_back(val);
 		sort(highFive.begin(), highFive.end());
 		highFive.erase(highFive.begin());
-	//cout << val << endl;
+	// for(int i=0; i<highFive.size();++i){
+	// 	cout << highFive[i] << endl;
+	// }
 	}
+	// cout << val << endl;
 }
 
 // vector<int> Person::getScores(int gameType){

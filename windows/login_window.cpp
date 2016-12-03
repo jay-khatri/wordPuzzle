@@ -45,11 +45,11 @@ int login_window::enter_pressed(int i){
 			else{
 				cout << name_in.get_string() << "(reference)\n";//get reference in vector
 				
-				the_player = getPerson(n,peeps);
+				//Person& the_player = getPerson(n,peeps);
 		
 				quit_pressed();
 				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player); //peeps, p
+					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps)); //peeps, p
 					return gui_main();
 				}
 				catch(...){
@@ -71,11 +71,13 @@ int login_window::enter_pressed(int i){
 				cout << name_in.get_string() << "(creating)\n";//in actual program push back player here.
 				if(n!="" && n!=" " && n.size()>2){
 					Person p(n,"");
-					the_player = p;
-					
+					//p.addScore(5,12);
+					//Person& the_player = p;
+					peeps.push_back(p);
+
 					quit_pressed();
 					try{
-						Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, the_player); //, peeps,
+						Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps)); //, peeps,
 						return gui_main();
 					}
 					catch(...){

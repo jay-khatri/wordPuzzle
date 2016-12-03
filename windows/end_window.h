@@ -24,8 +24,8 @@ using namespace std;
 struct end_window: Graph_lib::Window {
 	
 	end_window(Point xy, int w, int h, const string& title, vector<Person>& people, Person& pp, int score, int gt, int winner);
-	vector<Person> peeps;
-	Person the_player;
+	vector<Person>& peeps;
+	Person& the_player;
 	int final_score;
 	int game_type;
 	

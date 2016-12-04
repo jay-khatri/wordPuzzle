@@ -1,8 +1,8 @@
-/*Brockway, Khatiri, Tiner
+/*Brockway, Khatri, Tiner
 Final Project
-Last update: 11-14-16
+Last update: 12-2-16
 Purpose: function and class desrciptions for 
-login window--first window in the gui design*/
+login window -- first window in the gui design and its function definitions*/
 
 #include "login_window.h"
 
@@ -31,26 +31,18 @@ void login_window::new_user_pressed(){
 
 int login_window::enter_pressed(int i){
 	string n = name_in.get_string();
-	//check/make a player here:
-	//Person p;
 	
 	switch (i){
 		case 0:{
-			if (!isPerson(n,peeps)){//bool function for checking name
+			if (!isPerson(n,peeps)){
 				detach(dne_message);
-				attach(dne_message); // didn't find player (bad)
-				cout << "not found name: " << n << ".\n";//test messages
-				
+				attach(dne_message); // didn't find player (bad)				
 				redraw();
 			}
-			else{
-				cout << name_in.get_string() << "(reference)\n";//get reference in vector
-				
-				//Person& the_player = getPerson(n,peeps);
-		
+			else{		
 				quit_pressed();
 				try{
-					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps)); //peeps, p
+					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps));
 					return gui_main();
 				}
 				catch(...){
@@ -65,20 +57,16 @@ int login_window::enter_pressed(int i){
 				detach(exist_message);
 				detach(name_error);
 				attach(exist_message); // found player (bad)
-				cout << "found name: " << n << "(bad).\n";//test messages
 				redraw();
 			}
 			else{
-				cout << name_in.get_string() << "(creating)\n";//in actual program push back player here.
 				if(n!="" && n!=" " && n.size()>2){
 					Person p(n,"");
-					//p.addScore(5,12);
-					//Person& the_player = p;
 					peeps.push_back(p);
 
 					quit_pressed();
 					try{
-						Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps)); //, peeps,
+						Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps));
 						return gui_main();
 					}
 					catch(...){
@@ -131,7 +119,7 @@ enter_login(Point(x_max()/2-35, y_max()/2 + 40), 70, 30, "Enter", cb_enter_login
 
 back(Point(0, 0), 35, 20, "back", cb_back),
 
-//box initializations
+//Text message initializations
 
 login_message(Point(x_max()/2-50, y_max()/2 - 30), "Enter username"),
 
@@ -142,6 +130,8 @@ dne_message(Point(x_max()/2 - 65, y_max()/2+30), "Username not found"),
 exist_message(Point(x_max()/2 - 73, y_max()/2+30), "Username already exists"),
 
 name_error(Point(75, y_max()/2+30), "Invalid username (must be at least 3 chars)"),
+
+//box initializations
 
 name_in(Point(x_max()/2-60, y_max()/2 - 20), 120, 30, "")
 
@@ -159,6 +149,7 @@ name_in(Point(x_max()/2-60, y_max()/2 - 20), 120, 30, "")
 	name_in.hide();
 }
 
+//call back function
 void login_window::cb_quit(Address, Address pw) {
 	reference_to<login_window>(pw).quit_pressed();
 }
@@ -182,6 +173,3 @@ void login_window::cb_enter_user(Address, Address pw) {
 void login_window::cb_enter_login(Address, Address pw) {
 	reference_to<login_window>(pw).enter_pressed(0);
 }
-
-//Person Functions:
-

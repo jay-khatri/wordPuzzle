@@ -96,10 +96,12 @@ file_error(Point(x_max()-170, y_max()/2 + 20), "File not found")
 		}
 		else{
 			pic_file = "default.jpg";
+			the_player.setPic("default.jpg");
 		}
 	}
 	else{
 		pic_file = "default.jpg";
+		the_player.setPic("default.jpg");
 	}
 
 	Image* proxy = new Image(Point(100,100), pic_file);

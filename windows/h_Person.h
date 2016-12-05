@@ -27,35 +27,35 @@ class Person{
 		vector<int> highFour;
 		vector<int> highFive;
 	public:
-		//constructor just makes eveything zero
-		Person(string m_name, string m_pic);
-		Person();
+		Person(string m_name, string m_pic); //assignment constructor
+		Person(); //default constructor
 		
 		//manipulating member functions
 		void setName(string i_name);
 		string getName();
 		void setPic(string i_pic);
 		string getPic();
+	
 		//logic for adding to the highschores
 		void addScore(int gameType, int val);
+	
 		//gets the three score vectors
 		vector<int> getScores(int gameType);
 				
 };
 
-void input_people(vector<Person>& input);
+void input_people(vector<Person>& input); //reads people objects from the file "personData.txt"
 
-void output_people(vector<Person> input);
+void output_people(vector<Person> input); //outputs people objects from the file "personData.txt"
 
-void output_term(vector<Person>& input);
+void output_term(vector<Person>& input); //for testing output (prints formated person vector)
 
-int topIndex(vector<Person> peeps, int gametype);
+int topIndex(vector<Person> peeps, int gametype); //supporting function for getPlace (gets the top scoring player's index)
 
-//peeps is passed by value so that we dont have to worry about actually messing up the vector of people
-string getPlace(vector<Person> peeps, int gametype, int place);
+string getPlace(vector<Person> peeps, int gametype, int place); //Gets the player's name and score based on place int
 
-bool isPerson(string name, vector<Person> peeps);
+bool isPerson(string name, vector<Person> peeps); //Checks if a person is in the vector peeps
 
-Person &getPerson(string name, vector<Person> &peeps);
+Person &getPerson(string name, vector<Person> &peeps); //returns a reference to a person with name 
 
 #endif

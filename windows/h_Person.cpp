@@ -1,6 +1,6 @@
-/*Brockway, Khatiri, Tiner
+/*Brockway, Khatri, Tiner
 Final Project
-Last update: 11-14-16
+Last update: 12-28-16
 Purpose: function and class defintions for the person class*/
 
 #include "h_Person.h"
@@ -36,56 +36,34 @@ void Person::addScore(int gameType, int val){
 	//only add a new score if the score is larger than the first value in the array
 	//(which is sorted), then add it and sort it again
 	if (gameType == 3){
-		//name = "yo";
 		highThree.push_back(val);
 		//sort the vector
 		sort(highThree.begin(), highThree.end());
-		//erase the first thing
+		//erase the first thing (lowest score)
 		highThree.erase(highThree.begin());
 	}
 	if (gameType == 4){
 		highFour.push_back(val);
 		sort(highFour.begin(), highFour.end());
 		highFour.erase(highFour.begin());
-	//cout << val << endl;
 	}
 	if (gameType == 5){
 		highFive.push_back(val);
 		sort(highFive.begin(), highFive.end());
 		highFive.erase(highFive.begin());
-	// for(int i=0; i<highFive.size();++i){
-	// 	cout << highFive[i] << endl;
-	// }
 	}
-	// cout << val << endl;
 }
-
-// vector<int> Person::getScores(int gameType){
-// 	if (gameType == 3){
-// 		return highThree;
-// 	}else if(gameType == 4){
-// 		return highFour;
-// 	}else if(gameType == 5){
-// 		return highFive;
-// 	}else{
-// 		cout << "error in getScores input\n";
-// 		vector<int> bad;
-// 		return bad;
-// 	}
-// }
 
 void input_people(vector<Person>& input){
   ifstream ifs("personData.txt");
   while (ifs) {
 	if (ifs.eof()) {
-	cout << "once";
 	  return;
 	}
 	Person n;	
     string name;
     string picture;
 	string check;
-	//string check;
 	int t1;int t2;int t3;
 	int r1;int r2;int r3;
 	int f1;int f2;int f3;
@@ -99,7 +77,6 @@ void input_people(vector<Person>& input){
 	ifs.ignore();
 	ifs.ignore();
     getline(ifs,check); // use getline to deal with spaces
-	//getline(ifs,check); // use getline to deal with spaces
 	n.setName(name);
 	n.setPic(picture);
 	n.addScore(3, t1);n.addScore(3, t2);n.addScore(3, t3);
@@ -110,7 +87,6 @@ void input_people(vector<Person>& input){
 		return;
 	}
   }
-cout << "This is the input" << input.size() << "\n";
 }
 
 void output_people(vector<Person> input) {
@@ -187,7 +163,7 @@ string getPlace(vector<Person> peeps, int gametype, int place){
 	if (place > 0 && place < 4 && gametype > 2 && gametype < 6){
 		return places[place-1];
 	}else{
-		return "You doing something wrong";
+		return "Your doing something wrong";
 	}
 }
 

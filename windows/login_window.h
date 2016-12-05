@@ -1,7 +1,7 @@
 /*Brockway, Khatiri, Tiner
 Final Project
 Last update: 11-14-16
-Purpose: header file for login window--first window in the gui design*/
+Purpose: header file for login window--first window in the gui design and the class/function declarations*/
 #ifndef LOGIN_GUARD
 #define LOGIN_GUARD
 
@@ -15,16 +15,13 @@ Purpose: header file for login window--first window in the gui design*/
 #include "Window.h"
 #include "h_Person.h"
 
-
 using namespace Graph_lib;
 using namespace std;
 
 struct login_window: Graph_lib::Window
 {
 	login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
-	vector<Person>& peeps;
-	
-	//login_window(Point xy, int w, int h, const string& title);
+	vector<Person>& peeps; //window constructor
 	
 	Button exit; //quit
 	Button login;
@@ -35,23 +32,23 @@ struct login_window: Graph_lib::Window
 	
 	Text login_message;
 	Text new_message;
-	Text dne_message;//for telling the user that a name doesn't exist when trying to log in
-	Text exist_message;//for telling the user that a name already exists when creating a username
-	Text name_error;
+	Text dne_message; //for telling the user that a name doesn't exist when trying to log in
+	Text exist_message; //for telling the user that a name already exists when creating a username
+	Text name_error; //for telling the user that their username is ill-formatted
 	
 	In_box name_in;
 	
-	void quit_pressed();
+	void quit_pressed(); //when exit pressed function
 	
-	void login_pressed();
+	void login_pressed(); //when a user wants to login to the game
 	
-	void new_user_pressed();
+	void new_user_pressed(); //when the user wants to create a new user login
 	
-	int enter_pressed(int i);
+	int enter_pressed(int i); //when user enters their username (int depends on whether the user is logining or creating a username)
 	
-	void back_pressed();
+	void back_pressed(); //when user wants to go back to main login window
 	
-	
+	//----------- call back definitions -------------
 	static void cb_quit(Address, Address);
 	static void cb_login(Address, Address);
 	static void cb_new_user(Address, Address);

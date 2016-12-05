@@ -1,4 +1,4 @@
-/*Brockway, Khatiri, Tiner
+/*Brockway, Khatri, Tiner
 Final Project
 Last update: 11-14-16
 Purpose: function defintions for the dictionary*/
@@ -13,7 +13,6 @@ void input_data(vector<string>& input){
     }
 	string word;
     getline(ifs,word);  // use getline to deal with spaces 
-	//word = word.substr(0, word.length()-1);
 	input.push_back(word);
   }
 }

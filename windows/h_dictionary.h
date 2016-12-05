@@ -1,3 +1,8 @@
+/*Brockway, Khatri, Tiner
+Final Project
+Last update: 11-25-16
+Purpose: function declartions for dictionary functions*/
+
 #ifndef DICT_GUARD
 #define DICT_GUARD
 
@@ -15,8 +20,8 @@
 #include <algorithm>
 using namespace std;
 
-void input_data(vector<string>& input);
+void input_data(vector<string>& input); //reads a vector of dictionary words for gameplay ease
 
-bool isWord(vector<string> input, string check);
+bool isWord(vector<string> input, string check); //checks if a word is in the vector input
 
 #endif

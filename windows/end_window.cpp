@@ -10,6 +10,9 @@ using namespace std;
 
 //tests if the file inputted is actually a picture of gif (helper function)
 bool is_pic(string pic){
+	if(pic.length()<5){
+		return 0;
+	}
 	if(pic.substr(pic.length()-4,4)==".jpg" || pic.substr(pic.length()-4,4)==".gif"){
 		return 1;
 	}
@@ -91,20 +94,26 @@ file_error(Point(x_max()-170, y_max()/2 + 20), "File not found")
 	//if statement getting the already top player's pic and reassigning the Image.
 	string top_in = get_place_name(peeps, game_type, 1);
 	pic_file = getPerson(top_in, peeps).getPic();
+	cout << pic_file << "here\n";
 
 	if(is_pic(pic_file)){
+		cout << "pic is a picture\n";
 		if(is_open_pic(pic_file)){
+			cout << "pic is fine\n";
 			//the pic is fine if reaches here
 		}
 		else{
+			cout << "the file doesnt exits\n";
 			pic_file = "default.jpg";
 			the_player.setPic("default.jpg");
 		}
 	}
 	else{
+		cout << "the file couldnt be a picture\n";
 		pic_file = "default.jpg";
 		the_player.setPic("default.jpg");
 	}
+	cout << "here\n";
 
 	//actuall sets the new image that will be displayed to the pic file
 	Image* proxy = new Image(Point(100,100), pic_file);

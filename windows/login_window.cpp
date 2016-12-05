@@ -30,16 +30,16 @@ void login_window::new_user_pressed(){
 }
 
 int login_window::enter_pressed(int i){
-	string n = name_in.get_string();
+	string n = name_in.get_string(); //user input
 	
 	switch (i){
-		case 0:{
-			if (!isPerson(n,peeps)){
+		case 0:{ //Login:
+			if (!isPerson(n,peeps)){ // didn't find player (bad)
 				detach(dne_message);
-				attach(dne_message); // didn't find player (bad)				
+				attach(dne_message);				
 				redraw();
 			}
-			else{		
+			else{ //player exists in vector peeps		
 				quit_pressed();
 				try{
 					Game_window win2(Point(100,100), 600, 400, "gameplay", peeps, getPerson(n,peeps));
@@ -52,15 +52,15 @@ int login_window::enter_pressed(int i){
 			}
 			break;
 		}
-		case 1:{
-			if (isPerson(n,peeps)){
+		case 1:{ //New user:
+			if (isPerson(n,peeps)){ // found player (bad)
 				detach(exist_message);
 				detach(name_error);
-				attach(exist_message); // found player (bad)
+				attach(exist_message);
 				redraw();
 			}
 			else{
-				if(n!="" && n!=" " && n.size()>2){
+				if(n!="" && n!=" " && n.size()>2){ //name format checking
 					Person p(n,"");
 					peeps.push_back(p);
 
@@ -74,7 +74,7 @@ int login_window::enter_pressed(int i){
 						return 1;
 					}
 				}
-				else{
+				else{ //name was ill-formatted
 					detach(exist_message);
 					detach(name_error);
 					attach(name_error);
@@ -135,7 +135,8 @@ name_error(Point(75, y_max()/2+30), "Invalid username (must be at least 3 chars)
 
 name_in(Point(x_max()/2-60, y_max()/2 - 20), 120, 30, "")
 
-{
+{	
+	//attaching/hide widgets----------------------------
 	attach(exit);
 	attach(login);
 	attach(new_user);
@@ -149,7 +150,7 @@ name_in(Point(x_max()/2-60, y_max()/2 - 20), 120, 30, "")
 	name_in.hide();
 }
 
-//call back function
+//call back functions ---------------------------------------
 void login_window::cb_quit(Address, Address pw) {
 	reference_to<login_window>(pw).quit_pressed();
 }

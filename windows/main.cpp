@@ -1,15 +1,16 @@
-/*This will be the actual main we use for the program*/
+/*Brockway, Khatri, Tiner
+Final Project
+Last update: 12-2-16
+Purpose: This will be the actual main we use for the program*/
 
 #include "login_window.h"
 #include "h_Person.h"
-//#include "h_dictionary.h"
 #include <vector>
 
 using namespace std;
 
 int main(){
-	//vector<std::__cxx11::basic_string<char> > words;
-	vector<Person> people;
+	vector<Person> people; //main persistent data
 
 	input_people(people);
 

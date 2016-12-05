@@ -20,8 +20,8 @@ using namespace std;
 
 struct login_window: Graph_lib::Window
 {
-	login_window(Point xy, int w, int h, const string& title, vector<Person>& pp);
-	vector<Person>& peeps; //window constructor
+	login_window(Point xy, int w, int h, const string& title, vector<Person>& pp); //window contructor
+	vector<Person>& peeps; //player container for referencing a pushing back players
 	
 	Button exit; //quit
 	Button login;
@@ -32,7 +32,7 @@ struct login_window: Graph_lib::Window
 	
 	Text login_message;
 	Text new_message;
-	Text dne_message; //for telling the user that a name doesn't exist when trying to log in
+	Text dne_message; //for telling the user that a name does not exist when trying to log-in
 	Text exist_message; //for telling the user that a name already exists when creating a username
 	Text name_error; //for telling the user that their username is ill-formatted
 	

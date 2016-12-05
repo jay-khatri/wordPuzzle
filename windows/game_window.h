@@ -28,20 +28,17 @@ struct Game_window : Graph_lib::Window{
 		const string& title,
 		vector<Person>& people,
 		Person& current_person
-		); //vector<Person>& people, Person& current_person
+		);
 		
-
 private:
 	//the player
 	Person& the_player;
+	//in what place did the user win
 	int did_win;
-
 	//vector of all the words
 	vector<string> words;
-	
 	//vector of all the people
 	vector<Person>& peeps;
-	
 	//holds all the letters
 	vector<string> letters;
 	//the current word string the user is adding to
@@ -83,11 +80,11 @@ private:
 	Button but23;
 	Button but24;
 	Button but25;
-	//------------------------------------------------------------------
+
+	//---------------------------------------------------------------------------------
 
 	//both pages buttons
 	Button logout_button;
-
 	//Home page text
 	Out_box home_choice;
 	Out_box text_3_high;
@@ -110,13 +107,11 @@ private:
 	Button play_3;
 	Button play_4;
 	Button play_5;
-
 	//game page text
 	Out_box words_accepted;
 	Out_box current_score;
 	Out_box instructions;
 	Out_box current_word;
-
 	//Game page buttons
 	Button clear_word;
 	Button finish_game;
@@ -144,7 +139,7 @@ private:
 	//when a word is entered, the score, total words, and current word will change
 	void enter();
 
-	//------------------------------------------------------------------
+	//------------------------------------------------------------------------------
 	//all the push buttons functions
 	void button_push1();
 	void button_push2();
@@ -172,7 +167,7 @@ private:
 	void button_push24();
 	void button_push25();
 
-	//-------------------------------------------------------------------------
+	//------------------------------------------------------------------------------
 	//All the call back functions
 	static void cd_logout_button(Address, Address);
 

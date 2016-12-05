@@ -8,6 +8,7 @@
 using namespace Graph_lib;
 using namespace std;
 
+//inputs the dictionary file and puts them in the vector
 void input_data(vector<string>& input){
   ifstream ifs("dictionary.txt");
   while (ifs) {
@@ -16,11 +17,11 @@ void input_data(vector<string>& input){
     }
 	string word;
     getline(ifs,word);  // use getline to deal with spaces 
-	//word = word.substr(0, word.length()-1);
 	input.push_back(word);
   }
 }
 
+//checks if the word entered is actually a word in the dictionary
 bool isWord(vector<string> input, string check){
 	for(int i = 0; i<input.size(); i++){
 		if(check == input[i]){
@@ -181,17 +182,9 @@ void Game_window::clear(){
 int Game_window::finish(){
 	hide();
 	try{
-		
 		did_win = isWinner(peeps, game_type, game_score);
 		the_player.addScore(game_type, game_score);
-		for(int i=0; i<the_player.getScores(game_type).size();++i){
-			cout << the_player.getScores(game_type)[i] << endl;
-		}
-		cout << peeps.size() << endl;
-		for(int i=0; i<peeps[2].getScores(game_type).size();++i){
-			cout << peeps[2].getScores(game_type)[i] << endl;
-		}
-		cout << getPlace(peeps, game_type, 1) << endl;
+		
 		end_window win3(Point(100,100), 400, 400, "End", peeps, the_player, game_score, game_type, did_win);
 		return gui_main();
 	}
@@ -215,15 +208,16 @@ void Game_window::enter(){
 		current_score.put(ss.str());
 	}
 	else{
-		if(isWord(words, the_word)){
+		if(isWord(words, the_word)){ //has already been entered by the user
 			none_word_message.put("Already Entered");
 		}
-		else{
+		else{ //not in the dictionary at all
 			none_word_message.put("Not A Word");
 		}
 	}
 
-	current_word.put(""); //will be done whether that is a word or not
+	//will be done whether that is a word or not
+	current_word.put("");
 	the_word = "";
 	show_buttons();
 }
@@ -399,13 +393,14 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 		80, 20, "2nd:"),
 	high_scores_5_3(Point(300, 260),
 		80, 20, "3rd:"),
+	//the player scores out boxes
 	player_scores_3(Point(300, 300),
 		80, 20, "3X3 User High Score:"),
 	player_scores_4(Point(300, 320),
 		80, 20, "4X4 User High Score:"),
 	player_scores_5(Point(300, 340),
 		80, 20, "5X5 User High Score:"),
-	//displays on home page
+	//the user name text
 	user_name(Point(46, 350), "User: " + the_player.getName()),
 
 	//text output for the game page
@@ -487,10 +482,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 {
 	//inputs the words
 	input_data(words);
-	//assigning the peeps string to people
-	//peeps = people;   //may need to be a reference 
-	//the_player.addScore(5,12);
-	//should never need to hide
+	//should never need to hide the logout button
 	attach(logout_button);
 	//play buttons
 	attach(play_3);
@@ -552,7 +544,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	attach(words_accepted);
 	attach(instructions);
 	attach(none_word_message);
-	//hie the game page
+	//hide the game page
 	clear_word.hide();
 	enter_word.hide();
 	finish_game.hide();
@@ -563,7 +555,7 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	current_word.hide();
 	none_word_message.hide();
 
-	//-------------------------------------------------------------------
+	//------------------------------------------------------------------------------
 	//attaching hiding the game buttons
 	attach(but1);
 	attach(but2);
@@ -651,13 +643,14 @@ Game_window::Game_window(Point xy,int w,int h,const string& title, vector<Person
 	letters.push_back("u");
 }
 
-//------------------------------------------------------------------------
-// All the callbacks
+//-----------------------------------------------------------------------------------------
+// All the callbacks for when the buttons are pressed
 
 void Game_window::cd_logout_button(Address, Address pw){
 	reference_to<Game_window>(pw).quit();
 }
-int Game_window::quit(){ //when the user wants to logout
+
+int Game_window::quit(){ //when the user wants to logout, launches a logout window
 	hide();
 
 	try{
@@ -673,12 +666,15 @@ int Game_window::quit(){ //when the user wants to logout
 void Game_window::cd_play_3(Address, Address pw){
 	reference_to<Game_window>(pw).three_game();
 }
+
 void Game_window::cd_play_4(Address, Address pw){
 	reference_to<Game_window>(pw).four_game();
 }
+
 void Game_window::cd_play_5(Address, Address pw){
 	reference_to<Game_window>(pw).five_game();
 }
+
 void Game_window::cd_clear_word(Address, Address pw){
 	reference_to<Game_window>(pw).clear();
 }
@@ -691,7 +687,7 @@ void Game_window::cd_enter_word(Address, Address pw){
 	reference_to<Game_window>(pw).enter();
 }
 
-//----------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //the game buttons callbacks
 
 void Game_window::cd_but1(Address, Address pw){
@@ -769,10 +765,15 @@ void Game_window::cd_but24(Address, Address pw){
 void Game_window::cd_but25(Address, Address pw){
 	reference_to<Game_window>(pw).button_push25();
 }
+
 //---------------------------------------------------------------------------
 // Person Functions:
+
+//returns the users name
 string Person::getName(){ return name;}
 
+//checks what place the user is going the be in when they finish the game
+//output is based on what place they will be in
 int isWinner(vector<Person> peeps, int gametype, int check){
 	vector<Person> topvec;
 	//gets the index of the person with the highest score
@@ -824,7 +825,7 @@ string getPlace(vector<Person> peeps, int gametype, int place){
 		return "You doing something wrong";
 	}
 }
-
+//get the highest 3 scores of each player
 vector<int> Person::getScores(int gameType){
 	if (gameType == 3){
 		return highThree;
@@ -838,7 +839,7 @@ vector<int> Person::getScores(int gameType){
 		return bad;
 	}
 }
-
+//returns the index of the highest scoring player of a specific game
 int topIndex(vector<Person> peeps, int gametype){
 	int top_index = 0;
 	int top_score = 0;
